@@ -1,0 +1,5 @@
+myob Assistant was developed by Sanguine Advantage Pty Ltd for FirstPharma Pty Ltd to manage their myob data requirements.
+
+All rigths to the software libraries used in the development of myob Assistant remains the property of Sanguine Advantage Pty Ltd.
+
+FirstPharma Pty Ltd is the sole owner of myob Assistant and its distribution rights.
