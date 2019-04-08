@@ -78,10 +78,6 @@
     <Compile Include="Controls\Embedded\eucPLBudgetImport.Designer.cs">
       <DependentUpon>eucPLBudgetImport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Helpers\Sync\MADataSyncUpdate.cs" />
-    <Compile Include="Data\Helpers\Sync\MADataUpdateLocal.cs" />
-    <Compile Include="Data\Helpers\Sync\MADataUpdateRemote.cs" />
-    <Compile Include="Data\Helpers\Sync\MASyncDataLocal.cs" />
     <Compile Include="Controls\Embedded\eucBSBudgetImport.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -99,11 +95,6 @@
     </Compile>
     <Compile Include="Controls\Embedded\eucBase.Designer.cs">
       <DependentUpon>eucBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Local\Models\LocalModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LocalModel.lqml</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmChooseParent.cs">
       <SubType>Form</SubType>
@@ -130,7 +121,6 @@
       <DependentUpon>frmChooseGroups.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Enums.cs" />
-    <Compile Include="Data\MADataAccess.cs" />
     <Compile Include="Forms\frmAddCustomerNumber.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,19 +134,11 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\UI\MABaseControls.cs" />
-    <Compile Include="Data\Local\MADatabasePrep.cs" />
-    <Compile Include="Data\Local\MADatabaseGet.cs" />
-    <Compile Include="Classes\Common\MAGlobal.cs" />
-    <Compile Include="Classes\StartUp\MAStartup.cs" />
-    <Compile Include="Data\Local\MADatabaseUpdate.cs" />
     <Compile Include="Classes\UI\MAFileSelection.cs" />
-    <Compile Include="Classes\Common\MAHelpers.cs" />
     <Compile Include="Classes\Conversion\MAPLAccounts.cs" />
     <Compile Include="Classes\Conversion\MAReadTXT.cs" />
     <Compile Include="Classes\Helpers\MATreelistItems.cs" />
-    <Compile Include="Data\Local\MADatabaseDelete.cs" />
     <Compile Include="Classes\Report Creation\MAReportStructure.cs" />
-    <Compile Include="Classes\Helpers\MANodeExpanded.cs" />
     <Compile Include="Classes\Reports\MARptSales.cs" />
     <Compile Include="Classes\Report Creation\MAValueComplier.cs" />
     <Compile Include="Classes\Report Creation\MAPLReportStorage.cs" />
@@ -167,29 +149,6 @@
     <Compile Include="Classes\Reports\MARptBalanceSheet.cs" />
     <Compile Include="Classes\Report Creation\MABSReportStorage.cs" />
     <Compile Include="Classes\Reports\MARptCashFlow.cs" />
-    <Compile Include="Classes\Common\MAConstants.cs" />
-    <Compile Include="Data\Cloud\MACloudAccess.cs" />
-    <Compile Include="Data\Cloud\Business Logic\MACUsers.cs" />
-    <Compile Include="Data\Cloud\Data Items\MACUserItem.cs" />
-    <Compile Include="Data\Cloud\Data Items\MACUpdateItem.cs" />
-    <Compile Include="Data\Cloud\Business Logic\MACUpdates.cs" />
-    <Compile Include="Data\Cloud\Business Logic\MACReportStructure.cs" />
-    <Compile Include="Data\Cloud\Data Items\MACReportStructureItem.cs" />
-    <Compile Include="Data\Cloud\Data Items\MACAccountItem.cs" />
-    <Compile Include="Data\Cloud\Business Logic\MACAccounts.cs" />
-    <Compile Include="Data\Cloud\Data Items\MACBudgetItem.cs" />
-    <Compile Include="Data\Cloud\Business Logic\MACBudgets.cs" />
-    <Compile Include="Data\Cloud\Data Items\MACCustomerNumberItem.cs" />
-    <Compile Include="Data\Cloud\Business Logic\MACCustomerNumbers.cs" />
-    <Compile Include="Data\Local\MAUpdateSyncItem.cs" />
-    <Compile Include="Data\Helpers\DHL Import\MADHLMasterItem.cs" />
-    <Compile Include="Data\Helpers\DHL Import\MADHLDetailItem.cs" />
-    <Compile Include="Data\Helpers\DHL Import\MADHLMaster.cs" />
-    <Compile Include="Data\Helpers\DHL Import\MADHLDetail.cs" />
-    <Compile Include="Data\Cloud\Data Items\MACImportExclusionItems.cs" />
-    <Compile Include="Data\Cloud\Business Logic\MACImportExclusions.cs" />
-    <Compile Include="Data\Cloud\Data Items\MACSettingsItem.cs" />
-    <Compile Include="Data\Cloud\Business Logic\MACSettings.cs" />
     <Compile Include="Classes\Reports\MARptSalesBP.cs" />
     <Compile Include="Classes\Helpers\MAReportOptions.cs" />
     <Compile Include="Program.cs" />
@@ -379,16 +338,6 @@
     <EmbeddedResource Include="Controls\Reports\ucReportErrors.resx">
       <DependentUpon>ucReportErrors.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Data\Local\Models\LocalModel.Diagram1.view">
-      <DependentUpon>LocalModel.lqml</DependentUpon>
-    </None>
-    <None Include="Data\Local\Models\LocalModel.edps">
-      <DependentUpon>LocalModel.lqml</DependentUpon>
-    </None>
-    <None Include="Data\Local\Models\LocalModel.lqml">
-      <Generator>DevartLinqToSqlGenerator</Generator>
-      <LastGenOutput>LocalModel.Designer.cs</LastGenOutput>
-    </None>
     <None Include="Properties\DataSources\MADHLExcludedItem.datasource" />
     <None Include="Properties\DataSources\MADHLMasterItem.datasource" />
     <None Include="Properties\DataSources\MATreeListItem.datasource" />
@@ -418,7 +367,7 @@
       <Version>12.0.1</Version>
     </PackageReference>
     <PackageReference Include="PropertyChanged.Fody">
-      <Version>2.6.0</Version>
+      <Version>2.6.1</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.Common">
       <Version>2.4.0</Version>
@@ -433,7 +382,7 @@
       <Version>3.2.2</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.SQLite">
-      <Version>2.2.0</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.Updater.Client">
       <Version>1.0.2</Version>

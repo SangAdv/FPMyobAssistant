@@ -14,18 +14,6 @@
         User = 3
     }
 
-    internal enum MAReportType : int
-    {
-        ProfitLoss = 1,
-        BalanceSheet = 2
-    }
-
-    internal enum MAStatus : int
-    {
-        Active = 1,
-        Cancelled = 2
-    }
-
     internal enum MARowType : int
     {
         Normal = 1,
@@ -33,17 +21,6 @@
         Total = 3,
         GrandTotal = 4,
         Empty = 5
-    }
-
-    internal struct MAUpdateItem
-    {
-        public const string CustomerData = "CustomerData";
-        public const string PLBudget = "PLBudget";
-        public const string BSBudget = "BSBudget";
-        public const string Accounts = "Accounts";
-        public const string ReportStructure = "ReportStructure";
-        public const string ImportExclusions = "ImportExclusions";
-        public const string Settings = "Settings";
     }
 
     internal enum MATrueFalse : int
