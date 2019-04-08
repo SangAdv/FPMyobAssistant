@@ -137,6 +137,18 @@ namespace FPMyobAssistant
 
         #endregion TLDPLBudget
 
+        #region TLDReptos
+
+        public List<TLDRepto> TLDReptosList(string period)
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                return db.TLDReptos.Where(x => x.Period == period).ToList();
+            }
+        }
+
+        #endregion TLDReptos
+
         #region TLMBSAccount
 
         public List<TLMBSAccount> TLMBSAccountList()

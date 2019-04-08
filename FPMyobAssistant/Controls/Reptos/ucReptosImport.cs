@@ -2,6 +2,7 @@
 using SangAdv.Common.UI;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace FPMyobAssistant.Controls.Reptos
@@ -165,7 +166,16 @@ namespace FPMyobAssistant.Controls.Reptos
         {
             var re = new FPReptosToMyobTXTAddHocSales(dtImport.DateTime);
 
+            var red = MADataAccess.LocalData.TLDReptosList(dtImport.DateTime.ToMonthPeriod()).OrderBy(x =>  x.CardId).ThenBy(x => x.AccountNumber);
             
+            foreach (var item in red)
+            {
+                re.Add(new FPMyobAddHocSalesItem { AccountNumber = item.AccountNumber, CardId = item.CardId, Amount = ((float)item.Claim).Round(2), AmountIncTax = ((float)(item.Claim + item.ClaimGST)).Round(2) });
+            }
+
+            re.Create();
+
+            re.Save(beMYOBFilename.Text);
         }
 
         #region General
