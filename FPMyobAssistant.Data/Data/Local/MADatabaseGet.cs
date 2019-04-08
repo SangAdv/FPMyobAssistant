@@ -161,6 +161,14 @@ namespace FPMyobAssistant
             }
         }
 
+        public Dictionary<int, string> TLMDistributorDictionary()
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                return db.TLMDistributors.ToDictionary(x => (int)x.DistributorId, x => x.Distributor);
+            }
+        }
+
         #endregion TLMDistributor
 
         #region TLMPLAccount

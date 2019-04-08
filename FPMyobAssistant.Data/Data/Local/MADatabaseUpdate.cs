@@ -155,6 +155,8 @@ namespace FPMyobAssistant
                 var a = db.TLDDistributorProductAccountIds.Where(x => x.DistributorId == data.DistributorId && x.ProductPDE == data.ProductPDE);
                 if (a.Any())
                 {
+                    if (a.First().AccountId == data.AccountId) return;
+
                     db.TLDDistributorProductAccountIds.DeleteOnSubmit(a.First());
                     db.SubmitChanges();
                 }

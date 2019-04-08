@@ -23,4 +23,10 @@
         Cancelled = 2
     }
 
+    public enum MADistributors : int
+    {
+        API = 1,
+        Sigma = 2,
+        Symbion = 3
+    }
 }

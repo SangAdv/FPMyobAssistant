@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FPMyobAssistant.Controls.Reptos;
 
 namespace FPMyobAssistant
 {
@@ -353,9 +354,14 @@ namespace FPMyobAssistant
         {
             DisplayControl(new ucMain(true));
         }
-
+        private void AceReptosImport_Click(object sender, EventArgs e)
+        {
+            DisplayControl(new ucReptosImport());
+        }
         #endregion Buttons
 
         #endregion Process UI
+
+
     }
 }

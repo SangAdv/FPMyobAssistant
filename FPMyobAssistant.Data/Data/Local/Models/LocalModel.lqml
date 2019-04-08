@@ -118,7 +118,8 @@
       <Column Name="CardId" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="de4c3994-8451-4bcb-9309-4857a97efb9f" />
       <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="b8f7aeaa-a732-4589-819b-4b5ec347afc8" />
       <Column Name="AccountNumber" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c3e36e91-f949-476f-9795-0e2609738be7" />
-      <Column Name="Value" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="2f3243dc-2f81-4191-a2c1-59e4cc1fcfe5" />
+      <Column Name="Claim" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="4bd7f156-0163-49c9-98ee-3da6362f763a" />
+      <Column Name="ClaimGST" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="065483d1-1a7d-419d-ac3c-7e280204791f" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLMDistributor" Member="TLMDistributors">
@@ -133,6 +134,7 @@
       <Column Name="DistributorId" Type="System.Int64" DbType="INTEGER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="4a9535b5-e6d1-4555-826c-c843fa03455b" />
       <Column Name="ProductPDE" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="20" ed:ValidateMaxLength="20" ed:ValidateRequired="true" ed:Guid="850916b7-dba2-438e-95b3-248e60a24400" />
       <Column Name="AccountId" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f7d0a7a8-55a7-490c-9dba-3e6ef715f598" />
+      <Column Name="Product" Type="System.String" DbType="TEXT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="c498bdc0-6fe6-4dd1-b6a9-ac7a7d42f521" />
     </Type>
   </Table>
 </Database>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace FPMyobAssistant
 {
@@ -6,13 +7,13 @@ namespace FPMyobAssistant
     {
         #region Variables
 
-        private string mInvoiceDate = string.Empty;
+        private DateTime mInvoiceDate = DateTime.Now;
 
         #endregion Variables
 
         #region Constructor
 
-        public FPReptosToMyobTXTAddHocSales(string invoiceDate) : base()
+        public FPReptosToMyobTXTAddHocSales(DateTime invoiceDate) : base()
         {
             mInvoiceDate = invoiceDate;
         }
@@ -40,7 +41,7 @@ namespace FPMyobAssistant
                 var invli = DataItems.Where(x => x.CardId == cardId);
 
                 //Add them as a new items
-                foreach (var item in invli) Additem(mInvoiceDate, item.CardId, "", item.AccountNumber, item.Amount, item.AmountIncTax);
+                foreach (var item in invli) Additem(item.CardId, "", item.AccountNumber, item.Amount, item.AmountIncTax);
                 if (counter < inl.Count() - 1) AddEntryLine();
 
                 counter++;
@@ -56,9 +57,9 @@ namespace FPMyobAssistant
             FileItems.Add("Date,Card ID,Invoice #,Account Number,Amount,Inc-Tax Amount,Tax Code");
         }
 
-        private void Additem(string invoiceDate, string cardID, string invoiceNumber, string accountNumber, float amount, float amountIncTax)
+        private void Additem(string cardID, string invoiceNumber, string accountNumber, float amount, float amountIncTax)
         {
-            FileItems.Add($"{invoiceDate},{cardID},{invoiceNumber},{accountNumber},${amount:0.0000},${amountIncTax:0.0000},GST");
+            FileItems.Add($"{mInvoiceDate:yyyy/MM/dd},{cardID},{invoiceNumber},{accountNumber},${amount:0.0000},${amountIncTax:0.0000},GST");
         }
 
         #endregion Private Methods

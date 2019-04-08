@@ -27,7 +27,7 @@ namespace FPMyobAssistant
             FileItems.Clear();
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Methods
 
@@ -55,6 +55,7 @@ namespace FPMyobAssistant
         {
             FileItems.Add(string.Empty);
         }
+
         #endregion Methods
     }
 }

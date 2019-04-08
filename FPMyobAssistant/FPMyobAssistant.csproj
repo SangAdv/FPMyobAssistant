@@ -42,13 +42,10 @@
     <AssemblyOriginatorKeyFile>SangAdv.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Devart.Data.Linq, Version=4.8.1694.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
-    <Reference Include="Devart.Data.SQLite.Linq, Version=4.8.1694.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.BonusSkins.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -95,6 +92,12 @@
     </Compile>
     <Compile Include="Controls\Embedded\eucBase.Designer.cs">
       <DependentUpon>eucBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Reptos\ucReptosImport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Reptos\ucReptosImport.Designer.cs">
+      <DependentUpon>ucReptosImport.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmChooseParent.cs">
       <SubType>Form</SubType>
@@ -290,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Reports\ucReportStructureGroups.resx">
       <DependentUpon>ucReportStructureGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Reptos\ucReptosImport.resx">
+      <DependentUpon>ucReptosImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucMain.resx">
       <DependentUpon>ucMain.cs</DependentUpon>

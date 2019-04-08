@@ -56,9 +56,9 @@
             this.labelControl3.Appearance.Options.UseForeColor = true;
             this.labelControl3.Location = new System.Drawing.Point(12, 52);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(99, 13);
+            this.labelControl3.Size = new System.Drawing.Size(138, 13);
             this.labelControl3.TabIndex = 10;
-            this.labelControl3.Text = "Product Account ID:";
+            this.labelControl3.Text = "Reptos Product Account ID:";
             // 
             // lblProduct
             // 
@@ -110,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 151);
+            this.ClientSize = new System.Drawing.Size(472, 157);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.labelControl3);
@@ -122,7 +122,8 @@
             this.Name = "frmAddProductAccountId";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Add Product AccountId";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Add Reptos Product AccountId";
             ((System.ComponentModel.ISupportInitialize)(this.txtAccountNumber.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -54,6 +54,7 @@
             this.aceBSAccountStructure = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceReportStructure = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceReportStructureGroups = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceReportErrors = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acAdmin = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceUsers = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -61,7 +62,7 @@
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceReportStructureGroups = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceReptosImport = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.hmMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -113,6 +114,7 @@
             this.aceDHLImport,
             this.acePLImport,
             this.aceBSImport,
+            this.aceReptosImport,
             this.aceDataSync});
             this.accordionControlElement2.Expanded = true;
             this.accordionControlElement2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement2.ImageOptions.Image")));
@@ -257,6 +259,13 @@
             this.aceReportStructure.Text = "Manage Report Structures";
             this.aceReportStructure.Click += new System.EventHandler(this.aceReportStructure_Click);
             // 
+            // aceReportStructureGroups
+            // 
+            this.aceReportStructureGroups.Name = "aceReportStructureGroups";
+            this.aceReportStructureGroups.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceReportStructureGroups.Text = "Manage Report Structures (Groups)";
+            this.aceReportStructureGroups.Click += new System.EventHandler(this.aceReportStructureGroups_Click);
+            // 
             // aceReportErrors
             // 
             this.aceReportErrors.Name = "aceReportErrors";
@@ -317,12 +326,12 @@
             this.accordionControlElement6.Name = "accordionControlElement6";
             this.accordionControlElement6.Text = "Element6";
             // 
-            // aceReportStructureGroups
+            // aceReptosImport
             // 
-            this.aceReportStructureGroups.Name = "aceReportStructureGroups";
-            this.aceReportStructureGroups.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceReportStructureGroups.Text = "Manage Report Structures (Groups)";
-            this.aceReportStructureGroups.Click += new System.EventHandler(this.aceReportStructureGroups_Click);
+            this.aceReptosImport.Name = "aceReptosImport";
+            this.aceReptosImport.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceReptosImport.Text = "Import Reptos Claims";
+            this.aceReptosImport.Click += new System.EventHandler(this.AceReptosImport_Click);
             // 
             // frmMain
             // 
@@ -381,5 +390,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceWelcome;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceReportErrors;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceReportStructureGroups;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceReptosImport;
     }
 }
