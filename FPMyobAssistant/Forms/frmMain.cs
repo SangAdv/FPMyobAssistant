@@ -1,12 +1,12 @@
 ﻿using DevExpress.XtraBars.FluentDesignSystem;
 using DevExpress.XtraSplashScreen;
+using FPMyobAssistant.Controls.Reptos;
 using SangAdv.Common;
 using SangAdv.DevExpressUI;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FPMyobAssistant.Controls.Reptos;
 
 namespace FPMyobAssistant
 {
@@ -354,14 +354,19 @@ namespace FPMyobAssistant
         {
             DisplayControl(new ucMain(true));
         }
+
         private void AceReptosImport_Click(object sender, EventArgs e)
         {
             DisplayControl(new ucReptosImport());
         }
+
+        private void AceMyobProductAccountIds_Click(object sender, EventArgs e)
+        {
+            DisplayControl(new ucProductMyobAccountId());
+        }
+
         #endregion Buttons
 
         #endregion Process UI
-
-
     }
 }

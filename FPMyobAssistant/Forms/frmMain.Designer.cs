@@ -30,9 +30,9 @@
         {
             DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.cntMain = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.hmMain = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -41,6 +41,7 @@
             this.aceDHLImport = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acePLImport = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceBSImport = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceReptosImport = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceDataSync = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceBoardReport = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -62,7 +63,7 @@
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceReptosImport = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceMyobProductAccountIds = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.hmMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -149,6 +150,13 @@
             this.aceBSImport.Text = "Import Myob Balance Sheet";
             this.aceBSImport.Click += new System.EventHandler(this.aceBSImport_Click);
             // 
+            // aceReptosImport
+            // 
+            this.aceReptosImport.Name = "aceReptosImport";
+            this.aceReptosImport.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceReptosImport.Text = "Import Reptos Claims";
+            this.aceReptosImport.Click += new System.EventHandler(this.AceReptosImport_Click);
+            // 
             // aceDataSync
             // 
             this.aceDataSync.Name = "aceDataSync";
@@ -204,7 +212,8 @@
             // accordionControlElement7
             // 
             this.accordionControlElement7.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.aceMyobCardIds});
+            this.aceMyobCardIds,
+            this.aceMyobProductAccountIds});
             this.accordionControlElement7.Expanded = true;
             this.accordionControlElement7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement7.ImageOptions.Image")));
             this.accordionControlElement7.Name = "accordionControlElement7";
@@ -295,12 +304,12 @@
             this.aceExit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("aceExit.ImageOptions.Image")));
             this.aceExit.Name = "aceExit";
             this.aceExit.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            toolTipTitleItem1.Text = "Exit";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Exit the application";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.aceExit.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Exit";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Exit the application";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.aceExit.SuperTip = superToolTip2;
             this.aceExit.Text = "Element14";
             this.aceExit.Click += new System.EventHandler(this.aceExit_Click);
             // 
@@ -326,12 +335,12 @@
             this.accordionControlElement6.Name = "accordionControlElement6";
             this.accordionControlElement6.Text = "Element6";
             // 
-            // aceReptosImport
+            // aceMyobProductAccountIds
             // 
-            this.aceReptosImport.Name = "aceReptosImport";
-            this.aceReptosImport.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceReptosImport.Text = "Import Reptos Claims";
-            this.aceReptosImport.Click += new System.EventHandler(this.AceReptosImport_Click);
+            this.aceMyobProductAccountIds.Name = "aceMyobProductAccountIds";
+            this.aceMyobProductAccountIds.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceMyobProductAccountIds.Text = "Product > Myob Reptos AccountId";
+            this.aceMyobProductAccountIds.Click += new System.EventHandler(this.AceMyobProductAccountIds_Click);
             // 
             // frmMain
             // 
@@ -391,5 +400,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceReportErrors;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceReportStructureGroups;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceReptosImport;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceMyobProductAccountIds;
     }
 }

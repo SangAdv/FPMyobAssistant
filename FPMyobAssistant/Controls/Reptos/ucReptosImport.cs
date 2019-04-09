@@ -38,7 +38,6 @@ namespace FPMyobAssistant.Controls.Reptos
         private void BtnChooseFiles_Click(object sender, System.EventArgs e)
         {
             btnImport.Enabled = false;
-            lstImport.Items.Clear();
             var files = SADialogs.Dialogs.LoadDataFiles(false, true, true, true, true, true, true);
             if (files.Count == 0) return;
             foreach (var item in files) lstImport.Items.Add(item);
@@ -108,16 +107,19 @@ namespace FPMyobAssistant.Controls.Reptos
             switch (mDistributorId)
             {
                 case (int)MADistributors.API:
+                    AddMessage("Importing API");
                     mImporter = new MAAPIReptosImport(this, mPeriod);
                     mImporter.MessageChangedEvent += AddMessage;
                     break;
 
                 case (int)MADistributors.Sigma:
+                    AddMessage("Importing Sigma");
                     mImporter = new MASigmaReptosImport(this, mPeriod);
                     mImporter.MessageChangedEvent += AddMessage;
                     break;
 
                 case (int)MADistributors.Symbion:
+                    AddMessage("Importing Symbion");
                     mImporter = new MASymbionReptosImport(this, mPeriod);
                     mImporter.MessageChangedEvent += AddMessage;
                     break;
@@ -176,6 +178,8 @@ namespace FPMyobAssistant.Controls.Reptos
             re.Create();
 
             re.Save(beMYOBFilename.Text);
+
+            AddMessage($"Exported: {beMYOBFilename.Text}");
         }
 
         #region General

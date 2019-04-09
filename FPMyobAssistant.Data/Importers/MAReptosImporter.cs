@@ -98,7 +98,6 @@ namespace FPMyobAssistant
             if (a.Any()) return a.First().AccountId;
 
             //Define the product's accountId
-            var taccountId = string.Empty;
 
             var f = new frmAddProductAccountId(productPDE, productDescription);
             f.ShowDialog(mOwner);
@@ -108,12 +107,12 @@ namespace FPMyobAssistant
                 return string.Empty;
             }
 
-            var dpa = new TLDDistributorProductAccountId { DistributorId = mDistributorId, ProductPDE = productPDE.AddLeadingZeros(20), AccountId = f.AccountNumber, Product = productDescription };
+            var dpa = new TLDDistributorProductAccountId { DistributorId = mDistributorId, ProductPDE = productPDE.AddLeadingZeros(20), AccountId = f.AccountNumber.AddLeadingZeros(10), Product = productDescription.Trim() };
             MADataAccess.LocalData.TLDDistributorProductAccountIdUpdate(dpa);
 
             mAccounts = MADataAccess.LocalData.TLDDistributorProductAccountIdList(mDistributorId);
 
-            return f.AccountNumber;
+            return f.AccountNumber.AddLeadingZeros(10);
         }
 
         private List<TLDRepto> geTldReptosList()

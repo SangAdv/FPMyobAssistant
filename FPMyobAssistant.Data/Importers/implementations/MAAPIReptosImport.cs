@@ -1,5 +1,4 @@
-﻿using System;
-using DevExpress.Spreadsheet;
+﻿using DevExpress.Spreadsheet;
 using SangAdv.Common;
 using SangAdv.DevExpressUI;
 using System.Collections.Generic;
@@ -9,6 +8,8 @@ namespace FPMyobAssistant
 {
     public class MAAPIReptosImport : AMADistributorReptosImport
     {
+        private SAExcelImport mEI;
+
         public MAAPIReptosImport(IWin32Window owner, string period) : base(owner, (int)MADistributors.API, period)
         {
         }
@@ -18,27 +19,53 @@ namespace FPMyobAssistant
             foreach (var item in filenames)
             {
                 RaiseMessageChangedEvent($"Importing: {item}");
-                var ei = new SAExcelImport(item, DocumentFormat.Csv, SACultureType.enAU);
+                mEI = new SAExcelImport(item, DocumentFormat.Csv, SACultureType.enAU);
 
-                for (var i = 2; i < 100000; i++)
-                {
-                    if (string.IsNullOrEmpty(ei.GetText(i, 0))) break;
-
-                    var tPDE = ei.GetText(i, 17);
-                    var tProduct = ei.GetText(i, 18);
-
-                    var tClaim =  ei.GetValue<float>(i, 31);
-                    var tclaimGST = ei.GetValue<float>(i, 32);
-
-                    if (!Importer.Add(tPDE, tProduct, tClaim, tclaimGST, true))
-                    {
-                        RaiseMessageChangedEvent(Importer.ErrorMessage);
-                        return;
-                    }
-                }
+                if (string.IsNullOrEmpty(mEI.GetText(1, 36))) importCorporateClaims();
+                else importSalesClaims();
             }
 
             Importer.Update();
+        }
+
+        private void importCorporateClaims()
+        {
+            for (var i = 2; i < 100000; i++)
+            {
+                if (string.IsNullOrEmpty(mEI.GetText(i, 0))) break;
+
+                var tPDE = mEI.GetText(i, 7);
+                var tProduct = mEI.GetText(i, 8);
+
+                var tClaim = mEI.GetValue<float>(i, 11);
+                var tclaimGST = (float)(tClaim * 0.1);
+
+                if (!Importer.Add(tPDE, tProduct, tClaim, tclaimGST, true))
+                {
+                    RaiseMessageChangedEvent(Importer.ErrorMessage);
+                    return;
+                }
+            }
+        }
+
+        private void importSalesClaims()
+        {
+            for (var i = 2; i < 100000; i++)
+            {
+                if (string.IsNullOrEmpty(mEI.GetText(i, 0))) break;
+
+                var tPDE = mEI.GetText(i, 17);
+                var tProduct = mEI.GetText(i, 18);
+
+                var tClaim = mEI.GetValue<float>(i, 31);
+                var tclaimGST = mEI.GetValue<float>(i, 32);
+
+                if (!Importer.Add(tPDE, tProduct, tClaim, tclaimGST, true))
+                {
+                    RaiseMessageChangedEvent(Importer.ErrorMessage);
+                    return;
+                }
+            }
         }
     }
 }

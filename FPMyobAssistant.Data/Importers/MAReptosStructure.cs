@@ -38,7 +38,7 @@ namespace FPMyobAssistant
 
                 foreach (var accountId in MADataAccess.LocalData.TLDDistributorProductAccountIdList(distributor.Key).OrderBy(x => x.AccountId).Select(x => x.AccountId).Distinct())
                 {
-                    er.AddText(0, rowCounter, 1, accountId);
+                    er.AddText(0, rowCounter, 1, accountId.RemoveLeadingZeros());
                     er.AddText(0, rowCounter, 2, getPLAccountDescription(accountId));
                     rowCounter++;
 
@@ -64,7 +64,7 @@ namespace FPMyobAssistant
 
         private string getPLAccountDescription(string accountId)
         {
-            var a = mPLAccounts.Where(x => x.AccountId.RemoveLeadingZeros() == accountId);
+            var a = mPLAccounts.Where(x => x.AccountId == accountId);
             if (a.Any()) return a.First().AccountDescription;
             return "Undefined P&L Account";
         }

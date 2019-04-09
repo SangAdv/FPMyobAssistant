@@ -1,4 +1,5 @@
-﻿using LocalModelContext;
+﻿using DevExpress.XtraRichEdit.Layout.Engine;
+using LocalModelContext;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -74,11 +75,21 @@ namespace FPMyobAssistant
 
         #region TLDDistributorProductAccountId
 
-        internal List<TLDDistributorProductAccountId> TLDDistributorProductAccountIdList(int distributorId)
+        public List<TLDDistributorProductAccountId> TLDDistributorProductAccountIdList(int distributorId)
         {
             using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
             {
                 return db.TLDDistributorProductAccountIds.Where(x => x.DistributorId == distributorId).ToList();
+            }
+        }
+
+        public TLDDistributorProductAccountId TLDDistributorProductAccountIdItem(int distributorId, string productPDE)
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                var a = db.TLDDistributorProductAccountIds.Where(x => x.DistributorId == distributorId && x.ProductPDE == productPDE);
+                if (a.Any()) return a.First();
+                return new TLDDistributorProductAccountId { AccountId = string.Empty };
             }
         }
 
