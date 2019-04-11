@@ -27,6 +27,7 @@
     {
         API = 1,
         Sigma = 2,
-        Symbion = 3
+        Symbion = 3,
+        CH2 = 4
     }
 }

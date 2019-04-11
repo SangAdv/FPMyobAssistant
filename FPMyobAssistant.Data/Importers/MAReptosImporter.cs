@@ -16,7 +16,6 @@ namespace FPMyobAssistant
         private IWin32Window mOwner;
         private List<TLDDistributorProductAccountId> mAccounts;
         private Dictionary<string, MAClainAmount> mItems = new Dictionary<string, MAClainAmount>();
-        private string CardId = string.Empty;
         private int mDistributorId;
         private string mPeriod = string.Empty;
 
@@ -29,13 +28,6 @@ namespace FPMyobAssistant
             mOwner = owner;
             mDistributorId = distributorId;
             mPeriod = period;
-
-            CardId = getCardId(distributorId);
-            if (string.IsNullOrEmpty(CardId))
-            {
-                Error.SetErrorMessage("Distributor not found");
-                return;
-            }
 
             mAccounts = MADataAccess.LocalData.TLDDistributorProductAccountIdList(distributorId);
         }
@@ -57,13 +49,38 @@ namespace FPMyobAssistant
             return true;
         }
 
+        public bool Add(string accountId, float claimAmount, float claimsGSTAmount, bool changeSign = false)
+        {
+            if (string.IsNullOrEmpty(accountId)) return false;
+
+            if (!mItems.ContainsKey(accountId)) mItems[accountId] = new MAClainAmount();
+
+            if (!changeSign) mItems[accountId].Add(claimAmount, claimsGSTAmount);
+            else mItems[accountId].Subtract(claimAmount, claimsGSTAmount);
+
+            return true;
+        }
+
+        public (float totalClaimAmount, float totalClaimGSTAmount) Total()
+        {
+            float tTotalClaimAmount = 0;
+            float tTotalClaimGSTAmount = 0;
+            foreach (var item in mItems)
+            {
+                tTotalClaimAmount += item.Value.ClaimAmount;
+                tTotalClaimGSTAmount += item.Value.ClaimGSTAmount;
+            }
+
+            return (tTotalClaimAmount, tTotalClaimGSTAmount);
+        }
+
         public bool Update()
         {
             Error.ClearErrorMessage();
             try
             {
                 //Delete the old data
-                MADataAccess.LocalData.Database.ExecuteCommand($"Delete from TLDReptos where [CardId]='{CardId}' AND [Period]='{mPeriod}'");
+                MADataAccess.LocalData.Database.ExecuteCommand($"Delete from TLDReptos where [DistributorId]={mDistributorId} AND [Period]='{mPeriod}'");
                 //Add the new data
                 var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.Database.ConnectionString);
                 sbi.UpdateData(geTldReptosList(), "TLDReptos");
@@ -80,13 +97,6 @@ namespace FPMyobAssistant
         #endregion Methods
 
         #region Private Methods
-
-        private string getCardId(int distributorId)
-        {
-            var distributor = MADataAccess.LocalData.TLMDistributorItem(distributorId);
-            if (distributor == null) return string.Empty;
-            return distributor.CardId;
-        }
 
         private string getAccountId(string productPDE, string productDescription)
         {
@@ -118,7 +128,7 @@ namespace FPMyobAssistant
         private List<TLDRepto> geTldReptosList()
         {
             var tlist = new List<TLDRepto>();
-            foreach (var item in mItems) tlist.Add(new TLDRepto { AccountNumber = item.Key, CardId = CardId, Period = mPeriod, Claim = item.Value.ClaimAmount.Round(2), ClaimGST = item.Value.ClaimGSTAmount.Round(2) });
+            foreach (var item in mItems) tlist.Add(new TLDRepto { AccountNumber = item.Key, DistributorId = mDistributorId, Period = mPeriod, Claim = item.Value.ClaimAmount.Round(2), ClaimGST = item.Value.ClaimGSTAmount.Round(2) });
             return tlist;
         }
 

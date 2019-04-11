@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using SangAdv.Common.StringExtensions;
 
 namespace FPMyobAssistant
 {
@@ -41,7 +42,7 @@ namespace FPMyobAssistant
                 var invli = DataItems.Where(x => x.CardId == cardId);
 
                 //Add them as a new items
-                foreach (var item in invli) Additem(item.CardId, "", item.AccountNumber, item.Amount, item.AmountIncTax);
+                foreach (var item in invli) Additem(item.CardId, "", item.AccountNumber.RemoveLeadingZeros(), item.Amount, item.AmountIncTax);
                 if (counter < inl.Count() - 1) AddEntryLine();
 
                 counter++;

@@ -2009,7 +2009,7 @@
                       <Height>18 px</Height>
                     </Size>
                     <Oid xsi:type="SchemaModelOID">
-                      <Path>de4c3994-8451-4bcb-9309-4857a97efb9f</Path>
+                      <Path>18f839e5-0db5-4712-9ed8-b6744a92ab67</Path>
                       <TypeName>EntityDeveloper.Linq.LinqConnectProperty</TypeName>
                     </Oid>
                   </Model>

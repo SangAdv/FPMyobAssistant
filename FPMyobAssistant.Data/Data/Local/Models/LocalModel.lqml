@@ -115,7 +115,7 @@
   </Table>
   <Table Name="&quot;main&quot;.TLDReptos" Member="TLDReptos">
     <Type Name="TLDRepto" ed:Guid="4fd913db-c063-4d4f-9c3f-a8a78c3b3fb8">
-      <Column Name="CardId" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="de4c3994-8451-4bcb-9309-4857a97efb9f" />
+      <Column Name="DistributorId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="18f839e5-0db5-4712-9ed8-b6744a92ab67" />
       <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="b8f7aeaa-a732-4589-819b-4b5ec347afc8" />
       <Column Name="AccountNumber" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c3e36e91-f949-476f-9795-0e2609738be7" />
       <Column Name="Claim" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="4bd7f156-0163-49c9-98ee-3da6362f763a" />

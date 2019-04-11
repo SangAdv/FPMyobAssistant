@@ -118,6 +118,7 @@
     <Compile Include="Importers\MAReptosStructure.cs" />
     <Compile Include="Importers\implementations\MASigmaReptosImport.cs" />
     <Compile Include="Importers\implementations\MASymbionReptosImport.cs" />
+    <Compile Include="Importers\implementations\MACH2ReptosImport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

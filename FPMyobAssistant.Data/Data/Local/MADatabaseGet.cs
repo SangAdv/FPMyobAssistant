@@ -184,6 +184,14 @@ namespace FPMyobAssistant
             }
         }
 
+        public List<TLMDistributor> TLMDistributorList()
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                return db.TLMDistributors.OrderBy(x => x.Distributor).ToList();
+            }
+        }
+
         public Dictionary<int, string> TLMDistributorDictionary()
         {
             using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))

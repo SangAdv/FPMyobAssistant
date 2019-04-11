@@ -1,6 +1,8 @@
-﻿using SangAdv.Common.PeriodExtensions;
+﻿using LocalModelContext;
+using SangAdv.Common.PeriodExtensions;
 using SangAdv.Common.UI;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -14,6 +16,7 @@ namespace FPMyobAssistant.Controls.Reptos
         private int mDistributorId = 0;
         private AMADistributorReptosImport mImporter;
         private string mPeriod = string.Empty;
+        private List<TLMDistributor> mDistributors = MADataAccess.LocalData.TLMDistributorList();
 
         #endregion Variables
 
@@ -46,12 +49,14 @@ namespace FPMyobAssistant.Controls.Reptos
 
         private void BtnClearList_Click(object sender, System.EventArgs e)
         {
-            lstImport.Items.Clear();
+            clearFilesList();
         }
 
         private void IcbDistributor_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             mDistributorId = (int)icbDistributor.EditValue;
+            ClearMessages();
+            clearFilesList();
         }
 
         private void DtImport_DateTimeChanged(object sender, EventArgs e)
@@ -124,6 +129,12 @@ namespace FPMyobAssistant.Controls.Reptos
                     mImporter.MessageChangedEvent += AddMessage;
                     break;
 
+                case (int)MADistributors.CH2:
+                    AddMessage("Importing CH2");
+                    mImporter = new MACH2ReptosImport(this, mPeriod);
+                    mImporter.MessageChangedEvent += AddMessage;
+                    break;
+
                 default:
                     AddMessage("Undefined distributor");
                     return;
@@ -168,11 +179,11 @@ namespace FPMyobAssistant.Controls.Reptos
         {
             var re = new FPReptosToMyobTXTAddHocSales(dtImport.DateTime);
 
-            var red = MADataAccess.LocalData.TLDReptosList(dtImport.DateTime.ToMonthPeriod()).OrderBy(x =>  x.CardId).ThenBy(x => x.AccountNumber);
-            
+            var red = MADataAccess.LocalData.TLDReptosList(dtImport.DateTime.ToMonthPeriod()).OrderBy(x => x.DistributorId).ThenBy(x => x.AccountNumber);
+
             foreach (var item in red)
             {
-                re.Add(new FPMyobAddHocSalesItem { AccountNumber = item.AccountNumber, CardId = item.CardId, Amount = ((float)item.Claim).Round(2), AmountIncTax = ((float)(item.Claim + item.ClaimGST)).Round(2) });
+                re.Add(new FPMyobAddHocSalesItem { AccountNumber = item.AccountNumber, CardId = getDistributorCardId(item.DistributorId), Amount = ((float)item.Claim).Round(2), AmountIncTax = ((float)(item.Claim + item.ClaimGST)).Round(2) });
             }
 
             re.Create();
@@ -180,6 +191,11 @@ namespace FPMyobAssistant.Controls.Reptos
             re.Save(beMYOBFilename.Text);
 
             AddMessage($"Exported: {beMYOBFilename.Text}");
+        }
+
+        private void clearFilesList()
+        {
+            lstImport.Items.Clear();
         }
 
         #region General
@@ -194,6 +210,12 @@ namespace FPMyobAssistant.Controls.Reptos
         {
             lstMessage.Items.Clear();
             Application.DoEvents();
+        }
+
+        private string getDistributorCardId(int distributorId)
+        {
+            var dist = mDistributors.Where(x => x.DistributorId == distributorId);
+            return dist.Any() ? dist.First().CardId : "Undefined";
         }
 
         #endregion General

@@ -331,6 +331,27 @@ namespace FPMyobAssistant
 
         #region TLMReport
 
+        public void TLMReportUpdate(TLMReport data)
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                var a = db.TLMReports.Where(x => x.ReportId == data.ReportId);
+                if (a.Any())
+                {
+                    db.TLMReports.DeleteOnSubmit(a.First());
+                    db.SubmitChanges();
+                }
+
+                if (data.ReportId == 0) data.ReportId = TLMReportNewId();
+                db.TLMReports.InsertOnSubmit(data);
+                db.SubmitChanges();
+            }
+        }
+
+        #endregion TLMReport
+
+        #region TLMReportStructure
+
         public void TLMReportStructureUpdate(List<TLMReportStructure> data)
         {
             using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
@@ -385,28 +406,7 @@ namespace FPMyobAssistant
             }
         }
 
-        #endregion TLMReport
-
-        #region TLMReport
-
-        public void TLMReportUpdate(TLMReport data)
-        {
-            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
-            {
-                var a = db.TLMReports.Where(x => x.ReportId == data.ReportId);
-                if (a.Any())
-                {
-                    db.TLMReports.DeleteOnSubmit(a.First());
-                    db.SubmitChanges();
-                }
-
-                if (data.ReportId == 0) data.ReportId = TLMReportNewId();
-                db.TLMReports.InsertOnSubmit(data);
-                db.SubmitChanges();
-            }
-        }
-
-        #endregion TLMReport
+        #endregion TLMReportStructure
 
         #region TLSSettings
 
