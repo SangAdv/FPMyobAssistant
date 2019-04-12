@@ -14,8 +14,13 @@ namespace FPMyobAssistant
 
         public override void DoImport(List<string> filenames)
         {
+            float tTotal = 0;
+            float tProcessing = 0;
+
             foreach (var item in filenames)
             {
+                tTotal = 0;
+
                 RaiseMessageChangedEvent($"Importing: {item}");
                 var ei = new SAExcelImport(item, DocumentFormat.Csv, SACultureType.enAU);
 
@@ -34,9 +39,17 @@ namespace FPMyobAssistant
                         RaiseMessageChangedEvent(Importer.ErrorMessage);
                         return;
                     }
+
+                    tTotal += tClaim;
                 }
+
+                //Sigma processing fee: 1.95% or $50
+                var tProcessingClaim = tTotal * 0.0195;
+                if (tProcessingClaim > 50) tProcessing += (float)tProcessingClaim;
+                else tProcessing += (float)50;
             }
 
+            Importer.Add("4-3550", tProcessing, (float)(tProcessing * .1), true);
             Importer.Update();
         }
     }
