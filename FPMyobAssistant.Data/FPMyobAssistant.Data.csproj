@@ -37,12 +37,8 @@
     <AssemblyOriginatorKeyFile>SangAdv.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Devart.Data.Linq, Version=4.8.1694.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
-    <Reference Include="Devart.Data.SQLite.Linq, Version=4.8.1694.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v19.1, Version=19.1.1.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.1.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.1.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v19.1, Version=19.1.1.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Devart.Data.Linq, Version=4.9.1703.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
+    <Reference Include="Devart.Data.SQLite.Linq, Version=4.9.1703.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -54,6 +50,11 @@
   <ItemGroup>
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Data\Local\Models\LocalModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalModel.lqml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GeneralExtensionMethods.cs" />
     <Compile Include="Importers\AMADistributorReptosImport.cs" />
@@ -92,11 +93,6 @@
     <Compile Include="Data\Local\MADatabasePrep.cs" />
     <Compile Include="Data\Local\MADatabaseUpdate.cs" />
     <Compile Include="Data\Local\MAUpdateSyncItem.cs" />
-    <Compile Include="Data\Local\Models\LocalModel.Designer.cs">
-      <DependentUpon>LocalModel.lqml</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Data\MADataAccess.cs" />
     <Compile Include="Forms\frmAddProductAccountId.cs">
       <SubType>Form</SubType>
@@ -143,22 +139,22 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="SangAdv.Common">
-      <Version>2.4.0</Version>
+      <Version>2.4.4</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.Connected">
-      <Version>2.2.0</Version>
+      <Version>2.2.2</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.DevEx.19.1">
-      <Version>2.2.5</Version>
+      <Version>2.2.8</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.Mapper">
       <Version>3.2.2</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.SQLite">
-      <Version>2.2.1</Version>
+      <Version>2.2.3</Version>
     </PackageReference>
-    <PackageReference Include="SangAdv.Updater.Client">
-      <Version>1.0.2</Version>
+    <PackageReference Include="SangAdv.Updater">
+      <Version>1.0.5</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

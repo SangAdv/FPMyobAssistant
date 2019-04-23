@@ -249,7 +249,7 @@ namespace FPMyobAssistant
         internal async Task<bool> CheckUpdateAsync(ucMain main)
         {
             MAGlobal.Update.MessageChanged += main.DisplayMessage;
-            MAGlobal.Update.Initialise("http://repo.sanguine.online/applications/", "myobassistant", "myob Assistant", "FPMyobAssistant.exe", Application.StartupPath, "updater.exe");
+            await MAGlobal.Update.InitialiseAsync("http://repo.sanguine.online/applications/", "myobassistant", "myob Assistant", "FPMyobAssistant.exe", Application.StartupPath, "updater.exe");
 
             if (MAGlobal.Update.DoInstallerUpdate)
             {
