@@ -30,9 +30,9 @@
         {
             DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.cntMain = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.hmMain = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -50,6 +50,7 @@
             this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceMyobCardIds = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceMyobProductAccountIds = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acePLAccountStructure = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceBSAccountStructure = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -63,7 +64,6 @@
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceMyobProductAccountIds = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.hmMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -226,6 +226,13 @@
             this.aceMyobCardIds.Text = "DHL Account > Myob CardId";
             this.aceMyobCardIds.Click += new System.EventHandler(this.aceMyobCardIds_Click);
             // 
+            // aceMyobProductAccountIds
+            // 
+            this.aceMyobProductAccountIds.Name = "aceMyobProductAccountIds";
+            this.aceMyobProductAccountIds.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceMyobProductAccountIds.Text = "Product > Myob Reptos AccountId";
+            this.aceMyobProductAccountIds.Click += new System.EventHandler(this.AceMyobProductAccountIds_Click);
+            // 
             // accordionControlElement10
             // 
             this.accordionControlElement10.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
@@ -304,22 +311,20 @@
             this.aceExit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("aceExit.ImageOptions.Image")));
             this.aceExit.Name = "aceExit";
             this.aceExit.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            toolTipTitleItem2.Text = "Exit";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Exit the application";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.aceExit.SuperTip = superToolTip2;
+            toolTipTitleItem1.Text = "Exit";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Exit the application";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.aceExit.SuperTip = superToolTip1;
             this.aceExit.Text = "Element14";
             this.aceExit.Click += new System.EventHandler(this.aceExit_Click);
             // 
             // fluentDesignFormControl1
             // 
-            this.fluentDesignFormControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.fluentDesignFormControl1.Size = new System.Drawing.Size(1062, 30);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
@@ -334,13 +339,6 @@
             // 
             this.accordionControlElement6.Name = "accordionControlElement6";
             this.accordionControlElement6.Text = "Element6";
-            // 
-            // aceMyobProductAccountIds
-            // 
-            this.aceMyobProductAccountIds.Name = "aceMyobProductAccountIds";
-            this.aceMyobProductAccountIds.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceMyobProductAccountIds.Text = "Product > Myob Reptos AccountId";
-            this.aceMyobProductAccountIds.Click += new System.EventHandler(this.AceMyobProductAccountIds_Click);
             // 
             // frmMain
             // 
