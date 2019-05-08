@@ -32,11 +32,11 @@ namespace FPMyobAssistant
 
         #region Methods
 
-        public async Task<SAEventArgs> SaveAsync(MAReportType type, string period)
+        public async Task<SAEventArgs> SaveAsync(string updateItem, string period)
         {
             try
             {
-                await mStor.InsertOrReplaceAsync(MACTableNames.BudgetData, MACPartitionNames.ReportType, $"{type}-{period}", Budgets);
+                await mStor.InsertOrReplaceAsync(updateItem, MACPartitionNames.ReportType, period, Budgets);
                 return new SAEventArgs();
             }
             catch (Exception ex)
@@ -45,11 +45,11 @@ namespace FPMyobAssistant
             }
         }
 
-        public async Task<bool> LoadAsync(MAReportType type, string period)
+        public async Task<bool> LoadAsync(string updateItem, string period)
         {
             try
             {
-                var tBudgets = await mStor.GetAsync<List<MACBudgetItem>>(MACTableNames.BudgetData, MACPartitionNames.ReportType, $"{type}-{period}");
+                var tBudgets = await mStor.GetAsync<List<MACBudgetItem>>(updateItem , MACPartitionNames.ReportType, period);
                 Budgets = tBudgets ?? new List<MACBudgetItem>();
                 return true;
             }

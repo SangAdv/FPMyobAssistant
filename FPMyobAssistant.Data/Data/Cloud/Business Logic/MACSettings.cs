@@ -35,7 +35,7 @@ namespace FPMyobAssistant
         {
             try
             {
-                await mStor.InsertOrReplaceAsync(MACTableNames.SettingData, MACPartitionNames.Item, "1", Settings);
+                await mStor.InsertOrReplaceAsync(MAUpdateItem.Settings, MACPartitionNames.Item, MAGlobal.StartUpSettings.Items.User, Settings);
                 return new SAEventArgs();
             }
             catch (Exception ex)
@@ -48,7 +48,7 @@ namespace FPMyobAssistant
         {
             try
             {
-                var tItem = await mStor.GetAsync<MACSettingsItem>(MACTableNames.SettingData, MACPartitionNames.Item, "1");
+                var tItem = await mStor.GetAsync<MACSettingsItem>(MAUpdateItem.Settings, MACPartitionNames.Item, MAGlobal.StartUpSettings.Items.User);
                 Settings = tItem ?? new MACSettingsItem();
                 return true;
             }

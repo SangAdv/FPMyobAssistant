@@ -15,22 +15,6 @@
         }
     }
 
-    #region Tablenames
-
-    public struct MACTableNames
-    {
-        public const string UserData = "UserData";
-        public const string UpdateData = "UpdateData";
-        public const string ReportData = "ReportData";
-        public const string AccountData = "AccountData";
-        public const string BudgetData = "BudgetData";
-        public const string CustomerData = "CustomerData";
-        public const string ExclusionData = "ExclusionData";
-        public const string SettingData = "SettingData";
-    }
-
-    #endregion Tablenames
-
     #region Partitionnames
 
     public struct MACPartitionNames

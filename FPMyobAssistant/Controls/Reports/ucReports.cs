@@ -104,7 +104,7 @@ namespace FPMyobAssistant
         private void btnUpdate_Click(object sender, System.EventArgs e)
         {
             var tStatusId = chkActive.Checked ? (int)MAStatus.Active : (int)MAStatus.Cancelled;
-            MADataAccess.LocalData.TLMReportUpdate(new TLMReport { ReportDescription = txtReportTitle.Text.Trim(), ReportId = mReportId, ReportType = icbReportType.EditValue.Value<int>(), StatusId = tStatusId });
+            MADataAccess.LocalData.TLMReportsUpdate(new TLMReport { ReportDescription = txtReportTitle.Text.Trim(), ReportId = mReportId, ReportType = icbReportType.EditValue.Value<int>(), StatusId = tStatusId });
             LoadReports();
         }
 

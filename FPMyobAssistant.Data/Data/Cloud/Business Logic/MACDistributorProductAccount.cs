@@ -1,4 +1,5 @@
-﻿using SangAdv.Common;
+﻿using LocalModelContext;
+using SangAdv.Common;
 using SangAdv.Common.Cloud;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FPMyobAssistant
 {
-    public class MACAccounts
+    public sealed class MACDistributorProductAccount
     {
         #region Variables
 
@@ -16,14 +17,14 @@ namespace FPMyobAssistant
 
         #region Properties
 
-        public List<MACAccountItem> Accounts = new List<MACAccountItem>();
+        public List<TLDDistributorProductAccountId> Accounts = new List<TLDDistributorProductAccountId>();
         public string ErrorMessage { get; private set; } = string.Empty;
 
         #endregion Properties
 
         #region Constructor
 
-        public MACAccounts(SAAzureTableStorage stor)
+        public MACDistributorProductAccount(SAAzureTableStorage stor)
         {
             mStor = stor;
         }
@@ -32,11 +33,11 @@ namespace FPMyobAssistant
 
         #region Methods
 
-        public async Task<SAEventArgs> SaveAsync(string variant)
+        public async Task<SAEventArgs> SaveAsync()
         {
             try
             {
-                await mStor.InsertOrReplaceAsync(MAUpdateItem.AccountData, MACPartitionNames.ReportType, variant, Accounts);
+                await mStor.InsertOrReplaceAsync(MAUpdateItem.DistributorProductAccount, MACPartitionNames.Item, MAUpdateItemVariant.All, Accounts);
                 return new SAEventArgs();
             }
             catch (Exception ex)
@@ -45,12 +46,12 @@ namespace FPMyobAssistant
             }
         }
 
-        public async Task<bool> LoadAsync(string variant)
+        public async Task<bool> LoadAsync()
         {
             try
             {
-                var tAccounts = await mStor.GetAsync<List<MACAccountItem>>(MAUpdateItem.AccountData, MACPartitionNames.ReportType, variant);
-                Accounts = tAccounts ?? new List<MACAccountItem>();
+                var tAccounts = await mStor.GetAsync<List<TLDDistributorProductAccountId>>(MAUpdateItem.DistributorProductAccount, MACPartitionNames.Item, MAUpdateItemVariant.All);
+                Accounts = tAccounts ?? new List<TLDDistributorProductAccountId>();
                 return true;
             }
             catch

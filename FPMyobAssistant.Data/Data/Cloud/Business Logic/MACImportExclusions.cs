@@ -35,7 +35,7 @@ namespace FPMyobAssistant
         {
             try
             {
-                await mStor.InsertOrReplaceAsync(MACTableNames.ExclusionData, MACPartitionNames.Item, data.Period, data);
+                await mStor.InsertOrReplaceAsync(MAUpdateItem.ExclusionData, MACPartitionNames.Item, data.Period, data);
                 return new SAEventArgs();
             }
             catch (Exception ex)
@@ -48,7 +48,7 @@ namespace FPMyobAssistant
         {
             try
             {
-                var tItem = await mStor.GetAsync<MACImportExclusionItems>(MACTableNames.ExclusionData, MACPartitionNames.Item, period);
+                var tItem = await mStor.GetAsync<MACImportExclusionItems>(MAUpdateItem.ExclusionData, MACPartitionNames.Item, period);
                 Item = tItem ?? new MACImportExclusionItems();
                 return true;
             }

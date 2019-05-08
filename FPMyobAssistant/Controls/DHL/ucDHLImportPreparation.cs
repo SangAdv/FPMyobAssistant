@@ -101,11 +101,6 @@ namespace FPMyobAssistant
 
                 var tOrderNo = ei.GetText(i, 2);
 
-                if (tOrderNo.Trim() == "10893778")
-                {
-                    var s = "seen";
-                }
-
                 //If the order exists in master, break
                 if (mMaster.Contains(tOrderNo)) continue;
 

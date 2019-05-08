@@ -1,13 +1,12 @@
 ﻿using SangAdv.Common;
 using SangAdv.Common.Cloud;
-using SangAdv.Common.ObjectExtensions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FPMyobAssistant
 {
-    public class MACReportStructure
+    public sealed class MACReportStructure
     {
         #region Variables
 
@@ -39,7 +38,7 @@ namespace FPMyobAssistant
         {
             try
             {
-                await mStor.InsertOrReplaceAsync(MACTableNames.ReportData, MACPartitionNames.ReportStructure, reportId.ToString(), mStructure[reportId]);
+                await mStor.InsertOrReplaceAsync(MAUpdateItem.ReportStructure, MACPartitionNames.ReportStructure, reportId.ToString(), mStructure[reportId]);
                 return new SAEventArgs();
             }
             catch (Exception ex)
@@ -52,7 +51,7 @@ namespace FPMyobAssistant
         {
             try
             {
-                var tReportHeading = await mStor.GetAsync<List<MACReportStructureItem>>(MACTableNames.ReportData, MACPartitionNames.ReportStructure, reportId.ToString());
+                var tReportHeading = await mStor.GetAsync<List<MACReportStructureItem>>(MAUpdateItem.ReportStructure, MACPartitionNames.ReportStructure, reportId.ToString());
                 mStructure[reportId] = tReportHeading ?? new List<MACReportStructureItem>();
                 return true;
             }
@@ -60,20 +59,6 @@ namespace FPMyobAssistant
             {
                 mStructure[reportId] = new List<MACReportStructureItem>();
                 return false;
-            }
-        }
-
-        public async Task LoadAllAsync()
-        {
-            try
-            {
-                mStructure.Clear();
-                var t = await mStor.GetAllAsync<List<MACReportStructureItem>>(MACTableNames.UserData, MACPartitionNames.User);
-                foreach (var item in t) mStructure[item.Key.Value<int>()] = item.Value;
-            }
-            catch
-            {
-                mStructure.Clear();
             }
         }
 

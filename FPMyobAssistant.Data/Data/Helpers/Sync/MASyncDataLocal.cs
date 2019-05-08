@@ -52,29 +52,43 @@ namespace FPMyobAssistant
             {
                 switch (item.MainType)
                 {
-                    case MAUpdateItem.Accounts:
-                        tSuccess = await SyncAccountDataAsync();
-                        if (tSuccess) tMessage = "Synced account data";
-                        break;
+                    case MAUpdateItem.AccountData:
+                        if (item.SubType.Trim() == MAUpdateItemVariant.BalanceSheet)
+                        {
+                            tSuccess = await SyncBalanceSheetAccountDataAsync();
+                            if (tSuccess) tMessage = "Synced account data";
+                        }
+                        else
+                        {
+                            tSuccess = await SyncProfitLossAccountDataAsync();
+                            if (tSuccess) tMessage = "Synced account data";
+                        }
 
-                    case MAUpdateItem.PLBudget:
-                        tSuccess = await SyncPLBudgetAsync(item.SubType);
-                        if (tSuccess) tMessage = $"Synced budget data: Period {item.SubType}";
                         break;
 
                     case MAUpdateItem.BSBudget:
-                        tSuccess = await SyncBSBudgetAsync(item.SubType);
+                        tSuccess = await SyncBalanceSheetBudgetAsync(item.SubType);
                         if (tSuccess) tMessage = $"Synced budget data: Period {item.SubType}";
                         break;
 
                     case MAUpdateItem.CustomerData:
-                        tSuccess = await SyncCustomerDataAsync();
+                        tSuccess = await SyncCustomerDataAsync(item.SubType);
                         if (tSuccess) tMessage = "Synced customer data";
                         break;
 
-                    case MAUpdateItem.ImportExclusions:
+                    case MAUpdateItem.DistributorProductAccount:
+                        tSuccess = await SyncDAPAsync();
+                        if (tSuccess) tMessage = $"Synced report structure data: ReportId {item.SubType}";
+                        break;
+
+                    case MAUpdateItem.ExclusionData:
                         tSuccess = await SyncImportExclusionsAsync(item.SubType);
                         if (tSuccess) tMessage = $"Synced import exclusions: Period {item.SubType}";
+                        break;
+
+                    case MAUpdateItem.PLBudget:
+                        tSuccess = await SyncProfitLossBudgetAsync(item.SubType);
+                        if (tSuccess) tMessage = $"Synced budget data: Period {item.SubType}";
                         break;
 
                     case MAUpdateItem.ReportStructure:
@@ -105,15 +119,15 @@ namespace FPMyobAssistant
             return true;
         }
 
-        private async Task<bool> SyncCustomerDataAsync()
+        private async Task<bool> SyncCustomerDataAsync(string variant)
         {
             try
             {
-                MADataAccess.CloudData.CustomerNumbers.Accounts.Clear();
+                MADataAccess.CloudData.Customer.Accounts.Clear();
 
-                foreach (var item in MADataAccess.LocalData.TLDDHLCustomerNumberList()) MADataAccess.CloudData.CustomerNumbers.Accounts.Add(new MACCustomerNumberItem { CustomerName = item.CustomerName, Id = item.Id, MYOBCardId = item.MYOBCardId });
+                foreach (var item in MADataAccess.LocalData.TLDDHLCustomerNumberList()) MADataAccess.CloudData.Customer.Accounts.Add(new MACCustomerNumberItem { CustomerName = item.CustomerName, Id = item.Id, MYOBCardId = item.MYOBCardId });
 
-                await MADataAccess.CloudData.CustomerNumbers.SaveAsync();
+                await MADataAccess.CloudData.Customer.SaveAsync(variant);
 
                 await MADataAccess.CloudData.Updates.SaveAsync(MAUpdateItem.CustomerData, string.Empty);
 
@@ -125,7 +139,7 @@ namespace FPMyobAssistant
             }
         }
 
-        private async Task<bool> SyncPLBudgetAsync(string period)
+        private async Task<bool> SyncProfitLossBudgetAsync(string period)
         {
             try
             {
@@ -135,7 +149,7 @@ namespace FPMyobAssistant
 
                 foreach (var item in MADataAccess.LocalData.TLDPLBudgetList(period)) MADataAccess.CloudData.Budgets.Budgets.Add(new MACBudgetItem { MAId = item.MAId, Period = item.Period, Budget = (float)item.Budget });
 
-                await MADataAccess.CloudData.Budgets.SaveAsync(MAReportType.ProfitLoss, period);
+                await MADataAccess.CloudData.Budgets.SaveAsync(MAUpdateItem.PLBudget, period);
 
                 return true;
             }
@@ -145,7 +159,7 @@ namespace FPMyobAssistant
             }
         }
 
-        private async Task<bool> SyncBSBudgetAsync(string period)
+        private async Task<bool> SyncBalanceSheetBudgetAsync(string period)
         {
             try
             {
@@ -155,7 +169,7 @@ namespace FPMyobAssistant
 
                 foreach (var item in MADataAccess.LocalData.TLDPLBudgetList(period)) MADataAccess.CloudData.Budgets.Budgets.Add(new MACBudgetItem { MAId = item.MAId, Period = item.Period, Budget = (float)item.Budget });
 
-                await MADataAccess.CloudData.Budgets.SaveAsync(MAReportType.BalanceSheet, period);
+                await MADataAccess.CloudData.Budgets.SaveAsync(MAUpdateItem.BSBudget, period);
 
                 return true;
             }
@@ -165,20 +179,62 @@ namespace FPMyobAssistant
             }
         }
 
-        private async Task<bool> SyncAccountDataAsync()
+        private async Task<bool> SyncBalanceSheetAccountDataAsync()
+        {
+            try
+            {
+                //Sync Balance Sheet Accounts
+                MADataAccess.CloudData.Accounts.Clear();
+                foreach (var item in MADataAccess.LocalData.TLMPLAccountList()) MADataAccess.CloudData.Accounts.Accounts.Add(new MACAccountItem { AccountId = item.AccountId, AccountDescription = item.AccountDescription, ParentAccountId = item.ParentAccountId });
+                await MADataAccess.CloudData.Accounts.SaveAsync(MAUpdateItemVariant.BalanceSheet);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private async Task<bool> SyncProfitLossAccountDataAsync()
         {
             try
             {
                 //Sync P&L Accounts
                 MADataAccess.CloudData.Accounts.Clear();
                 foreach (var item in MADataAccess.LocalData.TLMBSAccountList()) MADataAccess.CloudData.Accounts.Accounts.Add(new MACAccountItem { AccountId = item.AccountId, AccountDescription = item.AccountDescription, ParentAccountId = item.ParentAccountId });
-                await MADataAccess.CloudData.Accounts.SaveAsync(MAReportType.BalanceSheet);
+                await MADataAccess.CloudData.Accounts.SaveAsync(MAUpdateItemVariant.ProfitLoss);
 
-                //Sync Balance Sheet Accounts
-                MADataAccess.CloudData.Accounts.Clear();
-                foreach (var item in MADataAccess.LocalData.TLMPLAccountList()) MADataAccess.CloudData.Accounts.Accounts.Add(new MACAccountItem { AccountId = item.AccountId, AccountDescription = item.AccountDescription, ParentAccountId = item.ParentAccountId });
-                await MADataAccess.CloudData.Accounts.SaveAsync(MAReportType.ProfitLoss);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
+        private async Task<bool> SyncDAPAsync()
+        {
+            try
+            {
+                MADataAccess.CloudData.DistributorProductAccount.Clear();
+
+                MADataAccess.CloudData.DistributorProductAccount.Accounts = MADataAccess.LocalData.TLDDistributorProductAccountIdList();
+
+                await MADataAccess.CloudData.DistributorProductAccount.SaveAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private async Task<bool> SyncImportExclusionsAsync(string period)
+        {
+            try
+            {
+                await MADataAccess.CloudData.ImportExclusions.SaveAsync(MADataAccess.LocalData.TLDDHLInvoiceExclusionsItem(period).Adapt<MACImportExclusionItems>());
                 return true;
             }
             catch
@@ -199,19 +255,6 @@ namespace FPMyobAssistant
                 }
 
                 await MADataAccess.CloudData.Structure.SaveAsync(reportId);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        private async Task<bool> SyncImportExclusionsAsync(string period)
-        {
-            try
-            {
-                await MADataAccess.CloudData.ImportExclusions.SaveAsync(MADataAccess.LocalData.TLDDHLInvoiceExclusionsItem(period).Adapt<MACImportExclusionItems>());
                 return true;
             }
             catch

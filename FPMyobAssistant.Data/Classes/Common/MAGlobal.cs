@@ -12,6 +12,7 @@ namespace FPMyobAssistant
         #region Constants
 
         internal const string CloudConn = @"DefaultEndpointsProtocol=https;AccountName=safptable;AccountKey=FZEFStOjnPKR4PqfGSbhPMP1lhtyfdiO7LHvRHL3hzUvl9y726hlYi1zR3wwrdGvqGcega4kzFED/dhrERI8cQ==;EndpointSuffix=core.windows.net";
+        internal const string MasterDataFilename = "MasterData.xlsx";
 
         #endregion Constants
 
@@ -47,6 +48,8 @@ namespace FPMyobAssistant
                 //==============================================================================
             }
         }
+
+        public static string MasterDataPath => Path.Combine(Application.StartupPath, MasterDataFilename);
 
         #endregion Properties
 

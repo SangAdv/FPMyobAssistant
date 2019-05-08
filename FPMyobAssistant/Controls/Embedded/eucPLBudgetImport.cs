@@ -205,6 +205,7 @@ namespace FPMyobAssistant
             RaiseDisableAllEvent();
 
             var i = 0;
+            var counter = 0;
 
             try
             {
@@ -230,18 +231,30 @@ namespace FPMyobAssistant
                     var maId = ei.GetText(i, 0);
                     if (string.IsNullOrEmpty(maId)) break;
 
-                    var tItemId = MAHelpers.GetMAId(maId).itemId;
-                    if (tItemId == 0) continue;
+                    if (counter > 10) break;
 
-                    for (var j = 3; j <= 14; j++)
+                    try
                     {
-                        var tValue = ei.GetText(i, j).Trim();
-                        var tBudget = string.IsNullOrEmpty(tValue) ? 0 : tValue.Value<float>();
-                        if (tBudget == 0) continue;
+                        var tItemId = MAHelpers.GetMAId(maId).itemId;
+                        if (tItemId == 0) continue;
 
-                        var period = tPeriods[j];
+                        for (var j = 3; j <= 14; j++)
+                        {
+                            var tValue = ei.GetText(i, j).Trim();
+                            var tBudget = string.IsNullOrEmpty(tValue) ? 0 : tValue.Value<float>();
+                            if (tBudget == 0) continue;
 
-                        if (string.Compare(period, mStartPeriod, StringComparison.Ordinal) >= 0) MADataAccess.LocalData.TLDPLBudgetUpdate(new TLDPLBudget { Budget = tBudget, Period = period, MAId = maId });
+                            var period = tPeriods[j];
+
+                            if (string.Compare(period, mStartPeriod, StringComparison.Ordinal) >= 0)
+                                MADataAccess.LocalData.TLDPLBudgetUpdate(new TLDPLBudget { Budget = tBudget, Period = period, MAId = maId });
+                        }
+
+                        counter = 0;
+                    }
+                    catch
+                    {
+                        counter++;
                     }
                 }
                 RaiseAddMessageEvent("Budget import completed successfully");

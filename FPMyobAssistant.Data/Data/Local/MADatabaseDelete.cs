@@ -56,6 +56,30 @@ namespace FPMyobAssistant
 
         #endregion TLDDHLCustomerNumber
 
+        #region TLDDistributorProductAccountId
+
+        public void TLDDistributorProductAccountIdDeleteAll()
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                db.ExecuteCommand("Delete from TLDDistributorProductAccountId");
+            }
+        }
+
+        #endregion TLDDistributorProductAccountId
+
+        #region TLDKKCustomerNumber
+
+        public void TLDKKCustomerNumberDeleteAll()
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                db.ExecuteCommand("Delete from TLDKKCustomerNumber");
+            }
+        }
+
+        #endregion TLDKKCustomerNumber
+
         #region TLDPL
 
         public void TLDPLDeleteAll(string period)
@@ -92,6 +116,18 @@ namespace FPMyobAssistant
 
         #endregion TLMBSAccount
 
+        #region TLMDistributor
+
+        public void TLMDistributorDeleteAll()
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                db.ExecuteCommand("Delete from TLMDistributor");
+            }
+        }
+
+        #endregion TLMDistributor
+
         #region TLMPLAccount
 
         internal void TLMPLAccountDeleteAll()
@@ -103,6 +139,18 @@ namespace FPMyobAssistant
         }
 
         #endregion TLMPLAccount
+
+        #region TLMReportHeadings
+
+        public void TLMReportHeadingsDeleteAll()
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                db.ExecuteCommand("Delete from TLMReportHeadings");
+            }
+        }
+
+        #endregion TLMReportHeadings
 
         #region TLMReportStructure
 
@@ -122,7 +170,27 @@ namespace FPMyobAssistant
             }
         }
 
+        internal void TLMReportStructureDeleteAll()
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                db.ExecuteCommand($"Delete from TLMReportStructure");
+            }
+        }
+
         #endregion TLMReportStructure
+
+        #region TLMReports
+
+        internal void TLMReportsDeleteAll()
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                db.ExecuteCommand($"Delete from TLMReports");
+            }
+        }
+
+        #endregion TLMReports
 
         #region TLSSyncLog
 

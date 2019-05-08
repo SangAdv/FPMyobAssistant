@@ -28,7 +28,7 @@ namespace FPMyobAssistant
         {
             Clear();
             Error.ClearErrorMessage();
-            var t = await mStor.GetAllAsync<MACUpdateItem>(MACTableNames.UpdateData, MACPartitionNames.Item);
+            var t = await mStor.GetAllAsync<MACUpdateItem>(MAUpdateItem.UpdateData, MACPartitionNames.Item);
             foreach (var item in t)
             {
                 var type = getTypes(item.Key);

@@ -51,6 +51,7 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Data\Cloud\Business Logic\MACDistributorProductAccount.cs" />
     <Compile Include="Data\Local\Models\LocalModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -65,9 +66,8 @@
     <Compile Include="Classes\StartUp\MAStartup.cs" />
     <Compile Include="Data\Cloud\Business Logic\MACAccounts.cs" />
     <Compile Include="Data\Cloud\Business Logic\MACBudgets.cs" />
-    <Compile Include="Data\Cloud\Business Logic\MACCustomerNumbers.cs" />
+    <Compile Include="Data\Cloud\Business Logic\MACCustomerData.cs" />
     <Compile Include="Data\Cloud\Business Logic\MACImportExclusions.cs" />
-    <Compile Include="Data\Cloud\Business Logic\MACReportStructure.cs" />
     <Compile Include="Data\Cloud\Business Logic\MACSettings.cs" />
     <Compile Include="Data\Cloud\Business Logic\MACUpdates.cs" />
     <Compile Include="Data\Cloud\Business Logic\MACUsers.cs" />
@@ -115,6 +115,7 @@
     <Compile Include="Importers\implementations\MASigmaReptosImport.cs" />
     <Compile Include="Importers\implementations\MASymbionReptosImport.cs" />
     <Compile Include="Importers\implementations\MACH2ReptosImport.cs" />
+    <Compile Include="Data\Cloud\Business Logic\MACReportStructure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -157,5 +158,6 @@
       <Version>1.0.7</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

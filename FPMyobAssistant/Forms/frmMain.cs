@@ -121,11 +121,11 @@ namespace FPMyobAssistant
             ShowWaitPanel();
 
             MAGlobal.IsConnected = SAConnection.CheckGoogleConnection();
-            if (!MAGlobal.IsConnected)
-            {
-                ucm.DisplayMessage("Please connect to the internet");
-                return;
-            }
+            //if (!MAGlobal.IsConnected)
+            //{
+            //    ucm.DisplayMessage("Please connect to the internet");
+            //    return;
+            //}
 
 #if !DEBUG
 
@@ -153,7 +153,10 @@ namespace FPMyobAssistant
 
             #region Prepare Updates
 
-            MAGlobal.LoadDataSyncControl = await MADataAccess.DataSyncUpdate.CheckHasUpdateAsync();
+            if (MAGlobal.IsConnected)
+            {
+                MAGlobal.LoadDataSyncControl = await MADataAccess.DataSyncUpdate.CheckHasUpdateAsync();
+            }
 
             #endregion Prepare Updates
 

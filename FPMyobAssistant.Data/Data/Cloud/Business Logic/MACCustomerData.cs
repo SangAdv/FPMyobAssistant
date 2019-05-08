@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FPMyobAssistant
 {
-    public class MACCustomerNumbers
+    public class MACCustomerData
     {
         #region Variables
 
@@ -23,7 +23,7 @@ namespace FPMyobAssistant
 
         #region Constructor
 
-        public MACCustomerNumbers(SAAzureTableStorage stor)
+        public MACCustomerData(SAAzureTableStorage stor)
         {
             mStor = stor;
         }
@@ -32,11 +32,11 @@ namespace FPMyobAssistant
 
         #region Methods
 
-        public async Task<SAEventArgs> SaveAsync()
+        public async Task<SAEventArgs> SaveAsync(string variant)
         {
             try
             {
-                await mStor.InsertOrReplaceAsync(MACTableNames.CustomerData, MACPartitionNames.MYOBId, "DHL", Accounts);
+                await mStor.InsertOrReplaceAsync(MAUpdateItem.CustomerData, MACPartitionNames.MYOBId, variant, Accounts);
                 return new SAEventArgs();
             }
             catch (Exception ex)
@@ -45,11 +45,11 @@ namespace FPMyobAssistant
             }
         }
 
-        public async Task<bool> LoadAsync()
+        public async Task<bool> LoadAsync(string variant)
         {
             try
             {
-                var tAccounts = await mStor.GetAsync<List<MACCustomerNumberItem>>(MACTableNames.CustomerData, MACPartitionNames.MYOBId, "DHL");
+                var tAccounts = await mStor.GetAsync<List<MACCustomerNumberItem>>(MAUpdateItem.CustomerData, MACPartitionNames.MYOBId, variant);
                 Accounts = tAccounts ?? new List<MACCustomerNumberItem>();
                 return true;
             }

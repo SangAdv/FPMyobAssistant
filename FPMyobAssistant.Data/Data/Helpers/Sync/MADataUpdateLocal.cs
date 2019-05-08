@@ -58,29 +58,43 @@ namespace FPMyobAssistant
             {
                 switch (item.MainType)
                 {
-                    case MAUpdateItem.Accounts:
-                        tSuccess = await UpdateAccountDataAsync();
-                        if (tSuccess) tMessage = "Updated account data";
-                        break;
+                    case MAUpdateItem.AccountData:
+                        if (item.SubType.Trim() == MAUpdateItemVariant.BalanceSheet)
+                        {
+                            tSuccess = await UpdateBalanceSheetAccountDataAsync();
+                            if (tSuccess) tMessage = "Updated account data";
+                        }
+                        else
+                        {
+                            tSuccess = await UpdateProfitLossAccountDataAsync();
+                            if (tSuccess) tMessage = "Updated account data";
+                        }
 
-                    case MAUpdateItem.PLBudget:
-                        tSuccess = await UpdatePLBudgetAsync(item.SubType);
-                        if (tSuccess) tMessage = "Updated budget data";
                         break;
 
                     case MAUpdateItem.BSBudget:
-                        tSuccess = await UpdateBSBudgetAsync(item.SubType);
+                        tSuccess = await UpdateBalanceSheetBudgetAsync(item.SubType);
                         if (tSuccess) tMessage = "Updated budget data";
                         break;
 
                     case MAUpdateItem.CustomerData:
-                        tSuccess = await UpdateCustomerDataAsync();
+                        tSuccess = await UpdateCustomerDataAsync(item.SubType);
                         if (tSuccess) tMessage = "Updated customer data";
                         break;
 
-                    case MAUpdateItem.ImportExclusions:
+                    case MAUpdateItem.DistributorProductAccount:
+                        tSuccess = await UpdateDAPAsync();
+                        if (tSuccess) tMessage = $"Updated report structure data: ReportId {item.SubType}";
+                        break;
+
+                    case MAUpdateItem.ExclusionData:
                         tSuccess = await UpdateImportExclusionsAsync(item.SubType);
                         if (tSuccess) tMessage = $"Updated import exclusions: Period {item.SubType}";
+                        break;
+
+                    case MAUpdateItem.PLBudget:
+                        tSuccess = await UpdateProfitLossBudgetAsync(item.SubType);
+                        if (tSuccess) tMessage = "Updated budget data";
                         break;
 
                     case MAUpdateItem.ReportStructure:
@@ -110,13 +124,13 @@ namespace FPMyobAssistant
             return true;
         }
 
-        private async Task<bool> UpdateCustomerDataAsync()
+        private async Task<bool> UpdateCustomerDataAsync(string variant)
         {
             try
             {
-                await MADataAccess.CloudData.CustomerNumbers.LoadAsync();
+                await MADataAccess.CloudData.Customer.LoadAsync(variant);
 
-                MADataAccess.LocalData.TLDDHLCustomerNumberUpdate(MADataAccess.CloudData.CustomerNumbers.Accounts);
+                MADataAccess.LocalData.TLDDHLCustomerNumberUpdate(MADataAccess.CloudData.Customer.Accounts);
 
                 return true;
             }
@@ -126,13 +140,13 @@ namespace FPMyobAssistant
             }
         }
 
-        private async Task<bool> UpdatePLBudgetAsync(string period)
+        private async Task<bool> UpdateProfitLossBudgetAsync(string period)
         {
             try
             {
                 //Update P&L Budget
 
-                await MADataAccess.CloudData.Budgets.LoadAsync(MAReportType.ProfitLoss, period);
+                await MADataAccess.CloudData.Budgets.LoadAsync(MAUpdateItemVariant.ProfitLoss, period);
 
                 MADataAccess.LocalData.TLDPLBudgetUpdate(MADataAccess.CloudData.Budgets.Budgets, period);
 
@@ -144,13 +158,13 @@ namespace FPMyobAssistant
             }
         }
 
-        private async Task<bool> UpdateBSBudgetAsync(string period)
+        private async Task<bool> UpdateBalanceSheetBudgetAsync(string period)
         {
             try
             {
                 //Update P&L Budget
 
-                await MADataAccess.CloudData.Budgets.LoadAsync(MAReportType.BalanceSheet, period);
+                await MADataAccess.CloudData.Budgets.LoadAsync(MAUpdateItemVariant.BalanceSheet, period);
 
                 MADataAccess.LocalData.TLDBSBudgetUpdate(MADataAccess.CloudData.Budgets.Budgets, period);
 
@@ -162,17 +176,29 @@ namespace FPMyobAssistant
             }
         }
 
-        private async Task<bool> UpdateAccountDataAsync()
+        private async Task<bool> UpdateBalanceSheetAccountDataAsync()
         {
             try
             {
                 //Sync Balance Sheet Accounts
-                await MADataAccess.CloudData.Accounts.LoadAsync(MAReportType.BalanceSheet);
+                await MADataAccess.CloudData.Accounts.LoadAsync(MAUpdateItemVariant.BalanceSheet);
 
                 MADataAccess.LocalData.TLMBSAccountUpdate(MADataAccess.CloudData.Accounts.Accounts);
 
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private async Task<bool> UpdateProfitLossAccountDataAsync()
+        {
+            try
+            {
                 //Sync P&L Accounts
-                await MADataAccess.CloudData.Accounts.LoadAsync(MAReportType.ProfitLoss);
+                await MADataAccess.CloudData.Accounts.LoadAsync(MAUpdateItemVariant.ProfitLoss);
 
                 MADataAccess.LocalData.TLMPLAccountUpdate(MADataAccess.CloudData.Accounts.Accounts);
 
@@ -191,6 +217,22 @@ namespace FPMyobAssistant
                 await MADataAccess.CloudData.Structure.LoadAsync(reportId);
 
                 MADataAccess.LocalData.TLMReportStructureUpdate(MADataAccess.CloudData.Structure.Get(reportId), reportId);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private async Task<bool> UpdateDAPAsync()
+        {
+            try
+            {
+                await MADataAccess.CloudData.DistributorProductAccount.LoadAsync();
+
+                MADataAccess.LocalData.TLDDistributorProductAccountIdUpdate(MADataAccess.CloudData.DistributorProductAccount.Accounts);
 
                 return true;
             }

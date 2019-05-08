@@ -77,6 +77,111 @@ namespace FPMyobAssistant
 
         #endregion TLDBSBudget
 
+        #region TLDDHLCustomerNumber
+
+        public void TLDDHLCustomerNumberUpdate(TLDDHLCustomerNumber data)
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                var a = db.TLDDHLCustomerNumbers.Where(x => x.Id == data.Id);
+                if (a.Any())
+                {
+                    db.TLDDHLCustomerNumbers.DeleteOnSubmit(a.First());
+                    db.SubmitChanges();
+                }
+                db.TLDDHLCustomerNumbers.InsertOnSubmit(data);
+                db.SubmitChanges();
+            }
+        }
+
+        internal void TLDDHLCustomerNumberUpdate(List<MACCustomerNumberItem> data)
+        {
+            ErrorMessage = string.Empty;
+
+            TLDDHLCustomerNumberDeleteAll();
+
+            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
+            {
+                sbi.AddParameter("Id", typeof(string));
+                sbi.AddParameter("CustomerName", typeof(string));
+                sbi.AddParameter("MYOBCardId", typeof(string));
+
+                foreach (var item in data)
+                {
+                    sbi.UpdateData(MADataAccess.CloudData.Customer.Accounts, "TLDDHLCustomerNumber");
+                }
+
+                sbi.CommitData();
+
+                ErrorMessage = sbi.ErrorMessage;
+            }
+        }
+
+        #endregion TLDDHLCustomerNumber
+
+        #region TLDDHLInvoiceExclusions
+
+        internal void TLDDHLInvoiceExclusionsUpdate(TLDDHLInvoiceExclusion data)
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                var a = db.TLDDHLInvoiceExclusions.Where(x => x.Period == data.Period);
+                if (a.Any())
+                {
+                    db.TLDDHLInvoiceExclusions.DeleteOnSubmit(a.First());
+                    db.SubmitChanges();
+                }
+                db.TLDDHLInvoiceExclusions.InsertOnSubmit(data);
+                db.SubmitChanges();
+            }
+        }
+
+        #endregion TLDDHLInvoiceExclusions
+
+        #region TLDDistributorProductAccountId
+
+        public void TLDDistributorProductAccountIdUpdate(TLDDistributorProductAccountId data)
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                var a = db.TLDDistributorProductAccountIds.Where(x => x.DistributorId == data.DistributorId && x.ProductPDE == data.ProductPDE);
+                if (a.Any())
+                {
+                    if (a.First().AccountId == data.AccountId) return;
+
+                    db.TLDDistributorProductAccountIds.DeleteOnSubmit(a.First());
+                    db.SubmitChanges();
+                }
+                db.TLDDistributorProductAccountIds.InsertOnSubmit(data);
+                db.SubmitChanges();
+            }
+        }
+
+        public void TLDDistributorProductAccountIdUpdate(List<TLDDistributorProductAccountId> data)
+        {
+            ErrorMessage = string.Empty;
+
+            if (data.Count == 0) return;
+
+            TLDDistributorProductAccountIdDeleteAll();
+
+            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
+            {
+                sbi.AddParameter("DistributorId", typeof(int));
+                sbi.AddParameter("ProductPDE", typeof(string));
+                sbi.AddParameter("AccountId", typeof(string));
+                sbi.AddParameter("Product", typeof(string));
+
+                sbi.UpdateData(data, "TLDDistributorProductAccountId");
+
+                sbi.CommitData();
+
+                ErrorMessage = sbi.ErrorMessage;
+            }
+        }
+
+        #endregion TLDDistributorProductAccountId
+
         #region TLDPL
 
         public void TLDPLUpdate(TLDPL data)
@@ -146,45 +251,9 @@ namespace FPMyobAssistant
 
         #endregion TLDPLBudget
 
-        #region TLDDistributorProductAccountId
+        #region TLDKKCustomerNumber
 
-        public void TLDDistributorProductAccountIdUpdate(TLDDistributorProductAccountId data)
-        {
-            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
-            {
-                var a = db.TLDDistributorProductAccountIds.Where(x => x.DistributorId == data.DistributorId && x.ProductPDE == data.ProductPDE);
-                if (a.Any())
-                {
-                    if (a.First().AccountId == data.AccountId) return;
-
-                    db.TLDDistributorProductAccountIds.DeleteOnSubmit(a.First());
-                    db.SubmitChanges();
-                }
-                db.TLDDistributorProductAccountIds.InsertOnSubmit(data);
-                db.SubmitChanges();
-            }
-        }
-
-        #endregion TLDDistributorProductAccountId
-
-        #region TLDDHLCustomerNumber
-
-        public void TLDDHLCustomerNumberUpdate(TLDDHLCustomerNumber data)
-        {
-            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
-            {
-                var a = db.TLDDHLCustomerNumbers.Where(x => x.Id == data.Id);
-                if (a.Any())
-                {
-                    db.TLDDHLCustomerNumbers.DeleteOnSubmit(a.First());
-                    db.SubmitChanges();
-                }
-                db.TLDDHLCustomerNumbers.InsertOnSubmit(data);
-                db.SubmitChanges();
-            }
-        }
-
-        internal void TLDDHLCustomerNumberUpdate(List<MACCustomerNumberItem> data)
+        internal void TLDKKCustomerNumberUpdate(List<TLDKKCustomerNumber> data)
         {
             ErrorMessage = string.Empty;
 
@@ -196,52 +265,11 @@ namespace FPMyobAssistant
                 sbi.AddParameter("CustomerName", typeof(string));
                 sbi.AddParameter("MYOBCardId", typeof(string));
 
-                foreach (var item in data)
-                {
-                    sbi.UpdateData(MADataAccess.CloudData.CustomerNumbers.Accounts, "TLDDHLCustomerNumber");
-                }
+                sbi.UpdateData(data, "TLDKKCustomerNumber");
 
                 sbi.CommitData();
 
                 ErrorMessage = sbi.ErrorMessage;
-            }
-        }
-
-        #endregion TLDDHLCustomerNumber
-
-        #region TLDDHLInvoiceExclusions
-
-        internal void TLDDHLInvoiceExclusionsUpdate(TLDDHLInvoiceExclusion data)
-        {
-            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
-            {
-                var a = db.TLDDHLInvoiceExclusions.Where(x => x.Period == data.Period);
-                if (a.Any())
-                {
-                    db.TLDDHLInvoiceExclusions.DeleteOnSubmit(a.First());
-                    db.SubmitChanges();
-                }
-                db.TLDDHLInvoiceExclusions.InsertOnSubmit(data);
-                db.SubmitChanges();
-            }
-        }
-
-        #endregion TLDDHLInvoiceExclusions
-
-        #region TLDKKCustomerNumber
-
-        internal void TLDKKCustomerNumberUpdate(TLDKKCustomerNumber data)
-        {
-            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
-            {
-                var a = db.TLDKKCustomerNumbers.Where(x => x.Id == data.Id);
-                if (a.Any())
-                {
-                    db.TLDKKCustomerNumbers.DeleteOnSubmit(a.First());
-                    db.SubmitChanges();
-                }
-                db.TLDKKCustomerNumbers.InsertOnSubmit(data);
-                db.SubmitChanges();
             }
         }
 
@@ -288,7 +316,31 @@ namespace FPMyobAssistant
 
         #endregion TLMBSAccount
 
-        #region TLMPLAccount
+        #region TLMDistributor
+
+        internal void TLMDistributorUpdate(List<TLMDistributor> data)
+        {
+            ErrorMessage = string.Empty;
+
+            TLDDHLCustomerNumberDeleteAll();
+
+            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
+            {
+                sbi.AddParameter("DistributorId", typeof(int));
+                sbi.AddParameter("Distributor", typeof(string));
+                sbi.AddParameter("CardId", typeof(string));
+
+                sbi.UpdateData(data, "TLMDistributor");
+
+                sbi.CommitData();
+
+                ErrorMessage = sbi.ErrorMessage;
+            }
+        }
+
+        #endregion TLMDistributor
+
+        #region TLMPLAccounts
 
         public void TLMPLAccountUpdate(TLMPLAccount data)
         {
@@ -327,28 +379,34 @@ namespace FPMyobAssistant
             }
         }
 
-        #endregion TLMPLAccount
+        #endregion TLMPLAccounts
 
-        #region TLMReport
+        #region TLMReportHeadings
 
-        public void TLMReportUpdate(TLMReport data)
+        internal void TLMReportHeadingsUpdate(List<TLMReportHeading> data)
         {
-            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
-            {
-                var a = db.TLMReports.Where(x => x.ReportId == data.ReportId);
-                if (a.Any())
-                {
-                    db.TLMReports.DeleteOnSubmit(a.First());
-                    db.SubmitChanges();
-                }
+            ErrorMessage = string.Empty;
 
-                if (data.ReportId == 0) data.ReportId = TLMReportNewId();
-                db.TLMReports.InsertOnSubmit(data);
-                db.SubmitChanges();
+            TLDDHLCustomerNumberDeleteAll();
+
+            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
+            {
+                sbi.AddParameter("ReportId", typeof(int));
+                sbi.AddParameter("HeadingId", typeof(int));
+                sbi.AddParameter("ReportHeading", typeof(string));
+                sbi.AddParameter("IsCalculation", typeof(int));
+                sbi.AddParameter("HasChildren", typeof(int));
+                sbi.AddParameter("IncomeAsNegative", typeof(int));
+
+                sbi.UpdateData(data, "TLMReportHeadings");
+
+                sbi.CommitData();
+
+                ErrorMessage = sbi.ErrorMessage;
             }
         }
 
-        #endregion TLMReport
+        #endregion TLMReportHeadings
 
         #region TLMReportStructure
 
@@ -408,6 +466,27 @@ namespace FPMyobAssistant
 
         #endregion TLMReportStructure
 
+        #region TLMReports
+
+        public void TLMReportsUpdate(TLMReport data)
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                var a = db.TLMReports.Where(x => x.ReportId == data.ReportId);
+                if (a.Any())
+                {
+                    db.TLMReports.DeleteOnSubmit(a.First());
+                    db.SubmitChanges();
+                }
+
+                if (data.ReportId == 0) data.ReportId = TLMReportNewId();
+                db.TLMReports.InsertOnSubmit(data);
+                db.SubmitChanges();
+            }
+        }
+
+        #endregion TLMReports
+
         #region TLSSettings
 
         public void TLSSettingUpdate(TLSSetting data)
@@ -430,14 +509,14 @@ namespace FPMyobAssistant
 
         #region TLSSyncLog
 
-        internal void TLSSyncLogUpdate(MAUpdateItem data, string variant)
+        internal void TLSSyncLogUpdate(string data, string variant)
         {
             using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
             {
-                var a = db.TLSSyncLogs.Where(x => x.UpdateId.Trim() == data.ToString() && x.Variant == variant);
+                var a = db.TLSSyncLogs.Where(x => x.UpdateId.Trim() == data.Trim() && x.Variant.Trim() == variant.Trim());
                 if (!a.Any())
                 {
-                    db.TLSSyncLogs.InsertOnSubmit(new TLSSyncLog { UpdateId = data.ToString(), Variant = variant });
+                    db.TLSSyncLogs.InsertOnSubmit(new TLSSyncLog { UpdateId = data.ToString(), Variant = variant.Trim() });
                     db.SubmitChanges();
                 }
             }

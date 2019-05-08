@@ -8,13 +8,24 @@
 
     public struct MAUpdateItem
     {
-        public const string CustomerData = "CustomerData";
-        public const string PLBudget = "PLBudget";
+        public const string AccountData = "AccountData";
         public const string BSBudget = "BSBudget";
-        public const string Accounts = "Accounts";
+        public const string CustomerData = "CustomerData";
+        public const string DistributorProductAccount = "DistributorProductAccount";
+        public const string ExclusionData = "ExclusionData";
+        public const string PLBudget = "PLBudget";
         public const string ReportStructure = "ReportStructure";
-        public const string ImportExclusions = "ImportExclusions";
         public const string Settings = "Settings";
+        public const string UpdateData = "UpdateData";
+        public const string UserData = "UserData";
+    }
+
+    public struct MAUpdateItemVariant
+    {
+        public const string DHL = "DHL";
+        public const string BalanceSheet = "BalanceSheet";
+        public const string ProfitLoss = "ProfitLoss";
+        public const string All = "";
     }
 
     public enum MAStatus : int

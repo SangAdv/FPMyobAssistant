@@ -75,6 +75,14 @@ namespace FPMyobAssistant
 
         #region TLDDistributorProductAccountId
 
+        public List<TLDDistributorProductAccountId> TLDDistributorProductAccountIdList()
+        {
+            using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))
+            {
+                return db.TLDDistributorProductAccountIds.ToList();
+            }
+        }
+
         public List<TLDDistributorProductAccountId> TLDDistributorProductAccountIdList(int distributorId)
         {
             using (var db = new LocalModelDataContext(mServer.Database.ConnectionString))

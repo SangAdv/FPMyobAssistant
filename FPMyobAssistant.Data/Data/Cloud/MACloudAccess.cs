@@ -10,8 +10,9 @@ namespace FPMyobAssistant
 
         public MACAccounts Accounts { get; private set; }
         public MACBudgets Budgets { get; private set; }
-        public MACCustomerNumbers CustomerNumbers { get; private set; }
+        public MACCustomerData Customer { get; private set; }
         public MACImportExclusions ImportExclusions { get; private set; }
+        public MACDistributorProductAccount DistributorProductAccount { get; private set; }
         public MACReportStructure Structure { get; private set; }
         public MACSettings Settings { get; private set; }
 
@@ -32,11 +33,12 @@ namespace FPMyobAssistant
 
                 Users = new MACUsers(tStor);
                 Updates = new MACUpdates(tStor);
-                CustomerNumbers = new MACCustomerNumbers(tStor);
+                Customer = new MACCustomerData(tStor);
                 Budgets = new MACBudgets(tStor);
-                Structure = new MACReportStructure(tStor);
+                DistributorProductAccount = new MACDistributorProductAccount(tStor);
                 Accounts = new MACAccounts(tStor);
                 ImportExclusions = new MACImportExclusions(tStor);
+                Structure = new MACReportStructure(tStor);
                 Settings = new MACSettings(tStor);
             }
             catch (Exception ex)

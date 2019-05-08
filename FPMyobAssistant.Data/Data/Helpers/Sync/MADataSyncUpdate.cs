@@ -27,7 +27,7 @@ namespace FPMyobAssistant
 
         public MADataSyncUpdate()
         {
-            var options = new SAAzureUpdateAzureOptions(MAGlobal.CloudConn, MACTableNames.UpdateData);
+            var options = new SAAzureUpdateAzureOptions(MAGlobal.CloudConn, MAUpdateItem.UpdateData);
             mSyncUpdate = new SAAzureSyncUpdateFramework<string, MACUpdateItem>(new MASyncDataLocal(), new MADataUpdateLocal(), options);
         }
 

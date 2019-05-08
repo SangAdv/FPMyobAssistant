@@ -107,7 +107,7 @@ namespace FPMyobAssistant
         public void UpdateExclusions(string period)
         {
             MADataAccess.LocalData.TLDDHLInvoiceExclusionsUpdate(new TLDDHLInvoiceExclusion { Period = period, Exclusions = mExcludedOrders.ValueList.SerializeObject() });
-            var syncItem = new SASyncDataItem { MainType = MAUpdateItem.ImportExclusions, SubType = period, Payload = string.Empty };
+            var syncItem = new SASyncDataItem { MainType = MAUpdateItem.ExclusionData, SubType = period, Payload = string.Empty };
             MADataAccess.DataSyncUpdate.Add(syncItem);
         }
 

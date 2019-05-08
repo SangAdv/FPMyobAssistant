@@ -40,7 +40,7 @@ namespace FPMyobAssistant
             {
                 var ui = new MACUpdateItem { UpdatedBy = MADataAccess.CloudData.Users.SelectedUserEmail, UpdateItem = updateItem, UTCDateTimeSecondSynced = SADateTimeValues.UtcNowDateTimeSecondString, Variant = variant };
 
-                await mStor.InsertOrReplaceAsync(MACTableNames.UpdateData, MACPartitionNames.Item, $"{updateItem}-{variant}", ui);
+                await mStor.InsertOrReplaceAsync(MAUpdateItem.UpdateData , MACPartitionNames.Item, $"{updateItem}-{variant}", ui);
 
                 return new SAEventArgs();
             }
@@ -55,7 +55,7 @@ namespace FPMyobAssistant
             try
             {
                 mUpdates.Clear();
-                var t = await mStor.GetAllAsync<MACUpdateItem>(MACTableNames.UpdateData, MACPartitionNames.Item);
+                var t = await mStor.GetAllAsync<MACUpdateItem>(MAUpdateItem.UpdateData, MACPartitionNames.Item);
                 foreach (var item in t) mUpdates[item.Key] = item.Value;
             }
             catch
