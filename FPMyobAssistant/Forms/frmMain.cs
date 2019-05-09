@@ -155,6 +155,7 @@ namespace FPMyobAssistant
 
             if (MAGlobal.IsConnected)
             {
+                await MADataAccess.DataSyncUpdate.InitialiseAsync();
                 MAGlobal.LoadDataSyncControl = await MADataAccess.DataSyncUpdate.CheckHasUpdateAsync();
             }
 

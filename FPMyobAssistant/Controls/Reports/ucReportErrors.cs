@@ -5,6 +5,7 @@ using SangAdv.Common.StringExtensions;
 using SangAdv.DevExpressUI;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FPMyobAssistant
@@ -119,14 +120,14 @@ namespace FPMyobAssistant
             txtAccountCode.Text = string.Empty;
         }
 
-        private void addItemAccounts(List<string> accounts)
+        private async Task addItemAccountsAsync(List<string> accounts)
         {
             var a = mStructure.HeadingItems[mHeadingId].GetItem(mItemId);
             a.RemoveAllAccountCodes();
             a.AddAccounts(accounts);
             mStructure.HeadingItems[mHeadingId].SaveItems();
 
-            MADataAccess.DataSyncUpdate.Add(new SASyncDataItem { MainType = MAUpdateItem.ReportStructure, SubType = mReportId.ToString(), Payload = string.Empty });
+            await MADataAccess.DataSyncUpdate.AddAsync(new SASyncDataItem { MainType = MAUpdateItem.ReportStructure, SubType = mReportId.ToString(), Payload = string.Empty });
         }
 
         #endregion Private Methods

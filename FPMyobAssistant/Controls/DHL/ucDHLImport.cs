@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FPMyobAssistant
@@ -80,7 +81,7 @@ namespace FPMyobAssistant
             AddMessage(mConversion.Save(beMYOBFilename.Text));
         }
 
-        private void ReadFile()
+        private async Task ReadFileAsync()
         {
             float tTotalValue = 0;
 
@@ -179,7 +180,7 @@ namespace FPMyobAssistant
                         var tCustPONo = ei.GetText(i, 1);
                         var tPrice = ei.GetValue<float>(i, 24);
 
-                        var tMYOBCardId = MYOBCardId(tCustomerNo, ei.GetText(i, 10));
+                        var tMYOBCardId = await MYOBCardIdAsync(tCustomerNo, ei.GetText(i, 10));
                         if (mHasError) return;
 
                         mConversion.Add(new FPMyobSalesItem()
@@ -293,7 +294,7 @@ namespace FPMyobAssistant
             Application.DoEvents();
         }
 
-        private string MYOBCardId(string dhlCustomerId, string dhlCustomerName)
+        private async Task<string> MYOBCardIdAsync(string dhlCustomerId, string dhlCustomerName)
         {
             dhlCustomerId = dhlCustomerId.AddLeadingZeros(20);
 
@@ -316,7 +317,7 @@ namespace FPMyobAssistant
             MADataAccess.LocalData.TLDDHLCustomerNumberUpdate(cnm);
             a = MADataAccess.LocalData.TLDDHLCustomerNumberItem(dhlCustomerId);
 
-            MADataAccess.DataSyncUpdate.Add(new SASyncDataItem { MainType = MAUpdateItem.CustomerData, SubType = "", Payload = string.Empty });
+            await MADataAccess.DataSyncUpdate.AddAsync(new SASyncDataItem { MainType = MAUpdateItem.CustomerData, SubType = "", Payload = string.Empty });
 
             return a.MYOBCardId;
         }
@@ -372,10 +373,10 @@ namespace FPMyobAssistant
 
         #region Process UI
 
-        private void btnImport_Click(object sender, EventArgs e)
+        private async void btnImport_Click(object sender, EventArgs e)
         {
             mConversion = new FPDHLToMyobTXTItemSales();
-            ReadFile();
+            await ReadFileAsync();
 
             if (mHasError) return;
             AddMessage($"{mConversion.DataCount} items imported. Doing conversion ...");

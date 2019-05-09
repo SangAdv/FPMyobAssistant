@@ -5,6 +5,7 @@ using SangAdv.Common.PeriodExtensions;
 using SangAdv.Common.UI;
 using SangAdv.DevExpressUI;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FPMyobAssistant
@@ -28,7 +29,7 @@ namespace FPMyobAssistant
             mBase = new MABaseControls(this);
             mBase.SetTitle("DHL Import Preparation");
 
-            eucExcludedAccountNumbers.AccountsChanged += AccountsChanged;
+            eucExcludedAccountNumbers.AccountsChanged += AccountsChangedAsync;
             eucExcludedAccountNumbers.ExcludedAccounts = mMaster.ExcludedAccounts;
 
             mADHLMasterItemBindingSource.DataSource = mMaster.Items;
@@ -45,13 +46,13 @@ namespace FPMyobAssistant
 
         #region Methods
 
-        private void AccountsChanged()
+        private async void AccountsChangedAsync()
         {
             mMaster.SetExcludedAccounts(eucExcludedAccountNumbers.ExcludedAccounts);
             var tSetting = MADataAccess.LocalData.TLSSettingsItem();
             tSetting.ImportExclusionAccounts = eucExcludedAccountNumbers.ExcludedAccounts.SerializeObject();
             MADataAccess.LocalData.TLSSettingUpdate(tSetting);
-            MADataAccess.DataSyncUpdate.Add(new SASyncDataItem { MainType = MAUpdateItem.Settings, SubType = "", Payload = string.Empty });
+            await MADataAccess.DataSyncUpdate.AddAsync(new SASyncDataItem { MainType = MAUpdateItem.Settings, SubType = "", Payload = string.Empty });
         }
 
         private bool VerifyImport()
@@ -61,7 +62,7 @@ namespace FPMyobAssistant
             return true;
         }
 
-        private void ReadFile()
+        private async Task ReadFileAsync()
         {
             gcIncluded.SuspendLayout();
 
@@ -77,7 +78,7 @@ namespace FPMyobAssistant
 
             mPeriod = DateTime.Parse(ei.GetText(1, 29)).ToMonthPeriod();
 
-            BuildMaster(ei);
+            await BuildMasterAsync(ei);
             BuildDetail(ei);
 
             AddMessage("");
@@ -85,7 +86,7 @@ namespace FPMyobAssistant
             gcIncluded.ResumeLayout();
         }
 
-        private void BuildMaster(SAExcelImport ei)
+        private async Task BuildMasterAsync(SAExcelImport ei)
         {
             mMaster.Clear();
             mMaster.LoadMasterExcludedOrders(mPeriod);
@@ -131,7 +132,7 @@ namespace FPMyobAssistant
                 });
             }
 
-            if (mMaster.ExclusionsChanged) mMaster.UpdateExclusions(mPeriod);
+            if (mMaster.ExclusionsChanged) await mMaster.UpdateExclusionsAsync(mPeriod);
         }
 
         private void BuildDetail(SAExcelImport ei)
@@ -198,10 +199,10 @@ namespace FPMyobAssistant
             btnImport.Enabled = VerifyImport();
         }
 
-        private void btnImport_Click(object sender, EventArgs e)
+        private async void btnImport_Click(object sender, EventArgs e)
         {
             mMaster.Clear();
-            ReadFile();
+            await ReadFileAsync();
             gvIncluded.TopRowIndex = 0;
             gvIncluded.FocusedRowHandle = 0;
             gvIncluded.BestFitColumns();
@@ -227,7 +228,7 @@ namespace FPMyobAssistant
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             var topRow = gvIncluded.TopRowIndex;
 
@@ -235,7 +236,7 @@ namespace FPMyobAssistant
             var tData = mMaster.Get(mSelectedOrderNumber);
             tData.IsIncluded = chkInclude.Checked;
 
-            mMaster.UpdateExcludedOrders(mPeriod, mSelectedOrderNumber, tData.IsIncluded);
+            await mMaster.UpdateExcludedOrdersAsync(mPeriod, mSelectedOrderNumber, tData.IsIncluded);
 
             gvIncluded.TopRowIndex = topRow;
 

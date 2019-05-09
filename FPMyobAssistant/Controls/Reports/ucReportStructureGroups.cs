@@ -6,6 +6,7 @@ using SangAdv.Common.UI;
 using SangAdv.DevExpressUI;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FPMyobAssistant
@@ -159,7 +160,7 @@ namespace FPMyobAssistant
             mItemId = 0;
         }
 
-        private void AddItemGroups(List<string> groups)
+        private async Task AddItemGroupsAsync(List<string> groups)
         {
             var a = mStructure.HeadingItems[mHeadingId].GetItem(mItemId);
             a.RemoveAllGroupCodes();
@@ -167,7 +168,7 @@ namespace FPMyobAssistant
             mStructure.HeadingItems[mHeadingId].SaveItems();
             LoadItem();
             LoadReportStructure();
-            MADataAccess.DataSyncUpdate.Add(new SASyncDataItem { MainType = MAUpdateItem.ReportStructure, SubType = mReportId.ToString(), Payload = string.Empty });
+            await MADataAccess.DataSyncUpdate.AddAsync(new SASyncDataItem { MainType = MAUpdateItem.ReportStructure, SubType = mReportId.ToString(), Payload = string.Empty });
         }
 
         #endregion Private Methods
@@ -282,13 +283,13 @@ namespace FPMyobAssistant
             if (f.ShowDialog(this) == DialogResult.Cancel) return;
         }
 
-        private void btnDefine_Click(object sender, System.EventArgs e)
+        private async void btnDefine_Click(object sender, System.EventArgs e)
         {
             var f = new frmChooseGroups(MAHelpers.SetMAId(mReportId, mHeadingId, mItemId));
             var dialogResult = f.ShowDialog(this);
             if (dialogResult != DialogResult.OK) return;
 
-            AddItemGroups(f.SelectedGroups);
+            await AddItemGroupsAsync(f.SelectedGroups);
         }
 
         #endregion Process UI

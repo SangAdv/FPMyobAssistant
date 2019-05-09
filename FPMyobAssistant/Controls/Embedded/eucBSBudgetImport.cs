@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FPMyobAssistant
@@ -183,7 +184,7 @@ namespace FPMyobAssistant
             RaiseEnableAllEvent();
         }
 
-        private void ImportBSBudget()
+        private async Task ImportBSBudgetAsync()
         {
             RaiseClearMessagesEvent();
 
@@ -232,7 +233,7 @@ namespace FPMyobAssistant
                 RaiseAddMessageEvent("Budget import completed successfully");
 
                 //Set update data
-                foreach (var item in tPeriods) MADataAccess.DataSyncUpdate.Add(new SASyncDataItem { MainType = MAUpdateItem.BSBudget, SubType = item.Value, Payload = string.Empty });
+                foreach (var item in tPeriods) await MADataAccess.DataSyncUpdate.AddAsync(new SASyncDataItem { MainType = MAUpdateItem.BSBudget, SubType = item.Value, Payload = string.Empty });
             }
             catch (Exception ex)
             {
@@ -264,7 +265,7 @@ namespace FPMyobAssistant
             ExportBSBudget();
         }
 
-        private void btnBImport_Click(object sender, EventArgs e)
+        private async void btnBImport_Click(object sender, EventArgs e)
         {
             if (!File.Exists(beBBSFilename.Text))
             {
@@ -272,7 +273,7 @@ namespace FPMyobAssistant
                 return;
             }
 
-            ImportBSBudget();
+            await ImportBSBudgetAsync();
         }
 
         private void icbBPeriod_SelectedIndexChanged(object sender, EventArgs e)

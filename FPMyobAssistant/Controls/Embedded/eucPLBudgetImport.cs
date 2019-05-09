@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FPMyobAssistant
 {
@@ -198,7 +199,7 @@ namespace FPMyobAssistant
             RaiseEnableAllEvent();
         }
 
-        private void ImportPLBudget()
+        private async Task ImportPLBudgetAsync()
         {
             RaiseClearMessagesEvent();
 
@@ -215,13 +216,14 @@ namespace FPMyobAssistant
                 for (var j = 3; j <= 14; j++)
                 {
                     var period = ei.GetText(3, j);
-                    if (string.Compare(period, mStartPeriod, StringComparison.Ordinal) >= 0) tPeriods.Add(j, period);
+                    tPeriods.Add(j, period);
                 }
 
                 //Clear old data
-                foreach (var item in tPeriods)
+                foreach (var period in tPeriods)
                 {
-                    MADataAccess.LocalData.TLDPLBudgetDeleteAll(item.Value);
+                    if (string.Compare(period.Value, mStartPeriod, StringComparison.Ordinal) >= 0)
+                        MADataAccess.LocalData.TLDPLBudgetDeleteAll(period.Value);
                 }
 
                 //Load the data
@@ -260,7 +262,12 @@ namespace FPMyobAssistant
                 RaiseAddMessageEvent("Budget import completed successfully");
 
                 //Set update data
-                foreach (var item in tPeriods) MADataAccess.DataSyncUpdate.Add(new SASyncDataItem { MainType = MAUpdateItem.PLBudget, SubType = item.Value, Payload = string.Empty });
+                foreach (var period in tPeriods)
+                {
+                    if (string.Compare(period.Value, mStartPeriod, StringComparison.Ordinal) >= 0)
+                        await MADataAccess.DataSyncUpdate.AddAsync(new SASyncDataItem { MainType = MAUpdateItem.PLBudget, SubType = period.Value, Payload = string.Empty });
+                }
+
             }
             catch (Exception ex)
             {
@@ -292,7 +299,7 @@ namespace FPMyobAssistant
             ExportPLBudget();
         }
 
-        private void btnBImport_Click(object sender, EventArgs e)
+        private async void btnBImport_Click(object sender, EventArgs e)
         {
             if (!File.Exists(beBPLFilename.Text))
             {
@@ -300,7 +307,7 @@ namespace FPMyobAssistant
                 return;
             }
 
-            ImportPLBudget();
+            await ImportPLBudgetAsync();
         }
 
         private void icbBPeriod_SelectedIndexChanged(object sender, EventArgs e)

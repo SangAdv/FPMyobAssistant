@@ -45,9 +45,15 @@ namespace FPMyobAssistant
 
         public async Task<bool> CheckHasUpdateAsync() => await mSyncUpdate.Update.CheckUpdateAsync(true, true);
 
-        public void Add(SASyncDataItem item)
+        public async Task AddAsync(SASyncDataItem item)
         {
             mSyncUpdate.Sync.Add(item);
+            await mSyncUpdate.Sync.SaveAsync();
+        }
+
+        public async void SaveAllAsync()
+        {
+            await mSyncUpdate.SaveAllAsync();
         }
 
         public async Task DoSyncAsync() => await mSyncUpdate.Sync.DoSyncAsync();

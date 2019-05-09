@@ -1,7 +1,6 @@
 ﻿using Mapster;
 using SangAdv.Common;
 using SangAdv.Common.ObjectExtensions;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -20,7 +19,7 @@ namespace FPMyobAssistant
         public override async Task LoadAsync()
         {
             foreach (var item in MADataAccess.LocalData.TlSSyncLogList()) Items.Add(new SASyncDataItem { MainType = item.UpdateId, SubType = item.Variant, Payload = string.Empty });
-            await Task.Delay(1);
+            await Task.Delay(0);
         }
 
         public override async Task DoSyncAsync(List<SASyncDataItem> updateItems)
@@ -28,14 +27,16 @@ namespace FPMyobAssistant
             await DoLocalSyncAsync();
         }
 
-        public override Task SaveAsync()
+        public override async Task SaveAsync()
         {
-            throw new NotImplementedException();
+            foreach (var item in Items) MADataAccess.LocalData.TLSSyncLogUpdate(item.MainType, item.SubType);
+            await Task.Delay(0);
         }
 
-        public override Task RemoveItemAsync(string mainType, string subType = "")
+        public override async Task RemoveItemAsync(string mainType, string subType = "")
         {
-            throw new NotImplementedException();
+            MADataAccess.LocalData.TLSSyncLogDelete(mainType, subType);
+            await Task.Delay(0);
         }
 
         #endregion Abstract Methods
@@ -48,7 +49,9 @@ namespace FPMyobAssistant
             var tSuccess = true;
             var tMessage = string.Empty;
 
-            foreach (var item in Items)
+            var tItems = new List<SASyncDataItem>(Items);
+
+            foreach (var item in tItems)
             {
                 switch (item.MainType)
                 {
@@ -105,7 +108,6 @@ namespace FPMyobAssistant
                 if (tSuccess)
                 {
                     MessageChanged(tMessage);
-                    MADataAccess.LocalData.TLSSyncLogDelete(item.MainType, item.SubType);
                     await RemoveAsync(item.MainType, item.SubType);
                 }
                 else

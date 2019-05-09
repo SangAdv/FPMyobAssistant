@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FPMyobAssistant
 {
@@ -88,7 +89,7 @@ namespace FPMyobAssistant
             Items.Clear();
         }
 
-        public void UpdateExcludedOrders(string period, string ordernumber, bool isIncluded)
+        public async Task UpdateExcludedOrdersAsync(string period, string ordernumber, bool isIncluded)
         {
             if (!isIncluded) //Add to exclusion list
             {
@@ -101,14 +102,14 @@ namespace FPMyobAssistant
                 mExcludedOrders.Remove(ordernumber);
             }
 
-            UpdateExclusions(period);
+            await UpdateExclusionsAsync(period);
         }
 
-        public void UpdateExclusions(string period)
+        public async Task UpdateExclusionsAsync(string period)
         {
             MADataAccess.LocalData.TLDDHLInvoiceExclusionsUpdate(new TLDDHLInvoiceExclusion { Period = period, Exclusions = mExcludedOrders.ValueList.SerializeObject() });
             var syncItem = new SASyncDataItem { MainType = MAUpdateItem.ExclusionData, SubType = period, Payload = string.Empty };
-            MADataAccess.DataSyncUpdate.Add(syncItem);
+            await MADataAccess.DataSyncUpdate.AddAsync(syncItem);
         }
 
         #endregion Methods
