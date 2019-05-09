@@ -13,6 +13,7 @@ namespace FPMyobAssistant
 
         internal const string CloudConn = @"DefaultEndpointsProtocol=https;AccountName=safptable;AccountKey=FZEFStOjnPKR4PqfGSbhPMP1lhtyfdiO7LHvRHL3hzUvl9y726hlYi1zR3wwrdGvqGcega4kzFED/dhrERI8cQ==;EndpointSuffix=core.windows.net";
         internal const string MasterDataFilename = "MasterData.xlsx";
+        internal static string[] IncomeAccounts = { "4", "8" };
 
         #endregion Constants
 
@@ -78,7 +79,7 @@ namespace FPMyobAssistant
         {
             if (incomeAsNegative == 0) return false;
             var tTemp = accountCode.RemoveLeadingZeros();
-            return tTemp.Left(1) == "4"; //P&L income range Income
+            return IncomeAccounts.Contains(tTemp.Left(1)); //P&L income range Income
         }
 
         #endregion Methods
