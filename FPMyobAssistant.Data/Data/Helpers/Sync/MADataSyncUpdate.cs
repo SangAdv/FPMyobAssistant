@@ -40,7 +40,7 @@ namespace FPMyobAssistant
         public async Task DoUpdateAsync()
         {
             var success = await mSyncUpdate.Update.DoUpdateAsync();
-            if (success) await mSyncUpdate.Update.SaveAsync();
+            //if (success) await mSyncUpdate.Update.SaveAsync();
         }
 
         public async Task<bool> CheckHasUpdateAsync() => await mSyncUpdate.Update.CheckUpdateAsync(true, true);
