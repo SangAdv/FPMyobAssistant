@@ -156,7 +156,7 @@ namespace FPMyobAssistant
             mItemId = 0;
         }
 
-        private async Task AddItemAccounts(List<string> accounts)
+        private async Task AddItemAccountsAsync(List<string> accounts)
         {
             var a = mStructure.HeadingItems[mHeadingId].GetItem(mItemId);
             a.RemoveAllAccountCodes();
@@ -279,13 +279,13 @@ namespace FPMyobAssistant
             if (f.ShowDialog(this) == DialogResult.Cancel) return;
         }
 
-        private void btnDefine_Click(object sender, System.EventArgs e)
+        private async void btnDefine_Click(object sender, System.EventArgs e)
         {
             var f = new frmChooseAccounts(mReportId, mItemId);
             var dialogResult = f.ShowDialog(this);
             if (dialogResult != DialogResult.OK) return;
 
-            AddItemAccounts(f.SelectedAccounts);
+            await AddItemAccountsAsync(f.SelectedAccounts);
         }
 
         #endregion Process UI

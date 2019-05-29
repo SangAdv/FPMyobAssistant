@@ -1,7 +1,9 @@
 ﻿using DevExpress.Spreadsheet;
 using SangAdv.Common;
+using SangAdv.Common.StringExtensions;
 using SangAdv.DevExpressUI;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace FPMyobAssistant
@@ -14,12 +16,11 @@ namespace FPMyobAssistant
 
         public override void DoImport(List<string> filenames)
         {
-            float tTotal = 0;
-            float tProcessing = 0;
-
             foreach (var item in filenames)
             {
-                tTotal = 0;
+                var filename = Path.GetFileNameWithoutExtension(item);
+                float tTotal = 0;
+                float tProcessing = 0;
 
                 RaiseMessageChangedEvent($"Importing: {item}");
                 var ei = new SAExcelImport(item, DocumentFormat.Csv, SACultureType.enAU);
@@ -34,7 +35,7 @@ namespace FPMyobAssistant
                     var tClaim = ei.GetValue<float>(i, 23);
                     var tclaimGST = ei.GetValue<float>(i, 25);
 
-                    if (!Importer.Add(tPDE, tProduct, tClaim, tclaimGST, true))
+                    if (!Importer.Add(filename, tPDE, tProduct, tClaim, tclaimGST, true))
                     {
                         RaiseMessageChangedEvent(Importer.ErrorMessage);
                         return;
@@ -45,11 +46,11 @@ namespace FPMyobAssistant
 
                 //Sigma processing fee: 1.95% or $50
                 var tProcessingClaim = tTotal * 0.0195;
-                if (tProcessingClaim > 50) tProcessing += (float)tProcessingClaim;
-                else tProcessing += (float)50;
+                if (tProcessingClaim < 50) tProcessing = (float)50;
+
+                Importer.Add(filename, "4-3550".AddLeadingZeros(10), tProcessing, (float)(tProcessing * .1), true);
             }
 
-            Importer.Add("4-3550", tProcessing, (float)(tProcessing * .1), true);
             Importer.Update();
         }
     }

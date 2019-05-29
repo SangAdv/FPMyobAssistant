@@ -125,6 +125,7 @@
     <Type Name="TLDRepto" ed:Guid="768851b9-43dc-4ffa-83c8-07d2a40e800f">
       <Column Name="DistributorId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="037c397f-0feb-44d4-b241-21fe21e916d5" />
       <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="b06188c5-2188-44c9-9c7e-e6689140e1df" />
+      <Column Name="Invoice" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ea74da83-84f9-488a-a5d9-6d97258f94ae" />
       <Column Name="AccountNumber" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f1708c28-4e82-4d9a-af06-15f270af23ea" />
       <Column Name="Claim" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="c5f60302-32ef-477f-8d0c-5128e9db9fb6" />
       <Column Name="ClaimGST" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="21dbef1d-fefc-484f-a5bc-24c5d59397e2" />

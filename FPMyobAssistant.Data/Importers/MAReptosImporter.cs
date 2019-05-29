@@ -15,7 +15,7 @@ namespace FPMyobAssistant
 
         private IWin32Window mOwner;
         private List<TLDDistributorProductAccountId> mAccounts;
-        private Dictionary<string, MAClainAmount> mItems = new Dictionary<string, MAClainAmount>();
+        private Dictionary<string, Dictionary<string, MAClainAmount>> mItems = new Dictionary<string, Dictionary<string, MAClainAmount>>();
         private int mDistributorId;
         private string mPeriod = string.Empty;
 
@@ -36,36 +36,36 @@ namespace FPMyobAssistant
 
         #region Methods
 
-        public bool Add(string productPde, string productDescription, float claimAmount, float claimsGSTAmount, bool changeSign = false)
+        public bool Add(string invoice, string productPde, string productDescription, float claimAmount, float claimsGSTAmount, bool changeSign = false)
         {
             var a = getAccountId(productPde, productDescription);
             if (string.IsNullOrEmpty(a)) return false;
 
-            if (!mItems.ContainsKey(a)) mItems[a] = new MAClainAmount();
-
-            if (!changeSign) mItems[a].Add(claimAmount, claimsGSTAmount);
-            else mItems[a].Subtract(claimAmount, claimsGSTAmount);
-
-            return true;
+            return Add(invoice, a, claimAmount, claimsGSTAmount, changeSign);
         }
 
-        public bool Add(string accountId, float claimAmount, float claimsGSTAmount, bool changeSign = false)
+        public bool Add(string invoice, string accountId, float claimAmount, float claimsGSTAmount, bool changeSign = false)
         {
+            if (string.IsNullOrEmpty(invoice)) return false;
             if (string.IsNullOrEmpty(accountId)) return false;
 
-            if (!mItems.ContainsKey(accountId)) mItems[accountId] = new MAClainAmount();
+            if (!mItems.ContainsKey(invoice)) mItems[invoice] = new Dictionary<string, MAClainAmount>();
 
-            if (!changeSign) mItems[accountId].Add(claimAmount, claimsGSTAmount);
-            else mItems[accountId].Subtract(claimAmount, claimsGSTAmount);
+            if (!mItems[invoice].ContainsKey(accountId)) mItems[invoice][accountId] = new MAClainAmount();
+
+            if (!changeSign) mItems[invoice][accountId].Add(claimAmount, claimsGSTAmount);
+            else mItems[invoice][accountId].Subtract(claimAmount, claimsGSTAmount);
 
             return true;
         }
 
-        public (float totalClaimAmount, float totalClaimGSTAmount) Total()
+        public (float totalClaimAmount, float totalClaimGSTAmount) Total(string invoice)
         {
+            if (!mItems.ContainsKey(invoice)) return (0, 0);
+
             float tTotalClaimAmount = 0;
             float tTotalClaimGSTAmount = 0;
-            foreach (var item in mItems)
+            foreach (var item in mItems[invoice])
             {
                 tTotalClaimAmount += item.Value.ClaimAmount;
                 tTotalClaimGSTAmount += item.Value.ClaimGSTAmount;
@@ -128,7 +128,13 @@ namespace FPMyobAssistant
         private List<TLDRepto> geTldReptosList()
         {
             var tlist = new List<TLDRepto>();
-            foreach (var item in mItems) tlist.Add(new TLDRepto { AccountNumber = item.Key, DistributorId = mDistributorId, Period = mPeriod, Claim = item.Value.ClaimAmount.Round(2), ClaimGST = item.Value.ClaimGSTAmount.Round(2) });
+            foreach (var inv in mItems)
+            {
+                foreach (var acc in mItems[inv.Key])
+                {
+                    tlist.Add(new TLDRepto { DistributorId = mDistributorId, Period = mPeriod, Invoice = inv.Key, AccountNumber = acc.Key, Claim = acc.Value.ClaimAmount.Round(2), ClaimGST = acc.Value.ClaimGSTAmount.Round(2) });
+                }
+            }
             return tlist;
         }
 

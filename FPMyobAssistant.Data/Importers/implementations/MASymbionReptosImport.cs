@@ -3,13 +3,14 @@ using SangAdv.Common;
 using SangAdv.DevExpressUI;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using SangAdv.Common.StringExtensions;
 
 namespace FPMyobAssistant
 {
     public class MASymbionReptosImport : AMADistributorReptosImport
     {
         private SAExcelImport mEI;
-        private MAClainAmount mClaimAmount = new MAClainAmount();
+        private Dictionary<string, MAClainAmount> mClaimAmount = new Dictionary<string, MAClainAmount>();
 
         public MASymbionReptosImport(IWin32Window owner, string period) : base(owner, (int)MADistributors.Symbion, period)
         {
@@ -27,10 +28,13 @@ namespace FPMyobAssistant
                 else importDetail();
             }
 
-            //Add the surcharge item
-            var total = Importer.Total();
+            foreach (var claim in mClaimAmount)
+            {
+                //Add the surcharge item
+                var total = Importer.Total(claim.Key);
 
-            Importer.Add("4-3555", mClaimAmount.ClaimAmount - total.totalClaimAmount, mClaimAmount.ClaimGSTAmount - total.totalClaimGSTAmount);
+                Importer.Add(claim.Key, "4-3555".AddLeadingZeros(10), claim.Value.ClaimAmount - total.totalClaimAmount, claim.Value.ClaimGSTAmount - total.totalClaimGSTAmount);
+            }
 
             Importer.Update();
         }
@@ -39,12 +43,16 @@ namespace FPMyobAssistant
         {
             for (var i = 1; i < 100000; i++)
             {
+                var tClaimNumber = mEI.GetText(i, 8);
+
                 if (string.IsNullOrEmpty(mEI.GetText(i, 0))) break;
 
                 var tClaim = mEI.GetValue<float>(i, 6);
                 var tclaimGST = mEI.GetValue<float>(i, 7);
 
-                mClaimAmount.Subtract(tClaim, tclaimGST);
+                if (!mClaimAmount.ContainsKey(tClaimNumber)) mClaimAmount[tClaimNumber] = new MAClainAmount();
+
+                mClaimAmount[tClaimNumber].Subtract(tClaim, tclaimGST);
             }
         }
 
@@ -54,13 +62,15 @@ namespace FPMyobAssistant
             {
                 if (string.IsNullOrEmpty(mEI.GetText(i, 0))) break;
 
+                var tClaimNumber = mEI.GetText(i, 25);
+
                 var tPDE = mEI.GetText(i, 11);
                 var tProduct = mEI.GetText(i, 12);
 
                 var tClaim = mEI.GetValue<float>(i, 26);
                 var tclaimGST = mEI.GetValue<float>(i, 27);
 
-                if (!Importer.Add(tPDE, tProduct, tClaim, tclaimGST, true))
+                if (!Importer.Add(tClaimNumber, tPDE, tProduct, tClaim, tclaimGST, true))
                 {
                     RaiseMessageChangedEvent(Importer.ErrorMessage);
                     return;

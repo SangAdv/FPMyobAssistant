@@ -179,11 +179,11 @@ namespace FPMyobAssistant.Controls.Reptos
         {
             var re = new FPReptosToMyobTXTAddHocSales(dtImport.DateTime);
 
-            var red = MADataAccess.LocalData.TLDReptosList(dtImport.DateTime.ToMonthPeriod()).OrderBy(x => x.DistributorId).ThenBy(x => x.AccountNumber);
+            var red = MADataAccess.LocalData.TLDReptosList(dtImport.DateTime.ToMonthPeriod()).OrderBy(x => x.DistributorId).ThenBy(x => x.AccountNumber).ThenBy(x => x.AccountNumber);
 
             foreach (var item in red)
             {
-                re.Add(new FPMyobAddHocSalesItem { AccountNumber = item.AccountNumber, CardId = getDistributorCardId(item.DistributorId), Amount = ((float)item.Claim).Round(2), AmountIncTax = ((float)(item.Claim + item.ClaimGST)).Round(2) });
+                re.Add(new FPMyobAddHocSalesItem { Invoice = item.Invoice, AccountNumber = item.AccountNumber, CardId = getDistributorCardId(item.DistributorId), Amount = ((float)item.Claim).Round(2), AmountIncTax = ((float)(item.Claim + item.ClaimGST)).Round(2) });
             }
 
             re.Create();

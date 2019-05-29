@@ -2,6 +2,7 @@
 using SangAdv.Common;
 using SangAdv.DevExpressUI;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace FPMyobAssistant
@@ -18,17 +19,19 @@ namespace FPMyobAssistant
         {
             foreach (var item in filenames)
             {
+                var filename = Path.GetFileNameWithoutExtension(item);
+                
                 RaiseMessageChangedEvent($"Importing: {item}");
                 mEI = new SAExcelImport(item, DocumentFormat.Csv, SACultureType.enAU);
 
-                if (string.IsNullOrEmpty(mEI.GetText(1, 36))) importCorporateClaims();
-                else importSalesClaims();
+                if (string.IsNullOrEmpty(mEI.GetText(1, 36))) importCorporateClaims(filename);
+                else importSalesClaims(filename);
             }
 
             Importer.Update();
         }
 
-        private void importCorporateClaims()
+        private void importCorporateClaims(string filenameAsInvoice)
         {
             for (var i = 2; i < 100000; i++)
             {
@@ -40,7 +43,7 @@ namespace FPMyobAssistant
                 var tClaim = mEI.GetValue<float>(i, 11);
                 var tclaimGST = (float)(tClaim * 0.1);
 
-                if (!Importer.Add(tPDE, tProduct, tClaim, tclaimGST, true))
+                if (!Importer.Add(filenameAsInvoice,tPDE, tProduct, tClaim, tclaimGST, true))
                 {
                     RaiseMessageChangedEvent(Importer.ErrorMessage);
                     return;
@@ -48,7 +51,7 @@ namespace FPMyobAssistant
             }
         }
 
-        private void importSalesClaims()
+        private void importSalesClaims(string filenameAsInvoice)
         {
             for (var i = 2; i < 100000; i++)
             {
@@ -60,7 +63,7 @@ namespace FPMyobAssistant
                 var tClaim = mEI.GetValue<float>(i, 31);
                 var tclaimGST = mEI.GetValue<float>(i, 32);
 
-                if (!Importer.Add(tPDE, tProduct, tClaim, tclaimGST, true))
+                if (!Importer.Add(filenameAsInvoice,tPDE, tProduct, tClaim, tclaimGST, true))
                 {
                     RaiseMessageChangedEvent(Importer.ErrorMessage);
                     return;

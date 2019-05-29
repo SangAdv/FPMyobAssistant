@@ -1,6 +1,6 @@
-﻿using System;
+﻿using SangAdv.Common.StringExtensions;
+using System;
 using System.Linq;
-using SangAdv.Common.StringExtensions;
 
 namespace FPMyobAssistant
 {
@@ -27,25 +27,29 @@ namespace FPMyobAssistant
         {
             HasError = false;
             FileItems.Clear();
+            var tInvoice = string.Empty;
 
             //Add the heading
             AddHeading();
 
-            //Get a list of invoicenumbers
-            var inl = DataItems.Select(x => x.CardId).Distinct();
-            var counter = 0;
+            //Get a list of distributors
+            var dist = DataItems.Select(x => x.CardId).Distinct();
 
             //Add the items to the file list
-            foreach (var cardId in inl)
+            foreach (var cardId in dist)
             {
-                //Get all the line items
-                var invli = DataItems.Where(x => x.CardId == cardId);
+                var invoices = DataItems.Where(x => x.CardId == cardId).Select(x => x.Invoice).Distinct();
 
-                //Add them as a new items
-                foreach (var item in invli) Additem(item.CardId, "", item.AccountNumber.RemoveLeadingZeros(), item.Amount, item.AmountIncTax);
-                if (counter < inl.Count() - 1) AddEntryLine();
+                foreach (var inv in invoices)
+                {
+                    //Get all the accounts
+                    var accounts = DataItems.Where(x => x.CardId == cardId && x.Invoice == inv);
 
-                counter++;
+                    //Add them as a new items
+                    foreach (var item in accounts) Additem(item.CardId, item.Invoice, item.AccountNumber.RemoveLeadingZeros(), item.Amount, item.AmountIncTax);
+                    AddEntryLine();
+                }
+
             }
         }
 
