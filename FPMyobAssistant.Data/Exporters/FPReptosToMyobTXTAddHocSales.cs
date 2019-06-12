@@ -59,11 +59,12 @@ namespace FPMyobAssistant
 
         private void AddHeading()
         {
-            FileItems.Add("Date,Card ID,Invoice #,Account Number,Amount,Inc-Tax Amount,Tax Code");
+            FileItems.Add("Date,Card ID,Invoice #,Account #,Amount,Inc-Tax Amount,Tax Code");
         }
 
         private void Additem(string cardID, string invoiceNumber, string accountNumber, float amount, float amountIncTax)
         {
+            if (invoiceNumber.Length > 6) invoiceNumber = invoiceNumber.Right(6);
             FileItems.Add($"{mInvoiceDate:yyyy/MM/dd},{cardID},{invoiceNumber},{accountNumber},${amount:0.0000},${amountIncTax:0.0000},GST");
         }
 

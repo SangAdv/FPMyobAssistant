@@ -204,7 +204,7 @@
             this.btnCreateMyobReptosFile.Name = "btnCreateMyobReptosFile";
             this.btnCreateMyobReptosFile.Size = new System.Drawing.Size(75, 23);
             this.btnCreateMyobReptosFile.TabIndex = 135;
-            this.btnCreateMyobReptosFile.Text = "Import";
+            this.btnCreateMyobReptosFile.Text = "Create File";
             this.btnCreateMyobReptosFile.Click += new System.EventHandler(this.BtnCreateMyobReptosFile_Click);
             // 
             // ucReptosImport

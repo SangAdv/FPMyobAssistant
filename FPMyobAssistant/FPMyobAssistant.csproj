@@ -397,7 +397,7 @@
       <Version>4.0.0.1</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.SQLite">
-      <Version>2.5.0</Version>
+      <Version>2.5.1</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.Updater">
       <Version>1.0.10</Version>

@@ -20,7 +20,6 @@ namespace FPMyobAssistant
             {
                 var filename = Path.GetFileNameWithoutExtension(item);
                 float tTotal = 0;
-                float tProcessing = 0;
 
                 RaiseMessageChangedEvent($"Importing: {item}");
                 var ei = new SAExcelImport(item, DocumentFormat.Csv, SACultureType.enAU);
@@ -45,8 +44,8 @@ namespace FPMyobAssistant
                 }
 
                 //Sigma processing fee: 1.95% or $50
-                var tProcessingClaim = tTotal * 0.0195;
-                if (tProcessingClaim < 50) tProcessing = (float)50;
+                var tProcessing = (float) (tTotal * 0.0195);
+                if (tProcessing < 50) tProcessing = (float)50;
 
                 Importer.Add(filename, "4-3550".AddLeadingZeros(10), tProcessing, (float)(tProcessing * .1), true);
             }
