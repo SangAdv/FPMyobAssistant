@@ -257,7 +257,7 @@ namespace FPMyobAssistant
 
             if (MAGlobal.Update.DoInstallerUpdate)
             {
-                var tSuccess = await MAGlobal.Update.UpdateInstaller();
+                var tSuccess = await MAGlobal.Update.UpdateInstallerAsync();
                 if (!tSuccess) return false;
             }
 

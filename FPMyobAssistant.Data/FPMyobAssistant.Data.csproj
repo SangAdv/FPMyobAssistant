@@ -146,7 +146,7 @@
       <Version>2.5.4</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.DevEx.19.1">
-      <Version>2.5.1</Version>
+      <Version>2.5.2</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.Mapper">
       <Version>4.0.0.1</Version>
@@ -155,7 +155,7 @@
       <Version>2.5.1</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.Updater">
-      <Version>1.0.10</Version>
+      <Version>1.0.13</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />
