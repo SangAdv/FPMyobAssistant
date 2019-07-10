@@ -337,7 +337,18 @@ namespace FPMyobAssistant
 
             try
             {
-                mPeriod = DateTime.Parse(ei.GetText(1, 29)).ToMonthPeriod();
+                for (int i = 1; i < 10000; i++)
+                {
+                    try
+                    {
+                        mPeriod = DateTime.Parse(ei.GetText(i, 29)).ToMonthPeriod();
+                        break;
+                    }
+                    catch
+                    {
+                        if (string.IsNullOrEmpty(ei.GetText(i, 0))) throw new Exception();
+                    }
+                }
             }
             catch (Exception ex)
             {
