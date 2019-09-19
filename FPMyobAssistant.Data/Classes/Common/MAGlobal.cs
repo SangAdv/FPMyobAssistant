@@ -39,14 +39,15 @@ namespace FPMyobAssistant
         {
             get
             {
-                //==============================================================================
-                //var path = Path.Combine(Application.StartupPath, @"Data\");
-                //if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-
-                //return Path.Combine(path, "FPMyob.sdb");
-                //==============================================================================
+#if DEBUG
                 return Path.Combine(@"C:\Github\FPMyobAssistant\Data\", "FPMyob.sdb");
-                //==============================================================================
+
+#else
+                var dbPath = Path.Combine(Application.StartupPath, "FPMyob.sdb");
+                Logging.LogEvent(SALogLevel.Info, $"DbPath: {dbPath }","Data","MAGlobal","LocalDbPath");
+
+                return dbPath;
+#endif
             }
         }
 

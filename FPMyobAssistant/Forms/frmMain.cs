@@ -129,11 +129,11 @@ namespace FPMyobAssistant
 
 #if !DEBUG
 
-            if (MAGlobal.IsConnected && !await CheckUpdateAsync(ucm))
-            {
-                HideWaitPanel();
-                return;
-            }
+            //if (MAGlobal.IsConnected && !await CheckUpdateAsync(ucm))
+            //{
+            //    HideWaitPanel();
+            //    return;
+            //}
 
 #endif
 
