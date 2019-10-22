@@ -121,11 +121,6 @@ namespace FPMyobAssistant
             ShowWaitPanel();
 
             MAGlobal.IsConnected = SAConnection.CheckGoogleConnection();
-            //if (!MAGlobal.IsConnected)
-            //{
-            //    ucm.DisplayMessage("Please connect to the internet");
-            //    return;
-            //}
 
 #if !DEBUG
 
