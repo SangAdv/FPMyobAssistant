@@ -37,8 +37,8 @@
     <AssemblyOriginatorKeyFile>SangAdv.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Devart.Data.Linq, Version=4.9.1807.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
-    <Reference Include="Devart.Data.SQLite.Linq, Version=4.9.1807.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
+    <Reference Include="Devart.Data.Linq, Version=4.9.1836.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
+    <Reference Include="Devart.Data.SQLite.Linq, Version=4.9.1836.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -152,7 +152,7 @@
       <Version>4.1.1.1</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.SQLite">
-      <Version>2.7.0</Version>
+      <Version>2.7.0.1</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.Updater">
       <Version>1.0.14</Version>

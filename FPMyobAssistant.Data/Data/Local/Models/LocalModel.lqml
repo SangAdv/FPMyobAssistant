@@ -1,141 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Database Name="main" EntityNamespace="LocalModelContext" ContextNamespace="LocalModelContext" Class="LocalModelDataContext" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" ed:Guid="dc2b07c8-41e4-412c-82e3-aaef15581564" Provider="Devart.Data.SQLite.Linq.Provider.SQLiteDataProvider, Devart.Data.SQLite.Linq" Extended="true" xmlns="http://schemas.devart.com/linqconnect/mapping">
+<Database Name="main" EntityNamespace="LocalModelContext" ContextNamespace="LocalModelContext" Class="LocalModelDataContext" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" ed:Guid="61f9de63-ffbc-4470-a15b-eb37a0b95b4c" Provider="Devart.Data.SQLite.Linq.Provider.SQLiteDataProvider, Devart.Data.SQLite.Linq" Extended="true" xmlns="http://schemas.devart.com/linqconnect/mapping">
   <Connection Mode="ConnectionString" ConnectionString="Data Source=C:\Github\FPMyobAssistant\Data\FPMyob.sdb" Provider="Devart.Data.SQLite" />
   <Table Name="&quot;main&quot;.TLDDHLCustomerNumber" Member="TLDDHLCustomerNumbers">
-    <Type Name="TLDDHLCustomerNumber" ed:Guid="515d9a4d-64eb-4981-9005-033f0a4f3cb6">
-      <Column Name="Id" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="c59bbade-539e-4542-a44e-b8254177828a" />
-      <Column Name="CustomerName" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="f46c0286-3e6b-48c6-9cb5-26d44d12fa1b" />
-      <Column Name="MYOBCardId" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="4fb08c52-43f9-4739-9252-3eb676d702c6" />
+    <Type Name="TLDDHLCustomerNumber" ed:Guid="b77b971a-fb26-4490-bed0-98fffe2eac35">
+      <Column Name="Id" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="74528aeb-bd74-4332-b40b-1b00e134a523" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="23ce2047-e931-41bb-a6fe-9c5a700fae6f" />
+      <Column Name="MYOBCardId" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="d538f37c-1913-4935-9aed-e053d5ae7846" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLMPLAccounts" Member="TLMPLAccounts">
-    <Type Name="TLMPLAccount" ed:Guid="7f47e71a-6cc5-4ca5-91c5-8106dfffde65">
-      <Column Name="AccountId" Type="System.String" DbType="CHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" ed:ValidateRequired="true" ed:Guid="3563d2c8-cba9-41f5-b0d3-dfd819c9fc5b" />
-      <Column Name="AccountDescription" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="34f5ce19-8da2-4203-877c-dee907b642f0" />
-      <Column Name="ParentAccountId" Type="System.String" DbType="CHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" ed:ValidateRequired="true" ed:Guid="7c7f590f-3af7-46d5-a2a9-d39fa48f69e7" />
+    <Type Name="TLMPLAccount" ed:Guid="9f96c522-f47f-4218-aaa8-ca03b45f412c">
+      <Column Name="AccountId" Type="System.String" DbType="CHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" ed:ValidateRequired="true" ed:Guid="ee3bd1e7-339e-49c1-b017-2044f76e8687" />
+      <Column Name="AccountDescription" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="5845beb1-1a27-419f-b998-b7f9e505c8ea" />
+      <Column Name="ParentAccountId" Type="System.String" DbType="CHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" ed:ValidateRequired="true" ed:Guid="1ecc54ab-6d9f-44eb-aa2e-3f2dd61294d1" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLMReports" Member="TLMReports">
-    <Type Name="TLMReport" ed:Guid="c2ad1734-b770-41cc-8bd9-5642b31ee8d3">
-      <Column Name="ReportId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="bf8b88e7-1100-4792-8b57-5862af999738" />
-      <Column Name="ReportType" Type="System.Int64" DbType="INTEGER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="6c3a56ef-99ab-4d8b-aa0f-394ec5bc9d17" />
-      <Column Name="ReportDescription" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="4543ce90-830a-472e-9b7e-f1d7b6da779f" />
-      <Column Name="StatusId" Type="System.Int64" DbType="INTEGER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="b2f0b581-7337-4ae3-ad0b-bf04840d3b97" />
+    <Type Name="TLMReport" ed:Guid="a2f4c6c6-6251-44d1-8643-4caa9a7caf05">
+      <Column Name="ReportId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="842d77eb-b5e1-43f9-8532-e7491234a88c" />
+      <Column Name="ReportType" Type="System.Int64" DbType="INTEGER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="caaa28f1-21b2-4def-851d-ccf5a11a6441" />
+      <Column Name="ReportDescription" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="340044b7-8cb8-45e3-93ec-c2e1a2f5354e" />
+      <Column Name="StatusId" Type="System.Int64" DbType="INTEGER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="e3d575c3-f98d-4b7a-89ec-33ba54721bee" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLMReportHeadings" Member="TLMReportHeadings">
-    <Type Name="TLMReportHeading" ed:Guid="26a4388c-2b46-408b-abfd-60a2054ef53e">
-      <Column Name="ReportId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="9927fcb7-7db6-4694-b7a8-e28aac227276" />
-      <Column Name="HeadingId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="d6180f47-003b-4693-9373-6ae3021c526b" />
-      <Column Name="ReportHeading" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="50a1c417-c868-4abc-88d3-6435ab5b788b" />
-      <Column Name="IsCalculation" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="a6d028b8-05f8-485e-9c5c-95e3289b6d27" />
-      <Column Name="HasChildren" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="4cc190ff-b22f-439e-8660-913693527a08" />
-      <Column Name="IncomeAsNegative" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="a66892cb-46ca-4104-89ea-732da826f9d3" />
+    <Type Name="TLMReportHeading" ed:Guid="0a0ee158-b983-4243-8a96-ae78cb8d89e1">
+      <Column Name="ReportId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="374183d0-7791-4a6d-9aad-07a3ead8287f" />
+      <Column Name="HeadingId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="8e461d3f-018d-41da-afea-a8c38b04422b" />
+      <Column Name="ReportHeading" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="e3f2c3ac-91d5-4e62-b3d8-51ef27ef9af5" />
+      <Column Name="IsCalculation" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="1ae15630-b472-47de-b3b1-fd9642db4341" />
+      <Column Name="HasChildren" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="e665d686-261d-47ab-8cc2-fbb3ef80445a" />
+      <Column Name="IncomeAsNegative" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="1e819b23-2074-4c5b-8d12-ace4ca3bd27f" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLDPLBudget" Member="TLDPLBudgets">
-    <Type Name="TLDPLBudget" ed:Guid="58688703-84c8-4c6e-bafc-ff15c712d7b3">
-      <Column Name="MAId" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="20" ed:ValidateMaxLength="20" ed:ValidateRequired="true" ed:Guid="cc41b4c4-3f00-4bfb-9c20-e1eb4f0b82ab" />
-      <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="fba0be7e-41e6-4fd9-8f92-df98adc8a0a2" />
-      <Column Name="Budget" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="14b2b3c6-b120-481f-8f1f-942eef8dc251" />
+    <Type Name="TLDPLBudget" ed:Guid="5a8f1e3a-63f0-4086-9158-7ae5626ef79a">
+      <Column Name="MAId" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="20" ed:ValidateMaxLength="20" ed:ValidateRequired="true" ed:Guid="7f493da9-91f7-4214-8898-c6b45a94391b" />
+      <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="894ee58b-8d5a-4fbd-98a9-02bea62c9c26" />
+      <Column Name="Budget" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="edc5da55-a415-4381-b59c-22af72f9a403" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLDPL" Member="TLDPLs">
-    <Type Name="TLDPL" ed:Guid="aaa1d9e4-228f-43df-9dd2-3946b816dc28">
-      <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="164b012f-3e78-49ab-b1f9-eacab786f373" />
-      <Column Name="AccountId" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="10" ed:ValidateMaxLength="10" ed:ValidateRequired="true" ed:Guid="ae4c61a2-0727-4a30-81f5-d72edb20d924" />
-      <Column Name="Actual" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="e389f005-d109-4185-b5a8-88a75a737f52" />
+    <Type Name="TLDPL" ed:Guid="15647675-7a37-43d9-8fd3-59e39039b426">
+      <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="a4f30271-ec39-4167-996b-96c064898667" />
+      <Column Name="AccountId" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="10" ed:ValidateMaxLength="10" ed:ValidateRequired="true" ed:Guid="7b1eb6d3-5ddf-4c83-b6f7-d83e5800059a" />
+      <Column Name="Actual" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="3e9cf313-307b-416a-b157-0d3d8291b9ae" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLDBS" Member="TLDBs">
-    <Type Name="TLDB" ed:Guid="55d01f8b-3a2b-4caf-8d7f-ef2ae36eceb4">
-      <Column Name="AccountId" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="10" ed:ValidateMaxLength="10" ed:ValidateRequired="true" ed:Guid="4a992cd5-2545-4948-b06b-2aa33c3cb8e2" />
-      <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="5a79a9ff-f425-4ce0-b84f-1bbf4a0bdf10" />
-      <Column Name="Actual" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="132da3d5-3226-4bc3-869e-89f7e010eb25" />
+    <Type Name="TLDB" ed:Guid="e557d040-6585-4ab1-840d-f145a4a64e40">
+      <Column Name="AccountId" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="10" ed:ValidateMaxLength="10" ed:ValidateRequired="true" ed:Guid="40617f8b-afbc-4a70-b5c0-410764d0237f" />
+      <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="46d7b78d-737d-473b-981b-dc7aaf6be774" />
+      <Column Name="Actual" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="d3fdf5cc-47f4-4ac4-a70d-c27e6a5acfae" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLMBSAccounts" Member="TLMBSAccounts">
-    <Type Name="TLMBSAccount" ed:Guid="b7c7f65e-b43c-4c42-9164-9e5675ad9113">
-      <Column Name="AccountId" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="10" ed:ValidateMaxLength="10" ed:ValidateRequired="true" ed:Guid="6cd698f1-4ac2-4943-9a05-3cf1271ce68d" />
-      <Column Name="AccountDescription" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="255" ed:ValidateMaxLength="255" ed:ValidateRequired="true" ed:Guid="a08ca8dd-872b-4e87-b876-9462e7714ab3" />
-      <Column Name="ParentAccountId" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="10" ed:ValidateMaxLength="10" ed:ValidateRequired="true" ed:Guid="73c5df93-fed5-4ce3-9b5b-45095d0c28e0" />
+    <Type Name="TLMBSAccount" ed:Guid="116968de-b6ec-4755-8eee-e9ab53e014ff">
+      <Column Name="AccountId" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="10" ed:ValidateMaxLength="10" ed:ValidateRequired="true" ed:Guid="0347d1e9-a708-45d5-bf3b-705c448a3bcc" />
+      <Column Name="AccountDescription" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="255" ed:ValidateMaxLength="255" ed:ValidateRequired="true" ed:Guid="e9be9a52-d303-42cc-9cb2-af4b349526dd" />
+      <Column Name="ParentAccountId" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="10" ed:ValidateMaxLength="10" ed:ValidateRequired="true" ed:Guid="4eb216e5-35d2-447d-9b57-ddc729ccaff2" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLDKKCustomerNumber" Member="TLDKKCustomerNumbers">
-    <Type Name="TLDKKCustomerNumber" ed:Guid="50074810-6c5c-4c21-a161-084689ab3db9">
-      <Column Name="Id" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="1fae005f-2d69-456a-b9fc-89fda2b4f9fb" />
-      <Column Name="CustomerName" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d29eaeac-9ca6-4467-9524-da34e167b289" />
-      <Column Name="MYOBCardId" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6921dc91-f176-4e90-be37-ca8afec6bd0b" />
+    <Type Name="TLDKKCustomerNumber" ed:Guid="cfaf01fe-0428-4946-926d-d3481f75b3f3">
+      <Column Name="Id" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="dce797a3-685c-482c-9d56-0044d0c5635c" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ade5e3ef-07f3-4c38-95b3-29d233584ee5" />
+      <Column Name="MYOBCardId" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a16d8af7-c5cf-4595-8b01-cdbbe595ac12" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLDDHLInvoiceExclusions" Member="TLDDHLInvoiceExclusions">
-    <Type Name="TLDDHLInvoiceExclusion" ed:Guid="bdf79b84-c724-4c4b-8473-3424f6f5a941">
-      <Column Name="Period" Type="System.String" DbType="TEXT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="3bb9777a-4c42-4159-9e2c-568de5c874aa" />
-      <Column Name="Exclusions" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="d15efa8e-9b8c-40be-93d9-399784f374ef" />
+    <Type Name="TLDDHLInvoiceExclusion" ed:Guid="482369e7-e7f6-4ac1-b8a1-d9a6958d34fa">
+      <Column Name="Period" Type="System.String" DbType="TEXT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="f1f0c79a-2dd2-493d-9782-a8c9d9bf712a" />
+      <Column Name="Exclusions" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="15daf10d-837b-4752-9c19-b8e20be7caa5" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLSSettings" Member="TLSSettings">
-    <Type Name="TLSSetting" ed:Guid="5e6d1f23-854a-4329-b0c9-0139e9a0f995">
-      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="04bdb032-4f44-46c2-aaf5-038ccb0d80aa" />
-      <Column Name="ImportExclusionAccounts" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="9e16c844-b098-445c-8d31-5f9572fab6d1" />
+    <Type Name="TLSSetting" ed:Guid="c0696a2b-bffe-4dc3-bde9-f2fa70237781">
+      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="eb6351d6-8a4d-4260-b43e-dc79b96a5236" />
+      <Column Name="ImportExclusionAccounts" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="4a3a9373-3dc3-4f84-b7d9-aca06e6c61d3" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLSSyncLog" Member="TLSSyncLogs">
-    <Type Name="TLSSyncLog" ed:Guid="c82d7a81-9d4c-4f38-8ea4-22bee2e62c50">
-      <Column Name="UpdateId" Type="System.String" DbType="TEXT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="aef96a10-a5b8-4de9-9533-1c7e9d3b47b7" />
-      <Column Name="Variant" Type="System.String" DbType="TEXT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="775f55fd-62c3-47c4-a61a-10609c3cc8a2" />
+    <Type Name="TLSSyncLog" ed:Guid="59179005-a51d-4c0a-9c6b-a148a61b3126">
+      <Column Name="UpdateId" Type="System.String" DbType="TEXT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="178db786-7256-4deb-8d60-15e0e9655106" />
+      <Column Name="Variant" Type="System.String" DbType="TEXT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="e5b9983e-78ca-4e2c-a924-c1ac85e555fb" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLSUpdateLog" Member="TLSUpdateLogs">
-    <Type Name="TLSUpdateLog" ed:Guid="d4e4552c-69e7-4947-be8a-4e465b064c5c">
-      <Column Name="UpdateId" Type="System.String" DbType="TEXT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="647e03eb-bbcc-477b-93a0-e0fe9e2fd6d4" />
-      <Column Name="Variant" Type="System.String" DbType="TEXT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="04b0bf5b-17a4-474b-9d0c-8db50e0b6bb3" />
-      <Column Name="UTCDateTimePresent" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="2ba196db-f7af-485e-9715-d41c5b85d878" />
-      <Column Name="Payload" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="d6fdbd1b-1759-4a71-88de-f6c669512193" />
+    <Type Name="TLSUpdateLog" ed:Guid="935db7f1-6250-4c53-ad4f-0c7df24aa706">
+      <Column Name="UpdateId" Type="System.String" DbType="TEXT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="5baad84f-251f-4666-848a-7c7d7ac90ab2" />
+      <Column Name="Variant" Type="System.String" DbType="TEXT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="758343f3-8c9e-4947-a21e-baef1c53ac14" />
+      <Column Name="UTCDateTimePresent" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="5c658c05-7d28-40b8-b858-ccaa8ced5669" />
+      <Column Name="Payload" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="4fe8ccd9-ce2d-435e-807f-6a0363691ba1" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLDBSBudget" Member="TLDBSBudgets">
-    <Type Name="TLDBSBudget" ed:Guid="96d30a7a-7de2-4d61-a46c-f70d5571b483">
-      <Column Name="MAId" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="20" ed:ValidateMaxLength="20" ed:ValidateRequired="true" ed:Guid="0af5c65f-49e4-437b-9809-456130bf5283" />
-      <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="3df5bb9b-5301-4b0f-b015-eadde4117a3f" />
-      <Column Name="Budget" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="0f321d6b-c567-4065-a156-a59c1b08a9f8" />
+    <Type Name="TLDBSBudget" ed:Guid="0a64d376-336a-422c-9d64-92eeeaee0b64">
+      <Column Name="MAId" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="20" ed:ValidateMaxLength="20" ed:ValidateRequired="true" ed:Guid="87615ded-5d30-4ef7-b93e-5e5dd6459d81" />
+      <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="9b4171cc-5a99-4eb3-b988-4731a8f39c9f" />
+      <Column Name="Budget" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="b250fa99-0f23-4b3f-9182-25267590b4db" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLMReportStructure" Member="TLMReportStructures">
-    <Type Name="TLMReportStructure" ed:Guid="2de653a5-67f3-4bcf-9faf-46557703b954">
-      <Column Name="ReportId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="85b41b83-b09f-40d5-8114-7677f2bab2d8" />
-      <Column Name="HeadingId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="5b68f3c4-244f-4d14-a65c-9c185137f844" />
-      <Column Name="ItemId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="06b48090-2f46-4b45-a4f7-e13c2dfd4e60" />
-      <Column Name="ReportDescription" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="72ee905d-22ab-4162-9a74-61f7fdc48c55" />
-      <Column Name="AccountItems" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="16d02661-e996-4efe-853f-2f78cfb13656" />
-      <Column Name="SequenceIndex" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="daf39874-f162-4a79-8e64-baefce6dd828" />
-      <Column Name="GroupItems" Type="System.String" DbType="TEXT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="140dff8f-9adb-40b0-9744-6ab93a7a5c13" />
-      <Column Name="IsGrouping" Type="System.Int64" DbType="INTEGER" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="4345b674-fd17-4fb1-a88e-131e6798b65f" />
+    <Type Name="TLMReportStructure" ed:Guid="8a2b847f-525b-4350-898c-00c5cb84185b">
+      <Column Name="ReportId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="81729c21-e4bc-436f-9026-a0f435b9b0f0" />
+      <Column Name="HeadingId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="09d47bf9-69b4-43c5-9c62-696f48c64111" />
+      <Column Name="ItemId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="fbc8a326-135a-4a7c-a8f5-5b7ce230824d" />
+      <Column Name="ReportDescription" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="990db7b1-abe9-45f4-915a-e80c1733f65e" />
+      <Column Name="AccountItems" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="579fbcbc-4364-4141-97f2-6defe2579213" />
+      <Column Name="SequenceIndex" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="d92cf1d1-7dac-4015-b0d0-fc2fefc75ca8" />
+      <Column Name="GroupItems" Type="System.String" DbType="TEXT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="71070e57-adc8-4a1d-bd11-2762dbf9e32c" />
+      <Column Name="IsGrouping" Type="System.Int64" DbType="INTEGER" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="998b900c-f7d6-4a36-bc05-b7e08b5093d5" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLDDistributorProductAccountId" Member="TLDDistributorProductAccountIds">
-    <Type Name="TLDDistributorProductAccountId" ed:Guid="66c40513-c53a-42b9-a21f-a6aa95afc41d">
-      <Column Name="DistributorId" Type="System.Int64" DbType="INTEGER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="b30fc292-f69b-4e64-9d0b-6757dd10d313" />
-      <Column Name="ProductPDE" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="20" ed:ValidateMaxLength="20" ed:ValidateRequired="true" ed:Guid="e853d739-a351-462b-ac9c-bdce2b495222" />
-      <Column Name="AccountId" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="aff12feb-8c9d-414f-92c8-c5381caaf445" />
-      <Column Name="Product" Type="System.String" DbType="TEXT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="ae74746b-b43a-4b89-be25-7cc7e7b11636" />
+    <Type Name="TLDDistributorProductAccountId" ed:Guid="7ba44fab-9497-474b-9367-9ab001bcd342">
+      <Column Name="DistributorId" Type="System.Int64" DbType="INTEGER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="3306ea46-28d7-44e8-8017-96d68a3029a3" />
+      <Column Name="ProductPDE" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="20" ed:ValidateMaxLength="20" ed:ValidateRequired="true" ed:Guid="2e12affc-8967-497a-b62d-1505a49911ae" />
+      <Column Name="AccountId" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="52674a7d-9013-4923-a603-2cdedee09bf5" />
+      <Column Name="Product" Type="System.String" DbType="TEXT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="24c2c313-9344-4318-8117-08ac28f646dc" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLMDistributor" Member="TLMDistributors">
-    <Type Name="TLMDistributor" ed:Guid="c00198fc-90c4-462a-b011-a7420f3dc893">
-      <Column Name="DistributorId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="3fd0e37f-28d1-4d85-84b1-604a9c960757" />
-      <Column Name="Distributor" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="65a3534d-f30f-447e-b142-1434b166ea8a" />
-      <Column Name="CardId" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="14d23715-ea9f-482f-9b93-6a7ddbd61e8a" />
+    <Type Name="TLMDistributor" ed:Guid="3b03f6ef-d119-4b36-b3df-895cab5719e7">
+      <Column Name="DistributorId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="499abe34-3f15-4bd0-94fc-9ba1319d18b5" />
+      <Column Name="Distributor" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4cd04a01-f6d3-4e9f-8b76-657b303dd92c" />
+      <Column Name="CardId" Type="System.String" DbType="NVARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="755212ee-a75a-4075-92c1-41f730439522" />
     </Type>
   </Table>
   <Table Name="&quot;main&quot;.TLDReptos" Member="TLDReptos">
-    <Type Name="TLDRepto" ed:Guid="8aa223f5-696a-43eb-8daf-c392863ff20b">
-      <Column Name="DistributorId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="3e903c4b-3d4c-4de3-9b78-3c2df811e3cb" />
-      <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="5bc9d43b-08f0-4c96-b3ca-3d0ba8334ee9" />
-      <Column Name="Invoice" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6cf31ac4-a674-4ced-b6fa-118ba3ed9f00" />
-      <Column Name="AccountNumber" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="74b4f0d8-daf1-4c54-9528-99e363f58419" />
-      <Column Name="Claim" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="e82f893d-f329-41bc-924c-2a351d2a45b7" />
-      <Column Name="ClaimGST" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="30fae1e3-76c1-449b-8e2f-2aed079b7ec4" />
+    <Type Name="TLDRepto" ed:Guid="578edea6-9698-4a8b-a482-0f79e8d01995">
+      <Column Name="DistributorId" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="254f4ce8-73ba-465d-bab4-4934735b73c1" />
+      <Column Name="Period" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="7" ed:ValidateMaxLength="7" ed:ValidateRequired="true" ed:Guid="dc0bf957-7a3d-4299-8d07-141169ecc210" />
+      <Column Name="Invoice" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="af7bdce0-788b-43bb-ba08-61d9c6aca411" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVARCHAR NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="9c61a0e0-026c-46f0-babd-117bdb8e1335" />
+      <Column Name="Claim" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="c109adae-8e3f-4ab3-88ad-40f0d5cb99b2" />
+      <Column Name="ClaimGST" Type="System.Double" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="b5b97c37-5ad1-40b0-bf53-7bb18dbbba5b" />
     </Type>
   </Table>
 </Database>
