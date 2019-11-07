@@ -34,17 +34,22 @@ namespace FPMyobAssistant
         {
             ErrorMessage = string.Empty;
 
-            mDevartConnectionString = SQLiteGlobal.DatabaseConnectionString(MAGlobal.LocalDbPath);
-
             try
             {
+                var lc = @"ZMTNEYVabDKz78bXHIiYqiSR2B24ePxzqV6keQiVuHcNg6YpXXJi0FAw3maYDc6Y0oiTS2A1FK5+v8k2LLmWc+3YSSGae/k0RCTa84uRDMHwObjls7iuxxN3tmdb68ee6FkWRvm9iAPG0JIskE6WPxkXv6+zufRgMeDyeMeA6aHtsbtikFtSy6+D73zGsfbT6mtz0khsEDqMKMLmDYfkOwAu0pzFt4u6GdD8J5CT3QsFjh418UakP0fVJ1JaCyRm4SFlVY+WhJCgIrBpINzzPBfDbrf/sz8zmrzzkh/bwVg=";
+                var lc2 = @"6zAwWLePebiv4ohONMGTR/A3p5FzcWzLNdrePw7AUfMOOJrkDowgX1tOiOtedjAVSQwcetZkertU1mvLiAI89UdJxcEzdMz9LFmU5EdRRpYd5wJFXxeRaDnAJWC1tqpdU8E/UsMkEScG8qXUu95R4XxnKabI0mq/0qjsUfIWQMc/QIhvLWmgqrupbWp3wfZX1RRLjUPNYmfLJWAjnwo5wVlbiy0Q4T6JYe9+Jxn46juaUTLODaZvcB/Ljb9CXOtJ7orhW1/lLrQZxndUyGyUK07UbdGesEV3zPMUMfGcUD4o3GKTDdCfEMNrhrs/Zcnm3XaIXYMs9awjVg6rkkrjuA==";
+
+                mServer = new SQLiteServer(MAGlobal.LocalDbPath, $"{lc},{lc2}");
+                if (mServer.HasError) throw new Exception(mServer.ErrorMessage);
+
+                mDevartConnectionString = SQLiteCommon.DatabaseConnectionString(MAGlobal.LocalDbPath, $"{lc},{lc2}");
+
                 using (var db = new LocalModelDataContext(mDevartConnectionString))
                 {
                     if (!db.DatabaseExists()) db.CreateDatabase();
                 }
 
-                mServer = new SQLiteServer(MAGlobal.LocalDbPath);
-                if (mServer.HasError) throw new Exception(mServer.ErrorMessage);
+
                 updateDatabase();
                 updateMasterData();
                 MAGlobal.Logging.LogEvent(SALogLevel.Trace, "Database created.", "pharmatrack.Custom", "PrepCustomDatabase", "OpenABGDataBase");

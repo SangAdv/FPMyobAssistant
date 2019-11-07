@@ -1,6 +1,5 @@
 ﻿using LocalModelContext;
 using SangAdv.Common.StringExtensions;
-using SangAdv.SQLite;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -61,18 +60,17 @@ namespace FPMyobAssistant
 
             TLDPLBudgetDeleteAll(period);
 
-            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
-            {
-                sbi.AddParameter("MAId", typeof(string));
-                sbi.AddParameter("Period", typeof(string));
-                sbi.AddParameter("Budget", typeof(float));
+            var sbi = MADataAccess.LocalData.Database.GetBulkInsert();
 
-                sbi.UpdateData(data, "TLDBSBudget");
+            sbi.AddParameter("MAId", typeof(string));
+            sbi.AddParameter("Period", typeof(string));
+            sbi.AddParameter("Budget", typeof(float));
 
-                sbi.CommitData();
+            sbi.UpdateData(data, "TLDBSBudget");
 
-                ErrorMessage = sbi.ErrorMessage;
-            }
+            sbi.CommitData();
+
+            ErrorMessage = sbi.ErrorMessage;
         }
 
         #endregion TLDBSBudget
@@ -100,21 +98,20 @@ namespace FPMyobAssistant
 
             TLDDHLCustomerNumberDeleteAll();
 
-            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
+            var sbi = MADataAccess.LocalData.Database.GetBulkInsert();
+
+            sbi.AddParameter("Id", typeof(string));
+            sbi.AddParameter("CustomerName", typeof(string));
+            sbi.AddParameter("MYOBCardId", typeof(string));
+
+            foreach (var item in data)
             {
-                sbi.AddParameter("Id", typeof(string));
-                sbi.AddParameter("CustomerName", typeof(string));
-                sbi.AddParameter("MYOBCardId", typeof(string));
-
-                foreach (var item in data)
-                {
-                    sbi.UpdateData(MADataAccess.CloudData.Customer.Accounts, "TLDDHLCustomerNumber");
-                }
-
-                sbi.CommitData();
-
-                ErrorMessage = sbi.ErrorMessage;
+                sbi.UpdateData(MADataAccess.CloudData.Customer.Accounts, "TLDDHLCustomerNumber");
             }
+
+            sbi.CommitData();
+
+            ErrorMessage = sbi.ErrorMessage;
         }
 
         #endregion TLDDHLCustomerNumber
@@ -165,19 +162,18 @@ namespace FPMyobAssistant
 
             TLDDistributorProductAccountIdDeleteAll();
 
-            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
-            {
-                sbi.AddParameter("DistributorId", typeof(int));
-                sbi.AddParameter("ProductPDE", typeof(string));
-                sbi.AddParameter("AccountId", typeof(string));
-                sbi.AddParameter("Product", typeof(string));
+            var sbi = MADataAccess.LocalData.Database.GetBulkInsert();
 
-                sbi.UpdateData(data, "TLDDistributorProductAccountId");
+            sbi.AddParameter("DistributorId", typeof(int));
+            sbi.AddParameter("ProductPDE", typeof(string));
+            sbi.AddParameter("AccountId", typeof(string));
+            sbi.AddParameter("Product", typeof(string));
 
-                sbi.CommitData();
+            sbi.UpdateData(data, "TLDDistributorProductAccountId");
 
-                ErrorMessage = sbi.ErrorMessage;
-            }
+            sbi.CommitData();
+
+            ErrorMessage = sbi.ErrorMessage;
         }
 
         #endregion TLDDistributorProductAccountId
@@ -235,18 +231,17 @@ namespace FPMyobAssistant
 
             TLDPLBudgetDeleteAll(period);
 
-            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
-            {
-                sbi.AddParameter("MAId", typeof(string));
-                sbi.AddParameter("Period", typeof(string));
-                sbi.AddParameter("Budget", typeof(float));
+            var sbi = MADataAccess.LocalData.Database.GetBulkInsert();
 
-                sbi.UpdateData(data, "TLDPLBudget");
+            sbi.AddParameter("MAId", typeof(string));
+            sbi.AddParameter("Period", typeof(string));
+            sbi.AddParameter("Budget", typeof(float));
 
-                sbi.CommitData();
+            sbi.UpdateData(data, "TLDPLBudget");
 
-                ErrorMessage = sbi.ErrorMessage;
-            }
+            sbi.CommitData();
+
+            ErrorMessage = sbi.ErrorMessage;
         }
 
         #endregion TLDPLBudget
@@ -259,18 +254,17 @@ namespace FPMyobAssistant
 
             TLDDHLCustomerNumberDeleteAll();
 
-            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
-            {
-                sbi.AddParameter("Id", typeof(string));
-                sbi.AddParameter("CustomerName", typeof(string));
-                sbi.AddParameter("MYOBCardId", typeof(string));
+            var sbi = MADataAccess.LocalData.Database.GetBulkInsert();
 
-                sbi.UpdateData(data, "TLDKKCustomerNumber");
+            sbi.AddParameter("Id", typeof(string));
+            sbi.AddParameter("CustomerName", typeof(string));
+            sbi.AddParameter("MYOBCardId", typeof(string));
 
-                sbi.CommitData();
+            sbi.UpdateData(data, "TLDKKCustomerNumber");
 
-                ErrorMessage = sbi.ErrorMessage;
-            }
+            sbi.CommitData();
+
+            ErrorMessage = sbi.ErrorMessage;
         }
 
         #endregion TLDKKCustomerNumber
@@ -300,18 +294,17 @@ namespace FPMyobAssistant
 
             TLMBSAccountDeleteAll();
 
-            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
-            {
-                sbi.AddParameter("AccountId", typeof(string));
-                sbi.AddParameter("AccountDescription", typeof(string));
-                sbi.AddParameter("ParentAccountId", typeof(string));
+            var sbi = MADataAccess.LocalData.Database.GetBulkInsert();
 
-                sbi.UpdateData(data, "TLMBSAccounts");
+            sbi.AddParameter("AccountId", typeof(string));
+            sbi.AddParameter("AccountDescription", typeof(string));
+            sbi.AddParameter("ParentAccountId", typeof(string));
 
-                sbi.CommitData();
+            sbi.UpdateData(data, "TLMBSAccounts");
 
-                ErrorMessage = sbi.ErrorMessage;
-            }
+            sbi.CommitData();
+
+            ErrorMessage = sbi.ErrorMessage;
         }
 
         #endregion TLMBSAccount
@@ -324,18 +317,17 @@ namespace FPMyobAssistant
 
             TLDDHLCustomerNumberDeleteAll();
 
-            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
-            {
-                sbi.AddParameter("DistributorId", typeof(int));
-                sbi.AddParameter("Distributor", typeof(string));
-                sbi.AddParameter("CardId", typeof(string));
+            var sbi = MADataAccess.LocalData.Database.GetBulkInsert();
 
-                sbi.UpdateData(data, "TLMDistributor");
+            sbi.AddParameter("DistributorId", typeof(int));
+            sbi.AddParameter("Distributor", typeof(string));
+            sbi.AddParameter("CardId", typeof(string));
 
-                sbi.CommitData();
+            sbi.UpdateData(data, "TLMDistributor");
 
-                ErrorMessage = sbi.ErrorMessage;
-            }
+            sbi.CommitData();
+
+            ErrorMessage = sbi.ErrorMessage;
         }
 
         #endregion TLMDistributor
@@ -365,18 +357,17 @@ namespace FPMyobAssistant
 
             TLMPLAccountDeleteAll();
 
-            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
-            {
-                sbi.AddParameter("AccountId", typeof(string));
-                sbi.AddParameter("AccountDescription", typeof(string));
-                sbi.AddParameter("ParentAccountId", typeof(string));
+            var sbi = MADataAccess.LocalData.Database.GetBulkInsert();
 
-                sbi.UpdateData(data, "TLMPLAccounts");
+            sbi.AddParameter("AccountId", typeof(string));
+            sbi.AddParameter("AccountDescription", typeof(string));
+            sbi.AddParameter("ParentAccountId", typeof(string));
 
-                sbi.CommitData();
+            sbi.UpdateData(data, "TLMPLAccounts");
 
-                ErrorMessage = sbi.ErrorMessage;
-            }
+            sbi.CommitData();
+
+            ErrorMessage = sbi.ErrorMessage;
         }
 
         #endregion TLMPLAccounts
@@ -389,21 +380,20 @@ namespace FPMyobAssistant
 
             TLDDHLCustomerNumberDeleteAll();
 
-            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
-            {
-                sbi.AddParameter("ReportId", typeof(int));
-                sbi.AddParameter("HeadingId", typeof(int));
-                sbi.AddParameter("ReportHeading", typeof(string));
-                sbi.AddParameter("IsCalculation", typeof(int));
-                sbi.AddParameter("HasChildren", typeof(int));
-                sbi.AddParameter("IncomeAsNegative", typeof(int));
+            var sbi = MADataAccess.LocalData.Database.GetBulkInsert();
 
-                sbi.UpdateData(data, "TLMReportHeadings");
+            sbi.AddParameter("ReportId", typeof(int));
+            sbi.AddParameter("HeadingId", typeof(int));
+            sbi.AddParameter("ReportHeading", typeof(string));
+            sbi.AddParameter("IsCalculation", typeof(int));
+            sbi.AddParameter("HasChildren", typeof(int));
+            sbi.AddParameter("IncomeAsNegative", typeof(int));
 
-                sbi.CommitData();
+            sbi.UpdateData(data, "TLMReportHeadings");
 
-                ErrorMessage = sbi.ErrorMessage;
-            }
+            sbi.CommitData();
+
+            ErrorMessage = sbi.ErrorMessage;
         }
 
         #endregion TLMReportHeadings
@@ -434,34 +424,33 @@ namespace FPMyobAssistant
 
             var tData = new List<TLMReportStructure>();
 
-            using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.mServer.Database.ConnectionString))
+            var sbi = MADataAccess.LocalData.Database.GetBulkInsert();
+
+            sbi.AddParameter("ReportId", typeof(int));
+            sbi.AddParameter("HeadingId", typeof(int));
+            sbi.AddParameter("ItemId", typeof(int));
+            sbi.AddParameter("ReportDescription", typeof(string));
+            sbi.AddParameter("AccountItems", typeof(string));
+            sbi.AddParameter("SequenceIndex", typeof(int));
+            sbi.AddParameter("PreviousReportItem", typeof(string));
+
+            foreach (var item in data)
             {
-                sbi.AddParameter("ReportId", typeof(int));
-                sbi.AddParameter("HeadingId", typeof(int));
-                sbi.AddParameter("ItemId", typeof(int));
-                sbi.AddParameter("ReportDescription", typeof(string));
-                sbi.AddParameter("AccountItems", typeof(string));
-                sbi.AddParameter("SequenceIndex", typeof(int));
-                sbi.AddParameter("PreviousReportItem", typeof(string));
-
-                foreach (var item in data)
+                tData.Add(new TLMReportStructure
                 {
-                    tData.Add(new TLMReportStructure
-                    {
-                        ReportId = reportId,
-                        HeadingId = item.HeadingId,
-                        ItemId = item.ItemId,
-                        ReportDescription = item.ReportDescription,
-                        AccountItems = item.AccountItems,
-                        SequenceIndex = item.SequenceIndex
-                    });
-                }
-
-                sbi.UpdateData(tData, "TLMReportStructure");
-                sbi.CommitData();
-
-                ErrorMessage = sbi.ErrorMessage;
+                    ReportId = reportId,
+                    HeadingId = item.HeadingId,
+                    ItemId = item.ItemId,
+                    ReportDescription = item.ReportDescription,
+                    AccountItems = item.AccountItems,
+                    SequenceIndex = item.SequenceIndex
+                });
             }
+
+            sbi.UpdateData(tData, "TLMReportStructure");
+            sbi.CommitData();
+
+            ErrorMessage = sbi.ErrorMessage;
         }
 
         #endregion TLMReportStructure

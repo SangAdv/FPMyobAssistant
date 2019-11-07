@@ -1,0 +1,146 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>FPMyobAssistant</AssemblyName>
+    <RootNamespace>FPMyobAssistant</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\FPMyobAssistant\Classes\Conversion\MABSAccounts.cs" Link="Classes\Conversion\MABSAccounts.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Conversion\MAPLAccounts.cs" Link="Classes\Conversion\MAPLAccounts.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Conversion\MAReadTXT.cs" Link="Classes\Conversion\MAReadTXT.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Helpers\MAReportOptions.cs" Link="Classes\Helpers\MAReportOptions.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Helpers\MATreelistItems.cs" Link="Classes\Helpers\MATreelistItems.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Report Creation\MABSReportStorage.cs" Link="Classes\Report Creation\MABSReportStorage.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Report Creation\MAPLReportStorage.cs" Link="Classes\Report Creation\MAPLReportStorage.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Report Creation\MAReportCreator.cs" Link="Classes\Report Creation\MAReportCreator.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Report Creation\MAReportStructure.cs" Link="Classes\Report Creation\MAReportStructure.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Report Creation\MAValueComplier.cs" Link="Classes\Report Creation\MAValueComplier.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Reports\MARptBalanceSheet.cs" Link="Classes\Reports\MARptBalanceSheet.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Reports\MARptCashFlow.cs" Link="Classes\Reports\MARptCashFlow.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Reports\MARptCosts.cs" Link="Classes\Reports\MARptCosts.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Reports\MARptCostsBP.cs" Link="Classes\Reports\MARptCostsBP.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Reports\MARptProfitBeforeTax.cs" Link="Classes\Reports\MARptProfitBeforeTax.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Reports\MARptSales.cs" Link="Classes\Reports\MARptSales.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\Reports\MARptSalesBP.cs" Link="Classes\Reports\MARptSalesBP.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\UI\MABaseControls.cs" Link="Classes\UI\MABaseControls.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Classes\UI\MAFileSelection.cs" Link="Classes\UI\MAFileSelection.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Administration\ucUsers.cs" Link="Controls\Administration\ucUsers.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Administration\ucUsers.designer.cs" Link="Controls\Administration\ucUsers.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Balance Sheet\ucBSAccountStructure.cs" Link="Controls\Balance Sheet\ucBSAccountStructure.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Balance Sheet\ucBSAccountStructure.designer.cs" Link="Controls\Balance Sheet\ucBSAccountStructure.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Balance Sheet\ucBSImport.cs" Link="Controls\Balance Sheet\ucBSImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Balance Sheet\ucBSImport.designer.cs" Link="Controls\Balance Sheet\ucBSImport.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Data\ucDHLMyobCardIds.cs" Link="Controls\Data\ucDHLMyobCardIds.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Data\ucDHLMyobCardIds.designer.cs" Link="Controls\Data\ucDHLMyobCardIds.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Data\ucProductMyobAccountId.cs" Link="Controls\Data\ucProductMyobAccountId.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Data\ucProductMyobAccountId.designer.cs" Link="Controls\Data\ucProductMyobAccountId.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Data\ucSyncData.cs" Link="Controls\Data\ucSyncData.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Data\ucSyncData.designer.cs" Link="Controls\Data\ucSyncData.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\DHL\ucDHLImport.cs" Link="Controls\DHL\ucDHLImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\DHL\ucDHLImport.designer.cs" Link="Controls\DHL\ucDHLImport.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\DHL\ucDHLImportPreparation.cs" Link="Controls\DHL\ucDHLImportPreparation.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\DHL\ucDHLImportPreparation.designer.cs" Link="Controls\DHL\ucDHLImportPreparation.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Embedded\eucBase.cs" Link="Controls\Embedded\eucBase.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Embedded\eucBase.designer.cs" Link="Controls\Embedded\eucBase.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Embedded\eucBSBudgetImport.cs" Link="Controls\Embedded\eucBSBudgetImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Embedded\eucBSBudgetImport.designer.cs" Link="Controls\Embedded\eucBSBudgetImport.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Embedded\eucBSImport.cs" Link="Controls\Embedded\eucBSImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Embedded\eucBSImport.designer.cs" Link="Controls\Embedded\eucBSImport.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Embedded\eucExcludedAccountNumbers.cs" Link="Controls\Embedded\eucExcludedAccountNumbers.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Embedded\eucExcludedAccountNumbers.designer.cs" Link="Controls\Embedded\eucExcludedAccountNumbers.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Embedded\eucPLBudgetImport.cs" Link="Controls\Embedded\eucPLBudgetImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Embedded\eucPLBudgetImport.designer.cs" Link="Controls\Embedded\eucPLBudgetImport.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Embedded\eucPLImport.cs" Link="Controls\Embedded\eucPLImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Embedded\eucPLImport.designer.cs" Link="Controls\Embedded\eucPLImport.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\PL\ucPLAccountStructure.cs" Link="Controls\PL\ucPLAccountStructure.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\PL\ucPLAccountStructure.designer.cs" Link="Controls\PL\ucPLAccountStructure.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\PL\ucPLImport.cs" Link="Controls\PL\ucPLImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\PL\ucPLImport.designer.cs" Link="Controls\PL\ucPLImport.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Reports\ucBoardReport.cs" Link="Controls\Reports\ucBoardReport.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Reports\ucBoardReport.designer.cs" Link="Controls\Reports\ucBoardReport.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Reports\ucReportErrors.cs" Link="Controls\Reports\ucReportErrors.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Reports\ucReportErrors.designer.cs" Link="Controls\Reports\ucReportErrors.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Reports\ucReports.cs" Link="Controls\Reports\ucReports.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Reports\ucReports.designer.cs" Link="Controls\Reports\ucReports.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Reports\ucReportStructure.cs" Link="Controls\Reports\ucReportStructure.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Reports\ucReportStructure.designer.cs" Link="Controls\Reports\ucReportStructure.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Reports\ucReportStructureGroups.cs" Link="Controls\Reports\ucReportStructureGroups.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Reports\ucReportStructureGroups.designer.cs" Link="Controls\Reports\ucReportStructureGroups.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Reptos\ucReptosImport.cs" Link="Controls\Reptos\ucReptosImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\Reptos\ucReptosImport.designer.cs" Link="Controls\Reptos\ucReptosImport.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\ucBase.cs" Link="Controls\ucBase.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\ucBase.designer.cs" Link="Controls\ucBase.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\ucMain.cs" Link="Controls\ucMain.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Controls\ucMain.designer.cs" Link="Controls\ucMain.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Forms\frmAddCustomerNumber.cs" Link="Forms\frmAddCustomerNumber.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Forms\frmAddCustomerNumber.designer.cs" Link="Forms\frmAddCustomerNumber.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Forms\frmChooseAccounts.cs" Link="Forms\frmChooseAccounts.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Forms\frmChooseAccounts.designer.cs" Link="Forms\frmChooseAccounts.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Forms\frmChooseGroups.cs" Link="Forms\frmChooseGroups.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Forms\frmChooseGroups.designer.cs" Link="Forms\frmChooseGroups.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Forms\frmChooseParent.cs" Link="Forms\frmChooseParent.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Forms\frmChooseParent.designer.cs" Link="Forms\frmChooseParent.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Forms\frmCopyItem.cs" Link="Forms\frmCopyItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Forms\frmCopyItem.designer.cs" Link="Forms\frmCopyItem.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Forms\frmMain.cs" Link="Forms\frmMain.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Forms\frmMain.designer.cs" Link="Forms\frmMain.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant\Helpers\Enums.cs" Link="Helpers\Enums.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Classes\Conversion\" />
+    <Folder Include="Classes\Helpers\" />
+    <Folder Include="Classes\UI\" />
+    <Folder Include="Classes\Reports\" />
+    <Folder Include="Classes\Report Creation\" />
+    <Folder Include="Controls\Administration\" />
+    <Folder Include="Controls\Balance Sheet\" />
+    <Folder Include="Controls\Data\" />
+    <Folder Include="Controls\DHL\" />
+    <Folder Include="Controls\Embedded\" />
+    <Folder Include="Controls\Reptos\" />
+    <Folder Include="Controls\Reports\" />
+    <Folder Include="Controls\PL\" />
+    <Folder Include="Forms\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.WindowsDesktop.Core" Version="19.2.3" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win" Version="19.2.3-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win.BonusSkins" Version="19.2.3-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win.Utils" Version="19.2.3-ctp" />
+    <PackageReference Include="SangAdv.Common" Version="3.1.1-Beta" />
+    <PackageReference Include="SangAdv.DevEx.19.2" Version="3.1.1-beta" />
+    <PackageReference Include="SangAdv.Updater" Version="3.1.0-preview1" />
+    <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FPMyobAssistant.Data.C31\FPMyobAssistant.Data.C31.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

@@ -82,12 +82,9 @@ namespace FPMyobAssistant
                 //Delete the old data
                 MADataAccess.LocalData.Database.ExecuteCommand($"Delete from TLDReptos where [DistributorId]={mDistributorId} AND [Period]='{mPeriod}'");
                 //Add the new data
-                using (var sbi = new SQLiteBulkInsert(MADataAccess.LocalData.Database.ConnectionString))
-                {
-                    sbi.UpdateData(geTldReptosList(), "TLDReptos");
-                    sbi.CommitData();
-                }
-
+                var sbi = MADataAccess.LocalData.Database.GetBulkInsert();
+                sbi.UpdateData(geTldReptosList(), "TLDReptos");
+                sbi.CommitData();
                 return Error.IsSuccess;
             }
             catch (Exception ex)

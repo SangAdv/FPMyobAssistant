@@ -373,10 +373,21 @@
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
     <Content Include="MyobAssistant.ico" />
+    <None Include="Resources\index.png" />
+    <None Include="Resources\MyobAssistant.ico" />
+    <None Include="Resources\processes_large%401x.png" />
+    <None Include="Resources\database_large%401x.png" />
+    <None Include="Resources\query-lookup_large%401x.png" />
+    <None Include="Resources\exit_large%401x.png" />
+    <None Include="Resources\gear_large%401x.png" />
+    <None Include="Resources\server-database_large%401x.png" />
+    <None Include="Resources\document-table_large%401x.png" />
+    <None Include="Resources\database-import_large%401x.png" />
+    <None Include="Resources\button-help_large%401x.png" />
+    <None Include="Resources\document-table%401x.png" />
+    <None Include="Resources\database-import%401x.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
@@ -394,7 +405,7 @@
       <Version>4.1.1.1</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.SQLite">
-      <Version>2.7.0.1</Version>
+      <Version>2.7.0.2</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.Updater">
       <Version>1.0.14</Version>

@@ -118,9 +118,11 @@ namespace FPMyobAssistant
             var ucm = new ucMain(false);
             DisplayControl(ucm);
 
-            ShowWaitPanel();
+            try
+            {
+                ShowWaitPanel();
 
-            MAGlobal.IsConnected = SAConnection.CheckGoogleConnection();
+                MAGlobal.IsConnected = SAConnection.CheckGoogleConnection();
 
 #if !DEBUG
 
@@ -132,32 +134,40 @@ namespace FPMyobAssistant
 
 #endif
 
-            LoadStartupSettings(ucm);
-            ucm.SetUIDefaults();
+                LoadStartupSettings(ucm);
+                ucm.SetUIDefaults();
 
-            if (MAGlobal.IsConnected)
-            {
-                await PrepareCloudDatabaseAsync(ucm);
+                if (MAGlobal.IsConnected)
+                {
+                    await PrepareCloudDatabaseAsync(ucm);
+                }
+
+                if (!PrepareDatabase(ucm))
+                {
+                    ucm.DisplayMessage(ErrorMessage);
+                    return;
+                }
+
+                #region Prepare Updates
+
+                if (MAGlobal.IsConnected)
+                {
+                    await MADataAccess.DataSyncUpdate.InitialiseAsync();
+                    MAGlobal.LoadDataSyncControl = await MADataAccess.DataSyncUpdate.CheckHasUpdateAsync();
+                }
+
+                #endregion Prepare Updates
+
+                SaveStartupSettings(ucm);
             }
-
-            if (!PrepareDatabase(ucm))
+            catch
             {
-                ucm.DisplayMessage(ErrorMessage);
-                return;
+                //Ignore
             }
-
-            #region Prepare Updates
-
-            if (MAGlobal.IsConnected)
+            finally
             {
-                await MADataAccess.DataSyncUpdate.InitialiseAsync();
-                MAGlobal.LoadDataSyncControl = await MADataAccess.DataSyncUpdate.CheckHasUpdateAsync();
+                HideWaitPanel();
             }
-
-            #endregion Prepare Updates
-
-            SaveStartupSettings(ucm);
-            HideWaitPanel();
         }
 
         #region Prepare Application

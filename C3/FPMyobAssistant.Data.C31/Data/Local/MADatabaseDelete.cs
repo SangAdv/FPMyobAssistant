@@ -186,7 +186,7 @@ namespace FPMyobAssistant
         {
             using (var db = new LocalModelDataContext(mDevartConnectionString))
             {
-                db.ExecuteCommand("Delete from TLMReports");
+                db.ExecuteCommand($"Delete from TLMReports");
             }
         }
 

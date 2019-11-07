@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true);
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.cntMain = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.hmMain = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -75,9 +75,10 @@
             // cntMain
             // 
             this.cntMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cntMain.Location = new System.Drawing.Point(260, 30);
+            this.cntMain.Location = new System.Drawing.Point(303, 37);
+            this.cntMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cntMain.Name = "cntMain";
-            this.cntMain.Size = new System.Drawing.Size(802, 564);
+            this.cntMain.Size = new System.Drawing.Size(936, 694);
             this.cntMain.TabIndex = 0;
             // 
             // hmMain
@@ -87,12 +88,13 @@
             this.accordionControlElement1,
             this.accordionControlElement5,
             this.aceExit});
-            this.hmMain.Location = new System.Drawing.Point(0, 30);
+            this.hmMain.Location = new System.Drawing.Point(0, 37);
+            this.hmMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hmMain.Name = "hmMain";
             this.hmMain.OptionsMinimizing.NormalWidth = 260;
             this.hmMain.RootDisplayMode = DevExpress.XtraBars.Navigation.AccordionControlRootDisplayMode.Footer;
             this.hmMain.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.hmMain.Size = new System.Drawing.Size(260, 564);
+            this.hmMain.Size = new System.Drawing.Size(303, 694);
             this.hmMain.TabIndex = 1;
             this.hmMain.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -103,7 +105,7 @@
             this.accordionControlElement3,
             this.accordionControlElement9});
             this.accordionControlElement1.Expanded = true;
-            this.accordionControlElement1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement1.ImageOptions.Image")));
+            this.accordionControlElement1.ImageOptions.Image = global::FPMyobAssistant.Properties.Resources.server_database_large_1x;
             this.accordionControlElement1.ImageOptions.ImageLayoutMode = DevExpress.XtraBars.Navigation.ImageLayoutMode.Squeeze;
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "Element1";
@@ -118,7 +120,7 @@
             this.aceReptosImport,
             this.aceDataSync});
             this.accordionControlElement2.Expanded = true;
-            this.accordionControlElement2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement2.ImageOptions.Image")));
+            this.accordionControlElement2.ImageOptions.Image = global::FPMyobAssistant.Properties.Resources.database_import_large_1x;
             this.accordionControlElement2.Name = "accordionControlElement2";
             this.accordionControlElement2.Text = "Data";
             // 
@@ -169,7 +171,7 @@
             this.accordionControlElement3.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceBoardReport});
             this.accordionControlElement3.Expanded = true;
-            this.accordionControlElement3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement3.ImageOptions.Image")));
+            this.accordionControlElement3.ImageOptions.Image = global::FPMyobAssistant.Properties.Resources.document_table_large_1x;
             this.accordionControlElement3.Name = "accordionControlElement3";
             this.accordionControlElement3.Text = "Reports";
             // 
@@ -185,7 +187,7 @@
             this.accordionControlElement9.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceWelcome});
             this.accordionControlElement9.Expanded = true;
-            this.accordionControlElement9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement9.ImageOptions.Image")));
+            this.accordionControlElement9.ImageOptions.Image = global::FPMyobAssistant.Properties.Resources.button_help_large_1x;
             this.accordionControlElement9.Name = "accordionControlElement9";
             this.accordionControlElement9.Text = "About";
             // 
@@ -204,7 +206,7 @@
             this.accordionControlElement8,
             this.acAdmin});
             this.accordionControlElement5.Expanded = true;
-            this.accordionControlElement5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement5.ImageOptions.Image")));
+            this.accordionControlElement5.ImageOptions.Image = global::FPMyobAssistant.Properties.Resources.gear_large_1x;
             this.accordionControlElement5.ImageOptions.ImageLayoutMode = DevExpress.XtraBars.Navigation.ImageLayoutMode.Squeeze;
             this.accordionControlElement5.Name = "accordionControlElement5";
             this.accordionControlElement5.Text = "Element5";
@@ -215,7 +217,7 @@
             this.aceMyobCardIds,
             this.aceMyobProductAccountIds});
             this.accordionControlElement7.Expanded = true;
-            this.accordionControlElement7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement7.ImageOptions.Image")));
+            this.accordionControlElement7.ImageOptions.Image = global::FPMyobAssistant.Properties.Resources.query_lookup_large_1x;
             this.accordionControlElement7.Name = "accordionControlElement7";
             this.accordionControlElement7.Text = "Master Data";
             // 
@@ -239,7 +241,7 @@
             this.acePLAccountStructure,
             this.aceBSAccountStructure});
             this.accordionControlElement10.Expanded = true;
-            this.accordionControlElement10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement10.ImageOptions.Image")));
+            this.accordionControlElement10.ImageOptions.Image = global::FPMyobAssistant.Properties.Resources.database_large_1x;
             this.accordionControlElement10.Name = "accordionControlElement10";
             this.accordionControlElement10.Text = "Structures";
             // 
@@ -264,7 +266,7 @@
             this.aceReportStructureGroups,
             this.aceReportErrors});
             this.accordionControlElement8.Expanded = true;
-            this.accordionControlElement8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement8.ImageOptions.Image")));
+            this.accordionControlElement8.ImageOptions.Image = global::FPMyobAssistant.Properties.Resources.document_table_large_1x;
             this.accordionControlElement8.Name = "accordionControlElement8";
             this.accordionControlElement8.Text = "Reports";
             // 
@@ -294,7 +296,7 @@
             this.acAdmin.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceUsers});
             this.acAdmin.Expanded = true;
-            this.acAdmin.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("acAdmin.ImageOptions.Image")));
+            this.acAdmin.ImageOptions.Image = global::FPMyobAssistant.Properties.Resources.processes_large_1x;
             this.acAdmin.Name = "acAdmin";
             this.acAdmin.Text = "Administration";
             // 
@@ -308,7 +310,7 @@
             // aceExit
             // 
             this.aceExit.ControlFooterAlignment = DevExpress.XtraBars.Navigation.AccordionItemFooterAlignment.Far;
-            this.aceExit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("aceExit.ImageOptions.Image")));
+            this.aceExit.ImageOptions.Image = global::FPMyobAssistant.Properties.Resources.exit_large_1x;
             this.aceExit.Name = "aceExit";
             this.aceExit.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             toolTipTitleItem1.Text = "Exit";
@@ -324,8 +326,9 @@
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
+            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1062, 30);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1239, 37);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.Text = "Myob Assistant";
@@ -342,18 +345,18 @@
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1062, 594);
+            this.ClientSize = new System.Drawing.Size(1239, 731);
             this.ControlContainer = this.cntMain;
             this.Controls.Add(this.cntMain);
             this.Controls.Add(this.hmMain);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.ShowIcon = false;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmMain";
             this.NavigationControl = this.hmMain;
-            this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Myob Assistant";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(255)))));

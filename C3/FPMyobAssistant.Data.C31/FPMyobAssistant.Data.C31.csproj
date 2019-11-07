@@ -1,0 +1,84 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\FPMyobAssistant.Data\Classes\Common\MAConstants.cs" Link="Classes\Common\MAConstants.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Classes\Common\MAGlobal.cs" Link="Classes\Common\MAGlobal.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Classes\Common\MAHelpers.cs" Link="Classes\Common\MAHelpers.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Classes\Helpers\MABSStorageItem.cs" Link="Classes\Helpers\MABSStorageItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Classes\Helpers\MANodeExpanded.cs" Link="Classes\Helpers\MANodeExpanded.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Classes\Helpers\MAPLStorageItem.cs" Link="Classes\Helpers\MAPLStorageItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Classes\Helpers\MAReportStructureItem.cs" Link="Classes\Helpers\MAReportStructureItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Classes\StartUp\MAStartup.cs" Link="Classes\StartUp\MAStartup.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Business Logic\MACAccounts.cs" Link="Data\Cloud\Business Logic\MACAccounts.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Business Logic\MACBudgets.cs" Link="Data\Cloud\Business Logic\MACBudgets.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Business Logic\MACCustomerData.cs" Link="Data\Cloud\Business Logic\MACCustomerData.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Business Logic\MACDistributorProductAccount.cs" Link="Data\Cloud\Business Logic\MACDistributorProductAccount.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Business Logic\MACImportExclusions.cs" Link="Data\Cloud\Business Logic\MACImportExclusions.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Business Logic\MACReportStructure.cs" Link="Data\Cloud\Business Logic\MACReportStructure.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Business Logic\MACSettings.cs" Link="Data\Cloud\Business Logic\MACSettings.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Business Logic\MACUpdates.cs" Link="Data\Cloud\Business Logic\MACUpdates.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Business Logic\MACUsers.cs" Link="Data\Cloud\Business Logic\MACUsers.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Data Items\MACAccountItem.cs" Link="Data\Cloud\Data Items\MACAccountItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Data Items\MACBudgetItem.cs" Link="Data\Cloud\Data Items\MACBudgetItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Data Items\MACCustomerNumberItem.cs" Link="Data\Cloud\Data Items\MACCustomerNumberItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Data Items\MACImportExclusionItems.cs" Link="Data\Cloud\Data Items\MACImportExclusionItems.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Data Items\MACReportStructureItem.cs" Link="Data\Cloud\Data Items\MACReportStructureItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Data Items\MACSettingsItem.cs" Link="Data\Cloud\Data Items\MACSettingsItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Data Items\MACUpdateItem.cs" Link="Data\Cloud\Data Items\MACUpdateItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\Data Items\MACUserItem.cs" Link="Data\Cloud\Data Items\MACUserItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Cloud\MACloudAccess.cs" Link="Data\Cloud\MACloudAccess.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Helpers\DHL Import\MADHLDetail.cs" Link="Data\Helpers\DHL Import\MADHLDetail.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Helpers\DHL Import\MADHLDetailItem.cs" Link="Data\Helpers\DHL Import\MADHLDetailItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Helpers\DHL Import\MADHLMaster.cs" Link="Data\Helpers\DHL Import\MADHLMaster.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Helpers\DHL Import\MADHLMasterItem.cs" Link="Data\Helpers\DHL Import\MADHLMasterItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\Helpers\Sync\MADataSyncUpdate.cs" Link="Data\Helpers\Sync\MADataSyncUpdate.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Data\MADataAccess.cs" Link="Data\MADataAccess.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Exporters\FPDHLtoMyobTXTItemSales.cs" Link="Exporters\FPDHLtoMyobTXTItemSales.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Exporters\FPReptosToMyobTXTAddHocSales.cs" Link="Exporters\FPReptosToMyobTXTAddHocSales.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Exporters\Helpers\FPMyobAddHocSalesItem.cs" Link="Exporters\Helpers\FPMyobAddHocSalesItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Exporters\Helpers\FPMyobSalesItem.cs" Link="Exporters\Helpers\FPMyobSalesItem.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Exporters\MyobTXTSalesExport.cs" Link="Exporters\MyobTXTSalesExport.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Forms\frmAddProductAccountId.cs" Link="Forms\frmAddProductAccountId.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Forms\frmAddProductAccountId.designer.cs" Link="Forms\frmAddProductAccountId.designer.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Helpers\Enums.cs" Link="Helpers\Enums.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Helpers\GeneralExtensionMethods.cs" Link="Helpers\GeneralExtensionMethods.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Importers\AMADistributorReptosImport.cs" Link="Importers\AMADistributorReptosImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Importers\implementations\MAAPIReptosImport.cs" Link="Importers\Implementations\MAAPIReptosImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Importers\implementations\MACH2ReptosImport.cs" Link="Importers\Implementations\MACH2ReptosImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Importers\implementations\MASigmaReptosImport.cs" Link="Importers\Implementations\MASigmaReptosImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Importers\implementations\MASymbionReptosImport.cs" Link="Importers\Implementations\MASymbionReptosImport.cs" />
+    <Compile Include="..\..\FPMyobAssistant.Data\Importers\MAReptosStructure.cs" Link="Importers\MAReptosStructure.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Classes\Common\" />
+    <Folder Include="Classes\Helpers\" />
+    <Folder Include="Classes\StartUp\" />
+    <Folder Include="Data\Cloud\Business Logic\" />
+    <Folder Include="Data\Cloud\Data Items\" />
+    <Folder Include="Data\Helpers\DHL Import\" />
+    <Folder Include="Data\Helpers\Sync\" />
+    <Folder Include="Data\Local\Models\" />
+    <Folder Include="Exporters\Helpers\" />
+    <Folder Include="Forms\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Importers\Implementations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.WindowsDesktop.Win.Utils" Version="19.2.3-ctp" />
+    <PackageReference Include="SangAdv.Common" Version="3.1.1-Beta" />
+    <PackageReference Include="SangAdv.Connected" Version="3.1.1-Beta" />
+    <PackageReference Include="SangAdv.DevEx.19.2" Version="3.1.1-beta" />
+    <PackageReference Include="SangAdv.Mapper" Version="4.1.1.2" />
+    <PackageReference Include="SangAdv.NPoco.SQLite.Devart" Version="4.0.2.6-preview3" />
+    <PackageReference Include="SangAdv.Updater" Version="3.1.0-preview1" />
+    <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
