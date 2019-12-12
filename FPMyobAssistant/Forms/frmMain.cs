@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SangAdv.Updater.Common;
 
 namespace FPMyobAssistant
 {
@@ -258,7 +259,10 @@ namespace FPMyobAssistant
         internal async Task<bool> CheckUpdateAsync(ucMain main)
         {
             MAGlobal.Update.MessageChanged += main.DisplayMessage;
-            await MAGlobal.Update.InitialiseAsync("http://repo.sanguine.online/applications/", "myobassistant", "myob Assistant", "FPMyobAssistant.exe", Application.StartupPath, "updater.exe");
+            //await MAGlobal.Update.InitialiseAsync("http://repo.sanguine.online/applications/", "myobassistant", "myob Assistant", "FPMyobAssistant.exe", Application.StartupPath, "updater.exe");
+            await MAGlobal.Update.InitialiseAsync("http://repo.sanguine.online/applications/", "myobAssistant",
+                "myob Assistant", "FPMyobAssistant.exe", Application.StartupPath, "updater.exe",
+                SAUpdaterRepositoryType.AzureBlob);
 
             if (MAGlobal.Update.DoInstallerUpdate)
             {

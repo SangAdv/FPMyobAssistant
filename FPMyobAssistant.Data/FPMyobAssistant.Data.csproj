@@ -140,22 +140,22 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="SangAdv.Common">
-      <Version>2.7.0</Version>
+      <Version>2.7.1</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.Connected">
-      <Version>2.7.0.1</Version>
+      <Version>2.7.1</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.DevEx.19.2">
-      <Version>2.7.0</Version>
+      <Version>2.7.2</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.Mapper">
       <Version>4.1.1.1</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.SQLite">
-      <Version>2.7.0.2</Version>
+      <Version>2.7.1</Version>
     </PackageReference>
     <PackageReference Include="SangAdv.Updater">
-      <Version>1.0.14</Version>
+      <Version>2.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />
