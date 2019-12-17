@@ -41,7 +41,7 @@ namespace FPMyobAssistant
         {
             try
             {
-                await mStor.InsertOrReplaceAsync(MAUpdateItem .UserData, MACPartitionNames.User, email.ToUpper().Trim(), User);
+                await mStor.InsertOrReplaceAsync(MAUpdateItem .UserData, MACPartitionNames.User, email.ToUpper().Trim(), User).ConfigureAwait(false);
                 return new SAEventArgs();
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace FPMyobAssistant
         {
             try
             {
-                var tUser = await mStor.GetAsync<MACUserItem>(MAUpdateItem.UserData, MACPartitionNames.User, email.ToUpper().Trim());
+                var tUser = await mStor.GetAsync<MACUserItem>(MAUpdateItem.UserData, MACPartitionNames.User, email.ToUpper().Trim()).ConfigureAwait(false);
                 User = tUser ?? new MACUserItem();
                 SelectedUserEmail = email;
                 return true;
@@ -72,7 +72,7 @@ namespace FPMyobAssistant
             try
             {
                 Users.Clear();
-                var t = await mStor.GetAllAsync<MACUserItem>(MAUpdateItem.UserData, MACPartitionNames.User);
+                var t = await mStor.GetAllAsync<MACUserItem>(MAUpdateItem.UserData, MACPartitionNames.User).ConfigureAwait(false);
                 foreach (var item in t) Users[item.Key] = item.Value;
             }
             catch
@@ -86,7 +86,7 @@ namespace FPMyobAssistant
             try
             {
                 ErrorMessage = string.Empty;
-                await mStor.DeleteAsync(MAUpdateItem.UserData, MACPartitionNames.User, email.ToUpper().Trim());
+                await mStor.DeleteAsync(MAUpdateItem.UserData, MACPartitionNames.User, email.ToUpper().Trim()).ConfigureAwait(false);
             }
             catch (Exception ex)
             {

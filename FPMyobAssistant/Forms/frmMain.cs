@@ -204,7 +204,7 @@ namespace FPMyobAssistant
                 return tIsSuccess;
             }
 
-            await MADataAccess.CloudData.Users.LoadAllAsync();
+            await MADataAccess.CloudData.Users.LoadAllAsync().ConfigureAwait(false);
 
             #endregion Prepare Users
 
